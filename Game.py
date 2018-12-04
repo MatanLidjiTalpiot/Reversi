@@ -1,5 +1,6 @@
 import numpy as np
-
+BLACK = 1
+WHITE = -1
 
 class Game:
     def __init__(self, size=8):
@@ -15,11 +16,22 @@ class Game:
         # board is shown transposed: coordinate = (y,x)
 
     def set_board(self, board):
+        """
+        A function that sets the board
+        :param board: the board to set
+        :return: nothing
+        """
         self.board = board
 
     def do_move(self, disk, coordinate):
+        """
+        A function that does a move
+        :param disk: 1 or -1 according to the color
+        :param coordinate: the [x,y] coordinate to place the disk
+        :return:
+        """
         # TODO: inheritance
-        if disk not in (-1, 1):
+        if disk not in (WHITE, BLACK):
             raise ValueError("Illegal move! disk should be -1 or 1")
         if self.size <= coordinate[0] or self.size <= coordinate[1]:
             raise ValueError("Illegal move! coordinate exceeds board")
@@ -59,7 +71,7 @@ class Game:
         if len(line) == 0 or self.board[line[0]] != -disk:  # if line doesnt start with the opponent's disk
             return []
         ret = []
-        for square in line:
+        for square in line:# TODO what happens if we run out of board
             if self.board[square] == disk:  # if there is a disk in our color at the end
                 return ret
             ret += [square]
@@ -126,17 +138,113 @@ class Game:
             s_left_up += [(y, x)]
         return s_left_up
 
+    def get_legal_moves(self, disk):
+        """
+        A method that returns a list with all the valid moves
+        :param disk: the color of the disk to place
+        :return: a list of all the valid coordinates to place the disk
+        """
+        legal_moves = []
+        coordinate = [-1, -1]
+        for row in self.board:
+            coordinate[1] += 1
+            coordinate[0] = 0
+            for piece in row:
+                if piece == -disk:
+                    neighbor_moves = self.get_valid_neighbors_assingments(
+                        coordinate, disk)
+                    if neighbor_moves != []:
+                        for move in neighbor_moves:
+                            if move not in legal_moves:
+                                legal_moves.append(move)
+
+
+                coordinate[0] += 1
+        return legal_moves
+
+    def get_valid_neighbors_assingments(self, coordinate, disk):
+        """
+        A method that gets a cooridnate (x,y) and returns true if it is
+        legal to put a disk there
+        :param coordinate:
+        :param disk:
+        :return:
+        """
+        valid_moves = []
+
+        if coordinate[0] != 0:#checking right line
+            check = (coordinate[0]-1, coordinate[1])
+            if self.to_flip_in_line(disk, self.get_right(check[1],
+                                                         check[0])) != []:
+                valid_moves.append(check)
+
+        if coordinate[0] != 7: #checking left line
+            check = (coordinate[0] + 1, coordinate[1])
+            if self.to_flip_in_line(disk, self.get_left(check[1],check[0]))\
+                    != []:
+                    valid_moves.append(check)
+
+        if coordinate[1] != 0: #checking down line
+            check = (coordinate[0], coordinate[1] - 1)
+            if self.to_flip_in_line(disk, self.get_down(check[1], check[0]))\
+                    != []:
+                valid_moves.append(check)
+
+        if coordinate[1] != 7: #checking up line
+            check = (coordinate[0], coordinate[1] + 1)
+            if self.to_flip_in_line(disk, self.get_up(check[1], check[0])) \
+                    != []:
+                valid_moves.append(check)
+
+        if coordinate[0] != 0 and coordinate[1] != 7: #checking the up
+    # right line
+            check = (coordinate[0] - 1, coordinate[1] + 1)
+            if self.to_flip_in_line(disk, self.get_right_up(check[1],
+                                                            check[0])) != []:
+                valid_moves.append(check)
+        if coordinate[0] != 7 and coordinate[1] != 7:
+        #checking the up left line
+            check = (coordinate[0] + 1, coordinate[1] + 1)
+            if self.to_flip_in_line(disk, self.get_left_up(check[1],
+                                                           check[0])) != []:
+                valid_moves.append(check)
+
+        if coordinate[0] != 0 and coordinate[1] != 0: #checking the down
+    # right line
+            check = (coordinate[0] - 1, coordinate[1] - 1)
+            if self.to_flip_in_line(disk, self.get_right_down(check[1],
+                                                              check[0])) != []:
+                valid_moves.append(check)
+
+        if coordinate[0] != 7 and coordinate[1] != 0: #checking the down
+    # left line
+            check = (coordinate[0] + 1, coordinate[1] - 1)
+            if self.to_flip_in_line(disk, self.get_left_down(check[1],
+                                                             check[0])) != []:
+                valid_moves.append(check)
+
+        return valid_moves
+
+
 
 game = Game()
-game.do_move(1, (5, 4))
 print(game.board)
-game.do_move(-1, (5, 5))
-print(game.board)
-game.do_move(1, (6, 6))  # should throw an error
-print(game.board)
-game.do_move(1, (5, 6))
-print(game.board)
-game.do_move(-1, (6, 6))
-print(game.board)
-game.do_move(-1, (5, 3))
-print(game.board)
+# print("##########")
+# game.do_move(1, (5, 4))
+# print(game.board)
+# game.do_move(-1, (5, 5))
+# print("##########")
+# print(game.board)
+# game.do_move(1, (6, 6))  # should throw an error
+# print("##########")
+# print(game.board)
+# game.do_move(1, (5, 6))
+# print("##########")
+# print(game.board)
+# game.do_move(-1, (6, 6))
+# print("##########")
+# print(game.board)
+# game.do_move(-1, (5, 3))
+# print("##########")
+# print(game.board)
+print(game.get_legal_moves(1))
