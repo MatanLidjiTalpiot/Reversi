@@ -249,6 +249,21 @@ class Game:
     def is_board_full(self):
         return self.num_of_turns == 60
 
+    def get_black_number(self):
+        number_of_blacks = 0
+        for row in self.board:
+            for piece in row:
+                if piece == BLACK:
+                    number_of_blacks += 1
+        return number_of_blacks
+
+    def get_white_number(self):
+        number_of_whites = 0
+        for row in self.board:
+            for piece in row:
+                if piece == WHITE:
+                    number_of_whites += 1
+        return number_of_whites
 
 game = Game()
 # print(game.board)
@@ -270,6 +285,8 @@ game = Game()
 # game.do_move(-1, (5, 3))
 # print(game.get_legal_moves(1))
 # print("##########")
+
+"""
 black = 0
 white = 0
 while(black + white < 64):
@@ -297,3 +314,4 @@ while(black + white < 64):
     print("black: ", black, "white: ", white)
 
 print(game.board)
+"""
