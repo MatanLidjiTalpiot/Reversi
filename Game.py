@@ -14,6 +14,7 @@ class Game:
         self.board[(4, 3)] = 1
         self.board[(3, 3)] = -1
         self.board[(4, 4)] = -1
+        self.num_of_turns = 0
         # board is shown transposed: coordinate = (y,x)
 
     def set_board(self, board):
@@ -44,6 +45,7 @@ class Game:
 
         self.put_disk(disk, coordinate)
         self.flip(to_flip)
+        self.num_of_turns += 1
 
     def put_disk(self, disk, coordinate):
         self.board[coordinate] = disk
@@ -244,6 +246,8 @@ class Game:
 
         return valid_moves
 
+    def is_board_full(self):
+        return self.num_of_turns == 60
 
 
 game = Game()
