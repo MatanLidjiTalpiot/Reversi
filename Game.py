@@ -1,5 +1,11 @@
 import numpy as np
+import random
 
+BLACK = 1
+WHITE = -1
+
+
+# WHITE = -BLACK
 
 class Game:
     def __init__(self, size=8):
@@ -7,19 +13,31 @@ class Game:
         # empty cell: 0
         # AI (black): 1
         # Player (white): -1
-        self.board = np.zeros((self.size, self.size))
-        self.board[(3, 4)] = 1  # maybe need to make player class and then player.number
-        self.board[(4, 3)] = 1
-        self.board[(3, 3)] = -1
-        self.board[(4, 4)] = -1
+        self.board = np.zeros((self.size, self.size)).astype(int)
+        self.board[(3, 4)] = BLACK  # maybe need to make player class and then player.number
+        self.board[(4, 3)] = BLACK
+        self.board[(3, 3)] = WHITE
+        self.board[(4, 4)] = WHITE
+        self.num_of_turns = 0
         # board is shown transposed: coordinate = (y,x)
 
     def set_board(self, board):
+        """
+        A function that sets the board
+        :param board: the board to set
+        :return: nothing
+        """
         self.board = board
 
     def do_move(self, disk, coordinate):
+        """
+        A function that does a move
+        :param disk: 1 or -1 according to the color
+        :param coordinate: the (y,x) coordinate to place the disk (has to be a tuple)
+        :return:
+        """
         # TODO: inheritance
-        if disk not in (-1, 1):
+        if disk not in (WHITE, BLACK):
             raise ValueError("Illegal move! disk should be -1 or 1")
         if self.size <= coordinate[0] or self.size <= coordinate[1]:
             raise ValueError("Illegal move! coordinate exceeds board")
@@ -31,6 +49,7 @@ class Game:
 
         self.put_disk(disk, coordinate)
         self.flip(to_flip)
+        self.num_of_turns += 1
 
     def put_disk(self, disk, coordinate):
         self.board[coordinate] = disk
@@ -59,10 +78,13 @@ class Game:
         if len(line) == 0 or self.board[line[0]] != -disk:  # if line doesnt start with the opponent's disk
             return []
         ret = []
-        for square in line:
-            if self.board[square] == disk:  # if there is a disk in our color at the end
+        for square in line:  # TODO what happens if we run out of board
+            if self.board[square] == -disk:  # if there is an empty disk
+                ret += [square]
+            elif self.board[square] == disk:  # if there is a disk in our color at the end
                 return ret
-            ret += [square]
+            else:  # if self.board[square] == 0: (if there is an empty disk)
+                return []
         return []
 
     def get_up(self, y, x):
@@ -126,17 +148,75 @@ class Game:
             s_left_up += [(y, x)]
         return s_left_up
 
+    def get_legal_moves(self, disk):
+        legal_moves = []
+        for row in range(self.size):
+            for column in range(self.size):
+                square = (row, column)
+                if self.board[square] == 0 and not self.to_flip(disk, square) == []:
+                    legal_moves.append(square)
+        return legal_moves
 
-game = Game()
-game.do_move(1, (5, 4))
-print(game.board)
-game.do_move(-1, (5, 5))
-print(game.board)
-game.do_move(1, (6, 6))  # should throw an error
-print(game.board)
-game.do_move(1, (5, 6))
-print(game.board)
-game.do_move(-1, (6, 6))
-print(game.board)
-game.do_move(-1, (5, 3))
-print(game.board)
+    def get_number_of_turns(self):
+        return np.count_nonzero(self.board)
+
+    def is_board_full(self):
+        return self.get_number_of_turns() == self.size ** 2
+
+    def get_black_number(self):
+        number_of_blacks = 0
+        for row in self.board:
+            for piece in row:
+                if piece == BLACK:
+                    number_of_blacks += 1
+        return number_of_blacks
+
+    def get_white_number(self):
+        number_of_whites = 0
+        for row in self.board:
+            for piece in row:
+                if piece == WHITE:
+                    number_of_whites += 1
+        return number_of_whites
+
+
+if __name__ == '__main__':
+    game = Game()
+    '''
+    board = np.array([[0, 0, 0, 0, 0, -1, 0, 0],
+                      [0, 0, 0, 0, 1, -1, 0, 0],
+                      [1, 0, 1, -1, 1, -1, 0, 0],
+                      [1, 1, -1, -1, 1, -1, 0, 0],
+                      [1, 1, -1, -1, 1, -1, 0, 0],
+                      [0, -1, 1, -1, 0, -1, -1, 0],
+                      [0, 0, 1, 1, 1, 0, 1, 0],
+                      [0, 1, 0, 0, 0, -1, 0, 0]]).astype(int)
+    game.set_board(board)
+    print("legal moves -1 (WHITE)", game.get_legal_moves(-1))
+    print(game.board)
+    '''
+    while game.get_number_of_turns() < 64:
+        if game.get_legal_moves(-1) == [] and game.get_legal_moves(1) == []:
+            break
+        if not game.get_legal_moves(1) == []:
+            print("###########")
+            print("# Turn", "%02d" % game.get_number_of_turns(), "#")
+            print("###########")
+            print(game.board)
+            print("black: ", game.get_black_number(), "white: ", game.get_white_number())
+            print("legal moves 1 (BLACK)", game.get_legal_moves(1))
+            move = random.choice(game.get_legal_moves(1))
+            game.do_move(1, move)
+        if not game.get_legal_moves(-1) == []:
+            print("###########")
+            print("# Turn", "%02d" % game.get_number_of_turns(), "#")
+            print("###########")
+            print(game.board)
+            print("black: ", game.get_black_number(), "white: ", game.get_white_number())
+            print("legal moves -1 (WHITE)", game.get_legal_moves(-1))
+            move = random.choice(game.get_legal_moves(-1))
+            game.do_move(-1, move)
+    print("###########")
+    print("# Turn", "%02d" % game.get_number_of_turns(), "#")
+    print("###########")
+    print(game.board)
