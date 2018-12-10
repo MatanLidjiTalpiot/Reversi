@@ -1,9 +1,11 @@
 import Game
 import math
-def minimax(game,depth, initial_depth, heuristic,maximizing_player, disk, chosen_op):
+
+
+def minimax(game, depth, initial_depth, heuristic, maximizing_player, disk, chosen_op):
     chosen_op = chosen_op
     if (depth == 0) or (game.is_board_full()):
-        return [get_score(heuristic, game),chosen_op]
+        return [get_score(heuristic, game), chosen_op]
     options = game.get_legal_moves(disk)
     if maximizing_player == disk:
         val = []
@@ -11,10 +13,11 @@ def minimax(game,depth, initial_depth, heuristic,maximizing_player, disk, chosen
         val.append([])
         for op in options:
             temp_game = game
-            if(depth == initial_depth):
+            if (depth == initial_depth):
                 chosen_op = op
-            m = minimax(temp_game.do_move(disk, op),depth - 1,initial_depth, heuristic, False, disk,
-                                   chosen_op)
+            m = minimax(temp_game.do_move(disk, op), depth - 1, initial_depth, heuristic, False,
+                        disk,
+                        chosen_op)
             if m[0] > val[0]:
                 val = m
         return val
@@ -22,15 +25,16 @@ def minimax(game,depth, initial_depth, heuristic,maximizing_player, disk, chosen
         val = []
         val.append(math.inf)
         val.append([])
-        for op in option:
+        for op in options:
             temp_game = game
-            m = minimax(temp_game.do_move(-disk, op), depth - 1, heuristic, True, -disk,
+            if(depth == initial_depth):
+                chosen_op = op
+            m = minimax(temp_game.do_move(-disk, op), depth - 1, initial_depth, heuristic, True,
+                        -disk,
                         chosen_op)
             if m[0] < val[0]:
                 val = m
         return val
-
-
 
 
 def get_score(heuristic, game):
@@ -46,6 +50,7 @@ def get_score(heuristic, game):
         sum += feture[0] * feture[1]()
     return sum
 
+
 game = Game.Game()
-heuristic = [[0.75, game.get_white_number()],[0.1, game.get_black_number()]]
+heuristic = [[0.75, game.get_white_number()], [0.1, game.get_black_number()]]
 print(minimax(game, 1, heuristic, Game.WHITE, Game.WHITE, []))
