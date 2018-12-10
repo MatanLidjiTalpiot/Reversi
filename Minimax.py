@@ -7,6 +7,7 @@ import copy
 def minimax(game, depth, heuristic, maximizing_player, disk, path):
     if (depth == 0) or (game.is_board_full()):
         return [get_score(heuristic, game), path]
+
     options = game.get_legal_moves(disk)
     if maximizing_player:
         val = []
