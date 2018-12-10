@@ -180,7 +180,6 @@ class Game:
         return number_of_whites
 
 
-
 if __name__ == '__main__':
     game = Game()
     '''
