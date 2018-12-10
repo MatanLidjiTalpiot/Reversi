@@ -1,8 +1,9 @@
 import Game
 import math
-def minimax(game, depth, heuristic,maximizing_player, disk, path):
+def minimax(game,depth, initial_depth, heuristic,maximizing_player, disk, chosen_op):
+    chosen_op = chosen_op
     if (depth == 0) or (game.is_board_full()):
-        return [get_score(heuristic, game),path]
+        return [get_score(heuristic, game),chosen_op]
     options = game.get_legal_moves(disk)
     if maximizing_player == disk:
         val = []
@@ -10,8 +11,10 @@ def minimax(game, depth, heuristic,maximizing_player, disk, path):
         val.append([])
         for op in options:
             temp_game = game
-            m = minimax(temp_game.do_move(disk, op),depth - 1, heuristic, False, disk,
-                                   [path, True])
+            if(depth == initial_depth):
+                chosen_op = op
+            m = minimax(temp_game.do_move(disk, op),depth - 1,initial_depth, heuristic, False, disk,
+                                   chosen_op)
             if m[0] > val[0]:
                 val = m
         return val
@@ -22,7 +25,7 @@ def minimax(game, depth, heuristic,maximizing_player, disk, path):
         for op in option:
             temp_game = game
             m = minimax(temp_game.do_move(-disk, op), depth - 1, heuristic, True, -disk,
-                        [path, False])
+                        chosen_op)
             if m[0] < val[0]:
                 val = m
         return val
