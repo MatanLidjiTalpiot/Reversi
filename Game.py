@@ -56,7 +56,8 @@ class Game:
         return to_flip
 
     def to_flip_in_line(self, disk, line):  # line is a nparray of tuples (y,x)
-        if len(line) == 0 or self.board[line[0]] != -disk:  # if line doesnt start with the opponent's disk
+        if len(line) == 0 or self.board[
+            line[0]] != -disk:  # if line doesnt start with the opponent's disk
             return []
         ret = []
         for square in line:
