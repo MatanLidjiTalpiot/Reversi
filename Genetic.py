@@ -22,8 +22,8 @@ class Player:
 def play_game(p1, p2):
     """
     A function that plays a game between two heuristics
-    :param p1: player number 1
-    :param p2: player number 2
+    :param p1: player number 1 (the first to play)
+    :param p2: player number 2 (the second to play)
     :return: the winning player and the grades of each heuristic in the game
     """
     players = (p1, p2)
