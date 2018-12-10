@@ -1,16 +1,42 @@
 import Game
+import copy
+import Minimax
 from random import *
 ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
-import copy
-def play_game(h1, h2):
+DEPTH = 1 # for the meanwhile
+
+class Player:
+
+    def __init__(self, heuristic, disk):
+        self.heuristic = heuristic
+        self.disk = disk
+
+    def get_heuristic(self):
+        return self.heuristic
+
+    def get_disk(self):
+        return self.disk
+
+
+def play_game(p1, p2):
     """
     A function that plays a game between two heuristics
-    :param h1: heuristic number 1
-    :param h2: heuristic number 2
-    :return: the winning heuristic and the grades of each heuristic in the game
+    :param p1: player number 1
+    :param p2: player number 2
+    :return: the winning player and the grades of each heuristic in the game
     """
-    pass
+    players = (p1, p2)
+    if p1.disk == p2.disk:
+        raise ValueError("two players can't have the same color")
+    game = Game.Game()
+    turn = 0
+    while not game.is_board_full():
+        disk = players[turn % 2].get_disk()
+        heuristic = players[i].get_heuristic()
+        op = Minimax.minimax(game, DEPTH, DEPTH, heuristic, True, disk, None)[1]
+        game.do_move(disk, op)
+
 
 
 def evolve_N_time(h_list, n, q):
@@ -39,12 +65,13 @@ def evolve(heuristic, n):
         heuristic_list.append(h)
     return heuristic_list
 
-
-def add_noise(feture, max_noise):
-    lim = feture[0]
+def add_noise(feature, max_noise):
+    lim = feature[0]
     noise = max_noise*lim*random()
-    feture[0] += noise
+    feature[0] += noise
 
 
-
-print(random())
+arr = [0,1]
+for i in range (7):
+    j = i%2
+    print(arr[j])
