@@ -3,41 +3,6 @@ import copy
 import numpy as np
 
 
-def minimax(game, initial_depth, heuristic, maximizing_player, disk):
-    return minimax_in(game, initial_depth, initial_depth, heuristic, maximizing_player, disk, None)
-
-
-def minimax_in(game, depth, initial_depth, heuristic, maximizing_player, disk, chosen_op):
-    if (depth == 0) or (game.is_board_full()):
-        return [get_score(heuristic, game), chosen_op]
-
-    options = game.get_legal_moves(disk)
-    if maximizing_player:
-        val = [float("-inf"), None]
-        for op in options:
-            temp_game = copy.deepcopy(game)
-            temp_game.do_move(disk, op)
-            if depth == initial_depth:
-                chosen_op = op
-            m = minimax_in(temp_game, depth - 1, initial_depth, heuristic, False,
-                           -disk, chosen_op)
-            if m[0] > val[0]:
-                val = m
-        return val
-    else:
-        val = [float("inf"), None]
-        for op in options:
-            temp_game = copy.deepcopy(game)  # todo maybe deepcopy
-            temp_game.do_move(disk, op)
-            if depth == initial_depth:
-                chosen_op = op
-            m = minimax_in(temp_game, depth - 1, initial_depth, heuristic, True, \
-                           -disk, chosen_op)
-            if m[0] < val[0]:
-                val = m
-        return val
-
-
 def get_score(heuristic, game):
     """
     A method that gives a score to a certin state of the board
@@ -52,6 +17,78 @@ def get_score(heuristic, game):
     return sum
 
 
+def minimax(game, depth, heuristic, maximizing_player, disk):
+    return minimax_in(game, depth, depth, heuristic, maximizing_player, disk, None)
+
+
+def alpha_beta(game, depth, heuristic, maximizing_player, disk):
+    return alpha_beta_in(game, depth, depth, heuristic, float("-inf"), float("inf"), maximizing_player, disk, None)
+
+
+def minimax_in(game, depth, initial_depth, heuristic, maximizing_player, disk, chosen_op):
+    if (depth == 0) or (game.is_board_full()):
+        return [get_score(heuristic, game), chosen_op]
+
+    options = game.get_legal_moves(disk)
+    if maximizing_player:
+        val = [float("-inf"), None]
+        for op in options:
+            temp_game = copy.deepcopy(game)
+            temp_game.do_move(disk, op)
+            if depth == initial_depth:
+                chosen_op = op
+            m = minimax_in(temp_game, depth - 1, initial_depth, heuristic, False, -disk, chosen_op)
+            if m[0] > val[0]:
+                val = m
+        return val
+    else:
+        val = [float("inf"), None]
+        for op in options:
+            temp_game = copy.deepcopy(game)  # todo maybe deepcopy
+            temp_game.do_move(disk, op)
+            if depth == initial_depth:
+                chosen_op = op
+            m = minimax_in(temp_game, depth - 1, initial_depth, heuristic, True, -disk, chosen_op)
+            if m[0] < val[0]:
+                val = m
+        return val
+
+
+def alpha_beta_in(game, depth, initial_depth, heuristic, a, b, maximizing_player, disk, chosen_op):
+    if (depth == 0) or (game.is_board_full()):
+        return [get_score(heuristic, game), chosen_op]
+
+    options = game.get_legal_moves(disk)
+    if maximizing_player:
+        val = [float("-inf"), None]
+        for op in options:
+            temp_game = copy.deepcopy(game)
+            temp_game.do_move(disk, op)
+            if depth == initial_depth:
+                chosen_op = op
+            m = alpha_beta_in(temp_game, depth - 1, initial_depth, heuristic, a, b, False, -disk, chosen_op)
+            if m[0] > val[0]:
+                val = m
+                a = m[0]
+            if a >= b:
+                break
+        return val
+    else:
+        val = [float("inf"), None]
+        for op in options:
+            temp_game = copy.deepcopy(game)  # todo maybe deepcopy
+            temp_game.do_move(disk, op)
+            if depth == initial_depth:
+                chosen_op = op
+            m = alpha_beta_in(temp_game, depth - 1, initial_depth, heuristic, a, b, True, -disk, chosen_op)
+            if m[0] < val[0]:
+                val = m
+                b = m[0]
+            if a >= b:
+                break
+        return val
+
+
 game = Game.Game()
 game.set_board(np.array([[0, 0, 0, 0, 0, -1, 0, 0],
                          [0, 0, 0, 0, 1, -1, 0, 0],
@@ -62,5 +99,5 @@ game.set_board(np.array([[0, 0, 0, 0, 0, -1, 0, 0],
                          [0, 0, 1, 1, 1, 0, 1, 0],
                          [0, 1, 0, 0, 0, -1, 0, 0]]).astype(int))
 heuristic = [(-1, lambda game: game.get_white_number()), (1, lambda game: game.get_black_number())]
-m = minimax(game, 1, heuristic, True, Game.BLACK)
+m = alpha_beta(game, 6, heuristic, True, Game.BLACK)
 print(m)
