@@ -3,10 +3,13 @@ POS_INT = 1
 NEG_INT = -1
 class Player:
 
-    def __init__(self, heuristic, name, disk = None):
+    NUM_OF_PLAYERS = 0
+
+    def __init__(self, heuristic, name = NUM_OF_PLAYERS, disk = None):
         self.heuristic = heuristic
         self.disk = disk
         self.name = name
+        Player.NUM_OF_PLAYERS += 1
 
     def set_disk(self,disk):
         self.disk = disk
