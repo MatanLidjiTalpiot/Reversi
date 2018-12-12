@@ -2,7 +2,7 @@ import numpy as np
 import random
 import Minimax
 
-DEPTH = 1 # for the meanwhile - the searching depth in the heuristic
+DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
 BLACK = 1
 WHITE = -1
 FIRST_COLOR = BLACK
@@ -193,18 +193,20 @@ class Game:
         """
         if disk == WHITE:
             return self.get_white_number()
-        elif disk == BLACKL
+
+        elif disk == BLACK:
             return self.get_black_number()
         else:
             raise ValueError("not a valid disk color")
+
     def get_winner_disk(self):
         """
         a function that returns the winner of the game. If the is not finished then an error is
         raised
         :return: the color of the winner
         """
-        if(self.is_board_full()):
-            if(self.get_black_number() > self.get_white_number()):
+        if self.is_board_full():
+            if self.get_black_number() > self.get_white_number():
                 return BLACK
             else:
                 return WHITE
