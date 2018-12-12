@@ -180,6 +180,14 @@ class Game:
                     number_of_whites += 1
         return number_of_whites
 
+    def get_color_disk_num(self, disk):
+        if disk == WHITE:
+            return self.get_white_number()
+        elif disk == BLACKL
+            return self.get_black_number()
+        else:
+            raise ValueError("not a valid disk color")
+
 
 if __name__ == '__main__':
     game = Game()

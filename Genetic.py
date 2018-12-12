@@ -1,22 +1,11 @@
 import Game
 import copy
 import Minimax
+import Player
 from random import *
 ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 DEPTH = 1 # for the meanwhile
-
-class Player:
-
-    def __init__(self, heuristic, disk):
-        self.heuristic = heuristic
-        self.disk = disk
-
-    def get_heuristic(self):
-        return self.heuristic
-
-    def get_disk(self):
-        return self.disk
 
 
 def play_game(p1, p2):
@@ -33,9 +22,11 @@ def play_game(p1, p2):
     turn = 0
     while not game.is_board_full():
         disk = players[turn % 2].get_disk()
-        heuristic = players[i].get_heuristic()
+        heuristic = players[turn%2].get_heuristic()
         op = Minimax.minimax(game, DEPTH, DEPTH, heuristic, True, disk, None)[1]
         game.do_move(disk, op)
+        turn += 1
+    if()
 
 
 
