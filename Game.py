@@ -193,7 +193,19 @@ class Game:
             return self.get_black_number()
         else:
             raise ValueError("not a valid disk color")
-
+    def get_winner_disk(self):
+        """
+        a function that returns the winner of the game. If the is not finished then an error is
+        raised
+        :return: the color of the winner
+        """
+        if(self.is_board_full()):
+            if(self.get_black_number() > self.get_white_number()):
+                return BLACK
+            else:
+                return WHITE
+        else:
+            raise ValueError("the game is not finished yet!")
 
 if __name__ == '__main__':
     game = Game()

@@ -26,7 +26,7 @@ def play_game(p1, p2):
         op = Minimax.minimax(game, DEPTH, DEPTH, heuristic, True, disk, None)[1]
         game.do_move(disk, op)
         turn += 1
-    if()
+
 
 
 
