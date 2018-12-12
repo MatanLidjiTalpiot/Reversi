@@ -32,7 +32,7 @@ def evolve_N_time(players_list, n, q):
     while len(players_list) > n-1 and q != 0:
         players_list.pop(-1) # popping the worst players
 
-    return (players_list, n, q - 1)
+    return players_list, n, q - 1
 
 
 
