@@ -1,7 +1,3 @@
-import Game
-import copy
-import Minimax
-import Player
 from random import *
 ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
@@ -39,8 +35,14 @@ def evolve(heuristic, n):
     return heuristic_list
 
 def add_noise(feature, max_noise):
+    """
+    :param feature:
+    :param max_noise:
+    :return:
+    """
     lim = feature[0]
-    noise = max_noise*lim*random()
+    rand = 2*(random() - 0.5) # a random number between -1 and 1
+    noise = max_noise * lim * rand
     feature[0] += noise
 
 

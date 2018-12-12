@@ -63,7 +63,7 @@ class Player:
         players_list = sorted(players_list, key = lambda x:x[1])
         sorted_list = []
         for i in range (len(players_list)):
-            sorted_list.append(players_list[i])
+            sorted_list.append(players_list[i][0])
         return sorted_list
 
 
