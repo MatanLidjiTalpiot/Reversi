@@ -1,6 +1,9 @@
 import numpy as np
 import random
+import Player
+import Minimax
 
+DEPTH = 1 # for the meanwhile - the searching depth in the heuristic
 BLACK = 1
 WHITE = -1
 
@@ -206,6 +209,35 @@ class Game:
                 return WHITE
         else:
             raise ValueError("the game is not finished yet!")
+
+    def play_game(self, p1, p2):
+        """
+        A function that plays a game between two heuristics
+        :param p1: player number 1 (the first to play)
+        :param p2: player number 2 (the second to play)
+        :return: the winning player and the grades of each heuristic in the game
+        """
+        players = (p1, p2)
+        if p1.get_disk() == p2.get_disk():
+            raise ValueError("two players can't have the same color")
+        turn = 0
+        while not self.is_board_full():
+            disk = players[turn % 2].get_disk()
+            heuristic = players[turn % 2].get_heuristic()
+            op = Minimax.minimax(self, DEPTH, DEPTH, heuristic, True, disk, None)[1]
+            self.do_move(disk, op)
+            turn += 1
+        # finished playing the game - now getting the winner
+        """
+        maybe add here somehow to get a value of winning and not just a winner - when the module is 
+        more advanced! 
+        """
+        if self.get_winner_disk() == players[0].get_disk():
+            return players[0]
+        elif self.get_winner_disk() == players[1].get_disk():
+            return players[1]
+        else:
+            raise ValueError("something went wrong! check your code!")
 
 if __name__ == '__main__':
     game = Game()

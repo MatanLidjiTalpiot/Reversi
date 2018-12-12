@@ -5,28 +5,6 @@ import Player
 from random import *
 ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
-DEPTH = 1 # for the meanwhile
-
-
-def play_game(p1, p2):
-    """
-    A function that plays a game between two heuristics
-    :param p1: player number 1 (the first to play)
-    :param p2: player number 2 (the second to play)
-    :return: the winning player and the grades of each heuristic in the game
-    """
-    players = (p1, p2)
-    if p1.disk == p2.disk:
-        raise ValueError("two players can't have the same color")
-    game = Game.Game()
-    turn = 0
-    while not game.is_board_full():
-        disk = players[turn % 2].get_disk()
-        heuristic = players[turn%2].get_heuristic()
-        op = Minimax.minimax(game, DEPTH, DEPTH, heuristic, True, disk, None)[1]
-        game.do_move(disk, op)
-        turn += 1
-
 
 
 
@@ -38,7 +16,10 @@ def evolve_N_time(h_list, n, q):
     :param q: the quality of the evolution - the number of evolutions it goes trough
     :return: the list after the evolution
     """
-    pass
+    if q == 0 and len(h_list) == n: #recursive ending condition
+        return h_list
+    pass #todo finish
+
 
 def evolve(heuristic, n):
     """

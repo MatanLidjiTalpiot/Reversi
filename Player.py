@@ -10,3 +10,4 @@ class Player:
     def get_disk(self):
         return self.disk
 
+    def compare_players(self, player1, player2):
