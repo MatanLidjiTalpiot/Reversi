@@ -8,7 +8,7 @@ NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 def evolve_N_time(players_list, n, q):
     """
     A function that gets a list if heuristics and evolves them n times
-    :param h_list: a list of heuristics
+    :param players_list: a list of players
     :param n: the number of new heuristics to return
     :param q: the quality of the evolution - the number of evolutions it goes trough
     :return: the list after the evolution
