@@ -1,6 +1,6 @@
 import numpy as np
 import random
-import Player
+
 BLACK = 1
 WHITE = -1
 
