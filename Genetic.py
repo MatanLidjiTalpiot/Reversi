@@ -75,4 +75,3 @@ arr = [0,1]
 for i in range (7):
     j = i%2
     print(arr[j])
-© 2018 GitHub, Inc.
