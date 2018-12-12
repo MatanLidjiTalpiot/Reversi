@@ -181,6 +181,12 @@ class Game:
         return number_of_whites
 
     def get_color_disk_num(self, disk):
+        """
+        A function that gets a disk and returns the number of disks of the same color on the board
+        :param disk: the color of the disk we are interested in
+        :return: the number of disks of the same color on the board
+        :error: if the disk parameter is not a valid color
+        """
         if disk == WHITE:
             return self.get_white_number()
         elif disk == BLACKL
