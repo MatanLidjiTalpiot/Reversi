@@ -1,9 +1,11 @@
 from random import *
+import Player
+
 ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 
 
-def evolve_N_time(h_list, n, q):
+def evolve_N_time(players_list, n, q):
     """
     A function that gets a list if heuristics and evolves them n times
     :param h_list: a list of heuristics
@@ -11,20 +13,24 @@ def evolve_N_time(h_list, n, q):
     :param q: the quality of the evolution - the number of evolutions it goes trough
     :return: the list after the evolution
     """
-    if q == 0 and len(h_list) == n: #recursive ending condition
-        return h_list
+    if q == 0 and len(players_list) == n: #recursive end condition
+        return players_list
+
+    Player.compare_players_list(players_list)
+    if len(players_list) < n:
 
 
     pass #todo finish
 
 
-def evolve(heuristic, n):
+def evolve(player, n):
     """
     A function that evolves a heuristic
     :param heuristic: the heuristic to evolve
     :param n: the number of heuristics after evolutions
     :return: a list of new evolved heuristics, the first one is the original heuristic
     """
+    heuristic = player.get_heuristic()
     heuristic_list = []
     heuristic_list.append(heuristic)
     for i in range (n):

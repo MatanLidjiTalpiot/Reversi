@@ -1,11 +1,12 @@
 import numpy as np
 import random
-
 import Minimax
 
 DEPTH = 1 # for the meanwhile - the searching depth in the heuristic
 BLACK = 1
 WHITE = -1
+FIRST_COLOR = BLACK
+SECOND_COLOR = WHITE
 
 
 # WHITE = -BLACK
@@ -218,6 +219,8 @@ class Game:
         :return: the winning player and the grades of each heuristic in the game
         """
         players = (p1, p2)
+        p1.set_disk(FIRST_COLOR)
+        p2.set_disk(SECOND_COLOR)
         if p1.get_disk() == p2.get_disk():
             raise ValueError("two players can't have the same color")
         turn = 0

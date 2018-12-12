@@ -3,10 +3,13 @@ POS_INT = 1
 NEG_INT = -1
 class Player:
 
-    def __init__(self, heuristic, disk, name):
+    def __init__(self, heuristic, name, disk = None):
         self.heuristic = heuristic
         self.disk = disk
         self.name = name
+
+    def set_disk(self,disk):
+        self.disk = disk
 
     def get_heuristic(self):
         return self.heuristic
@@ -23,6 +26,7 @@ class Player:
             return NEG_INT
         else:
             raise ValueError("check your mother fucking code!")
+
 
     def players_list_to_winning_dict(self, players_list):
         """
