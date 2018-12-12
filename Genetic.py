@@ -6,19 +6,6 @@ ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 DEPTH = 1 # for the meanwhile
 
-class Player:
-
-    def __init__(self, heuristic, disk):
-        self.heuristic = heuristic
-        self.disk = disk
-
-    def get_heuristic(self):
-        return self.heuristic
-
-    def get_disk(self):
-        return self.disk
-
-
 def play_game(p1, p2):
     """
     A function that plays a game between two heuristics
