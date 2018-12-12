@@ -7,7 +7,6 @@ ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 
 
-
 def evolve_N_time(h_list, n, q):
     """
     A function that gets a list if heuristics and evolves them n times
@@ -18,6 +17,8 @@ def evolve_N_time(h_list, n, q):
     """
     if q == 0 and len(h_list) == n: #recursive ending condition
         return h_list
+
+
     pass #todo finish
 
 

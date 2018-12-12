@@ -1,6 +1,6 @@
 import numpy as np
 import random
-import Player
+
 import Minimax
 
 DEPTH = 1 # for the meanwhile - the searching depth in the heuristic
@@ -238,6 +238,19 @@ class Game:
             return players[1]
         else:
             raise ValueError("something went wrong! check your code!")
+
+    def reset_game(self):
+        # empty cell: 0
+        # AI (black): 1
+        # Player (white): -1
+        self.board = np.zeros((self.size, self.size)).astype(int)
+        self.board[(3, 4)] = BLACK  # maybe need to make player class and then player.number
+        self.board[(4, 3)] = BLACK
+        self.board[(3, 3)] = WHITE
+        self.board[(4, 4)] = WHITE
+        self.num_of_turns = 0
+        # board is shown transposed: coordinate = (y,x)
+
 
 if __name__ == '__main__':
     game = Game()
