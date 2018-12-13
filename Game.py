@@ -210,6 +210,7 @@ class Game:
                 return BLACK
             else:
                 return WHITE
+            # todo deal with tie
         else:
             raise ValueError("the game is not finished yet!")
 
@@ -230,6 +231,10 @@ class Game:
             disk = players[turn % 2].get_disk()
             heuristic = players[turn % 2].get_heuristic()
             op = Minimax.minimax(self, DEPTH, DEPTH, heuristic, True, disk, None)[1]
+            """
+            consider to use strategy in order to allow players who are not ours to play
+            """
+            # todo if op is None to deal with it
             self.do_move(disk, op)
             turn += 1
         # finished playing the game - now getting the winner

@@ -5,7 +5,7 @@ ALL_FUNCTIONS = []
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 
 
-def evolve_N_time(players_list, n, q):
+def evolve_q_time(players_list, n, q):
     """
     A function that gets a list if heuristics and evolves them n times
     :param players_list: a list of players
@@ -18,13 +18,12 @@ def evolve_N_time(players_list, n, q):
         while len(players_list) > n:
             players_list.pop(-1)  # popping the worst players
 
-    if q == 0 and len(players_list) == n:  # recursive end condition
         return players_list
 
     while len(players_list) < n:
         for i in range(len(players_list)):
             player = players_list[i]
-            for p in evolve(player, (5 - (i * 4) / len(players_list))):
+            for p in evolve(player, (5 - (i * 4) / len(players_list))): # 5 - (i * 4) is arbitrary
                 players_list.append(p)
 
     players_list = Player.compare_players_list(players_list)
@@ -32,7 +31,7 @@ def evolve_N_time(players_list, n, q):
     while len(players_list) > n - 1 and q != 0:
         players_list.pop(-1)  # popping the worst players
 
-    return players_list, n, q - 1
+    return evolve_q_time(players_list, n, q - 1)
 
 
 def evolve(player, n):
@@ -45,7 +44,7 @@ def evolve(player, n):
     heuristic = player.get_heuristic()
     players_list = []
     for i in range(n):
-        h = heuristic  # todo maybe need deepcopy
+        h = heuristic  # todo deepcopy
         for feature in h:
             add_noise(feature, 0.3)  # 0.3 is arbitrary
         player = Player.Player(h)
@@ -55,17 +54,13 @@ def evolve(player, n):
 
 def add_noise(feature, max_noise):
     """
-    :param feature: a tuple- the first element is the weight the second is the function to call
+    :param feature: a list- the first element is the weight the second is the function to call
     in order to get the parameter
     :param max_noise: precentage (between 0 and 1)
     """
     lim = feature[0]
     rand = 2 * (random() - 0.5)  # a random number between -1 and 1
     noise = max_noise * lim * rand
-    feature[0] += noise
+    feature[0] += noise #todo make sure that feature is a list and not a tuple, worst case return
 
 
-arr = [0, 1]
-for i in range(7):
-    j = i % 2
-    print(arr[j])

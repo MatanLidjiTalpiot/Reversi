@@ -7,7 +7,7 @@ NEG_INT = -1
 class Player:
     NUM_OF_PLAYERS = 0
 
-    def __init__(self, heuristic, name=NUM_OF_PLAYERS, disk=None):
+    def __init__(self, heuristic, name = NUM_OF_PLAYERS, disk = None):
         self.heuristic = heuristic
         self.disk = disk
         self.name = name
@@ -68,7 +68,7 @@ class Player:
         players_list = []
         for player in players_dict:
             players_list.append([player, players_dict[player]])
-        players_list = sorted(players_list, key=lambda x: x[1])
+        players_list = sorted(players_list, key = lambda x: x[1])
         sorted_list = []
         for i in range(len(players_list)):
             sorted_list.append(players_list[i][0])
