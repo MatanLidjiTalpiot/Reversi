@@ -23,7 +23,7 @@ def evolve_q_time(players_list, n, q):
     while len(players_list) < n:
         for i in range(len(players_list)):
             player = players_list[i]
-            for p in evolve(player, (5 - (i * 4) / len(players_list))): # 5 - (i * 4) is arbitrary
+            for p in evolve(player, (5 - (i * 4) / len(players_list))):  # 5 - (i * 4) is arbitrary
                 players_list.append(p)
 
     players_list = Player.compare_players_list(players_list)
@@ -61,6 +61,4 @@ def add_noise(feature, max_noise):
     lim = feature[0]
     rand = 2 * (random() - 0.5)  # a random number between -1 and 1
     noise = max_noise * lim * rand
-    feature[0] += noise #todo make sure that feature is a list and not a tuple, worst case return
-
-
+    feature[0] += noise  # todo make sure that feature is a list and not a tuple, worst case return
