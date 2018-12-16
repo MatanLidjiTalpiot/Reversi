@@ -2,17 +2,15 @@ import numpy as np
 import random
 import Minimax
 
-
-
-
+DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
+BLACK = 1
+WHITE = -1
+FIRST_COLOR = BLACK
+SECOND_COLOR = WHITE
 # WHITE = -BLACK
 
 class Game:
-    DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
-    BLACK = 1
-    WHITE = -1
-    FIRST_COLOR = BLACK
-    SECOND_COLOR = WHITE
+
     def __init__(self, size=8):
         self.size = size
         # empty cell: 0
@@ -41,7 +39,7 @@ class Game:
         :param coordinate: the (y,x) coordinate to place the disk (has to be a tuple)
         :return:
         """
-        # TODO: inheritance
+
         if disk not in (WHITE, BLACK):
             raise ValueError("Illegal move! disk should be -1 or 1")
         if self.size <= coordinate[0] or self.size <= coordinate[1]:
@@ -238,7 +236,8 @@ class Game:
             raise ValueError("two players can't have the same color")
         turn = 0
         while not self.is_board_full():
-            op = players[turn%2].choose_move(game)
+            op = players[turn%2].choose_move(self)
+            print("op", op)
             """
             disk = players[turn % 2].get_disk()
             heuristic = players[turn % 2].get_heuristic()
@@ -249,10 +248,10 @@ class Game:
             """
             # todo if op is None to deal with it - think i did it
             if op != None:
-                self.do_move(players[turn%2].get_disk(), op)
+                self.do_move(players[turn%2].get_disk(), op[1])
             if to_print:
-                print("player, ", players[turn%2].name," played ", op)
-                print(game.board)
+                print("player, ", players[turn%2].name," played ", op[1])
+                print(self.board)
             turn += 1
         # finished playing the game - now getting the winner
         """

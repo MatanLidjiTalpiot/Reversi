@@ -75,10 +75,12 @@ def minimax_in(game, depth, initial_depth, heuristic, maximizing_player, disk, c
 
 
 def alpha_beta_in(game, depth, initial_depth, heuristic, a, b, maximizing_player, disk, chosen_op):
-    if depth == 0 or game.is_board_full():
+    options = game.get_legal_moves(disk)
+    if depth == 0 or game.is_board_full() or options == []: # todo options == [] is a patch -
+        # todo think if we need to do something smarter
         return get_score(heuristic, game), chosen_op
 
-    options = game.get_legal_moves(disk)
+
     if maximizing_player:
         val = [float("-inf"), None]
         for op in options:
@@ -108,7 +110,7 @@ def alpha_beta_in(game, depth, initial_depth, heuristic, a, b, maximizing_player
                 break
         return val
 
-
+'''
 game = Game.Game()
 game.set_board(np.array([[0, 0, 0, 0, 0, -1, 0, 0],
                          [0, 0, 0, 0, 1, -1, 0, 0],
@@ -126,3 +128,4 @@ start = time.time()
 m = alpha_beta(game, 4, heuristic, True, Game.BLACK)
 end = time.time()
 print("best score:", m[0], "\nbest move:", m[1], "\nCalculation time:", round(end - start, 1), "seconds")
+'''
