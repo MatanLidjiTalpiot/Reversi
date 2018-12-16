@@ -6,12 +6,19 @@ NEG_INT = -1
 
 class Player:
     NUM_OF_PLAYERS = 0
+    ALL_PLAYERS = []
+    ALL_FUNCTIONS = []
+    HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
     def __init__(self, heuristic, name = NUM_OF_PLAYERS, disk = None):
         self.heuristic = heuristic
         self.disk = disk
         self.name = name
-        Player.NUM_OF_PLAYERS += 1
+        if self not in Player.ALL_PLAYERS:
+            Player.NUM_OF_PLAYERS += 1
+            Player.ALL_PLAYERS.append(self)
+        else:
+             pass #todo think if to do something
 
     def set_disk(self, disk):
         self.disk = disk
@@ -73,6 +80,15 @@ class Player:
         for i in range(len(players_list)):
             sorted_list.append(players_list[i][0])
         return sorted_list
+
+    def __eq__(self,player2):
+        player1_h = self.get_heuristic()
+        player2_h = player2.get_heuristic()
+        for i in range (Player.HEURISTIC_LENGTH):
+            if player1_h[i][0] != player2_h[i][0]:
+                return False
+        return True
+
 
 
 Player.compare_two_players = staticmethod(Player.compare_two_players)

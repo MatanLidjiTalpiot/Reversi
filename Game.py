@@ -199,6 +199,15 @@ class Game:
         else:
             raise ValueError("not a valid disk color")
 
+    def get_opponent_disk_num(self, disk):
+        """
+        A function that gets a disk color and returns the number of disks the opponents has on
+        the board
+        :param disk: the color of the players disk
+        :return: the number of the opponent disks on the board
+        """
+        return self.get_color_disk_num(-disk)
+
     def get_winner_disk(self):
         """
         a function that returns the winner of the game. If the is not finished then an error is
@@ -260,7 +269,6 @@ class Game:
         self.board[(4, 4)] = WHITE
         self.num_of_turns = 0
         # board is shown transposed: coordinate = (y,x)
-
 
 if __name__ == '__main__':
     game = Game()
