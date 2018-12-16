@@ -2,6 +2,7 @@ import Game
 import copy
 import numpy as np
 import time
+import Player
 
 
 def get_score(heuristic, game):
@@ -117,7 +118,10 @@ game.set_board(np.array([[0, 0, 0, 0, 0, -1, 0, 0],
                          [0, -1, 1, -1, 0, -1, -1, 0],
                          [0, 0, 1, 1, 1, 0, 1, 0],
                          [0, 1, 0, 0, 0, -1, 0, 0]]).astype(int))
-heuristic = [(-1, lambda game: game.get_white_number()), (1, lambda game: game.get_black_number())]
+
+
+heuristic1 = [(-1, lambda game: game.get_white_number()), (1, lambda game:
+game.get_black_number())]
 start = time.time()
 m = alpha_beta(game, 4, heuristic, True, Game.BLACK)
 end = time.time()

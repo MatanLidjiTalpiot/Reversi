@@ -2,16 +2,17 @@ import numpy as np
 import random
 import Minimax
 
-DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
-BLACK = 1
-WHITE = -1
-FIRST_COLOR = BLACK
-SECOND_COLOR = WHITE
+
 
 
 # WHITE = -BLACK
 
 class Game:
+    DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
+    BLACK = 1
+    WHITE = -1
+    FIRST_COLOR = BLACK
+    SECOND_COLOR = WHITE
     def __init__(self, size=8):
         self.size = size
         # empty cell: 0
@@ -223,7 +224,7 @@ class Game:
         else:
             raise ValueError("the game is not finished yet!")
 
-    def play_game(self, p1, p2):
+    def play_game(self, p1, p2, to_print = False):
         """
         A function that plays a game between two heuristics
         :param p1: player number 1 (the first to play)
@@ -237,14 +238,21 @@ class Game:
             raise ValueError("two players can't have the same color")
         turn = 0
         while not self.is_board_full():
+            op = players[turn%2].choose_move(game)
+            """
             disk = players[turn % 2].get_disk()
             heuristic = players[turn % 2].get_heuristic()
             op = Minimax.minimax(self, DEPTH, DEPTH, heuristic, True, disk, None)[1]
             """
+            """
             consider to use strategy in order to allow players who are not ours to play
             """
-            # todo if op is None to deal with it
-            self.do_move(disk, op)
+            # todo if op is None to deal with it - think i did it
+            if op != None:
+                self.do_move(players[turn%2].get_disk(), op)
+            if to_print:
+                print("player, ", players[turn%2].name," played ", op)
+                print(game.board)
             turn += 1
         # finished playing the game - now getting the winner
         """

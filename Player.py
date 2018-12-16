@@ -1,17 +1,36 @@
 import Game
-
+import Minimax
+import copy
+from enum import Enum
 POS_INT = 1
 NEG_INT = -1
 
 
 class Player:
+
+    class PlayerTypes(Enum):
+        MINIMAX = 1
+        HUMAN = 2
+        NBOARD = 3
+
     NUM_OF_PLAYERS = 0
     ALL_PLAYERS = []
-    ALL_FUNCTIONS = []
+    ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()),
+                     lambda game, player: game.get_opponent_disk_num(player.get_disk())]
+    DEPTH = 4 # 4 is arbitrary
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
-    def __init__(self, heuristic, name = NUM_OF_PLAYERS, disk = None):
-        self.heuristic = heuristic
+    def __init__(self, heuristic = None, name = NUM_OF_PLAYERS, disk = None,
+                 type = PlayerTypes.MINIMAX):
+        if type not in [Player.PlayerTypes.HUMAN, Player.PlayerTypes.NBOARD, Player.PlayerTypes.MINIMAX]:
+            raise ValueError(type, " is not a valid type")
+        if type == Player.PlayerTypes.MINIMAX:
+            self.type = Player.PlayerTypes.MINIMAX
+            if heuristic == None:
+                heuristic = [[1, lambda game, disk: game.get_color_disk_num(self.disk)],[-1,
+                                                                                         lambda
+                                                                                             game, disk: game.get_opponent_disk_num(-1 * self.disk)]]
+            self.heuristic = heuristic
         self.disk = disk
         self.name = name
         if self not in Player.ALL_PLAYERS:
@@ -19,6 +38,7 @@ class Player:
             Player.ALL_PLAYERS.append(self)
         else:
              pass #todo think if to do something
+
 
     def set_disk(self, disk):
         self.disk = disk
@@ -89,8 +109,37 @@ class Player:
                 return False
         return True
 
+    def human_move(self,game):
+        """
+        A method that gets a coordinate for the user
+        :return: the coordinate the user inputed
+        """
+        not_invalid_coordinates = list(range(8))
+        coordinate = input("y space x or enter if there is no legal move")
+        coordinate.split(" ")
+        if len(coordinate) != 2 or coordinate[0] not in not_invalid_coordinates or \
+        coordinate[1] not in not_invalid_coordinates:
+           raise ValueError("not a valid coordinate")
+        temp_game = copy.deepcopy(game)
+        try:
+            temp_game.do_move(coordinate)
+        except:
+            print("not a legal move")
+            return self.human_move(game)
+
+        return coordinate
+
+
+    def choose_move(self, game):
+        if self.type == Player.PlayerTypes.MINIMAX:
+            return Minimax.alpha_beta(game, Player.DEPTH, self.get_heuristic(), True, self.get_disk())
+        elif self.type == Player.PlayerTypes.HUMAN:
+            return self.human_move(game)
+        elif self.type == Player.PlayerTypes.NBOARD:
+            pass # todo add choose move for Nboard player
 
 
 Player.compare_two_players = staticmethod(Player.compare_two_players)
 Player.compare_players_list = staticmethod(Player.compare_players_list)
 Player.players_list_to_winning_dict = staticmethod(Player.players_list_to_winning_dict)
+Player.human_move = staticmethod(Player.human_move)
