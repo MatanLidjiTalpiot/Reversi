@@ -2,6 +2,7 @@ import Game
 import Minimax
 import copy
 from enum import Enum
+import random
 
 POS_INT = 1
 NEG_INT = -1
@@ -12,18 +13,19 @@ class Player:
         MINIMAX = 1
         HUMAN = 2
         NBOARD = 3
+        RANDOM = 4
 
     NUM_OF_PLAYERS = 0
     ALL_PLAYERS = []
     ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()),
                      lambda game, player: game.get_opponent_disk_num(player.get_disk())]
-    DEPTH = 4  # 4 is arbitrary
+    DEPTH = 6 # 4 is arbitrary
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
     def __init__(self, heuristic=None, name=NUM_OF_PLAYERS, disk=None,
                  type=PlayerTypes.MINIMAX):
         if type not in [Player.PlayerTypes.HUMAN, Player.PlayerTypes.NBOARD,
-                        Player.PlayerTypes.MINIMAX]:
+                        Player.PlayerTypes.MINIMAX, Player.PlayerTypes.RANDOM]:
             raise ValueError(type, " is not a valid type")
         if type == Player.PlayerTypes.MINIMAX:
             self.type = Player.PlayerTypes.MINIMAX
@@ -48,6 +50,9 @@ class Player:
 
     def get_disk(self):
         return self.disk
+
+    def get_name(self):
+        return self.name
 
     def compare_two_players(self, player1, player2):
         game = Game.Game()
@@ -133,6 +138,14 @@ class Player:
 
         return (None,(coordinate[0], coordinate[1]))
 
+    def random_move(self, game):
+        all_moves = game.get_legal_moves(self.disk)
+        if all_moves != []:
+            return (None, random.choice(all_moves))
+        else:
+            return (None, None)
+
+
     def choose_move(self, game):
         if self.type == Player.PlayerTypes.MINIMAX:
             return Minimax.alpha_beta(game, Player.DEPTH, self.get_heuristic(), True,
@@ -141,6 +154,8 @@ class Player:
             return self.human_move(game)
         elif self.type == Player.PlayerTypes.NBOARD:
             pass  # todo add choose move for Nboard player
+        elif self.type == Player.PlayerTypes.RANDOM:
+            return self.random_move(game)
 
 
 Player.compare_two_players = staticmethod(Player.compare_two_players)

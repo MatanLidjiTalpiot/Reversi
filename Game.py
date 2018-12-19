@@ -165,7 +165,7 @@ class Game:
         return np.count_nonzero(self.board)
 
     def is_board_full(self):
-        return self.get_number_of_turns() == self.size ** 2
+        return self.get_number_of_turns() == 64 # todo self.size ** 2 and be not arab
 
     def get_black_number(self):
         number_of_blacks = 0
@@ -213,12 +213,15 @@ class Game:
         raised
         :return: the color of the winner
         """
-        if self.is_board_full():
+        if self.is_board_full() or (self.get_legal_moves(BLACK) == [] and self.get_legal_moves(
+                WHITE) == []):
             if self.get_black_number() > self.get_white_number():
                 return BLACK
+            elif self.get_black_number() == self.get_white_number():
+                return None #todo find something more informative then None
             else:
                 return WHITE
-            # todo deal with tie
+
         else:
             raise ValueError("the game is not finished yet!")
 
@@ -237,23 +240,18 @@ class Game:
         turn = 0
         while not self.is_board_full():
             op = players[turn%2].choose_move(self)
-            print("op", op)
-            """
-            disk = players[turn % 2].get_disk()
-            heuristic = players[turn % 2].get_heuristic()
-            op = Minimax.minimax(self, DEPTH, DEPTH, heuristic, True, disk, None)[1]
-            """
-            """
-            consider to use strategy in order to allow players who are not ours to play
-            """
-            # todo if op is None to deal with it - think i did it
-            if op != None:
+
+            if op[1] == None:
+                if players[(turn + 1)%2].choose_move(self)[1] == None:
+                    break
+            else:
                 self.do_move(players[turn%2].get_disk(), op[1])
+
             if to_print:
                 print("player, ", players[turn%2].name," played ", op[1])
                 print(self.board)
             turn += 1
-        # finished playing the game - now getting the winner
+
         """
         maybe add here somehow to get a value of winning and not just a winner - when the module is 
         more advanced! 
@@ -277,6 +275,39 @@ class Game:
         self.num_of_turns = 0
         # board is shown transposed: coordinate = (y,x)
 
+    def get_num_of_cornors(self,disk):
+        """
+        A function that returns the number of cornors of a specific disk
+        :param disk: the disk
+        :return: the number of corners if the color of the disk
+        """
+        nub_of_corners = 0
+        if self.board[0][0] == disk:
+            nub_of_corners += 1
+        if self.board[0][7] == disk:
+            nub_of_corners += 1
+        if self.board[7][7] == disk:
+            nub_of_corners += 1
+        if self.board[7][0] == disk:
+            nub_of_corners += 1
+        return nub_of_corners
+
+    def get_num_of_sides(self, disk):
+        num_of_sides = 0
+        for spot in self.board[0]:
+            if spot == disk:
+                num_of_sides += 1
+        for spot in self.board:
+            if spot[0] == disk:
+                num_of_sides += 1
+        for spot in self.board[7]:
+            if spot == disk:
+                num_of_sides += 1
+        for spot in self.board:
+            if spot[7] == disk:
+                num_of_sides += 1
+        num_of_sides -= self.get_num_of_cornors(disk)
+        return num_of_sides
 if __name__ == '__main__':
     game = Game()
     '''
