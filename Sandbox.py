@@ -1,6 +1,7 @@
 import Game
 import Minimax
 import Player
+import Gui
 import numpy as np
 game = Game.Game()
 #game.set_board(np.array([[0, 0, 0, 1, 0, 0, 0, 0],
@@ -42,7 +43,7 @@ player2 = Player.Player(disk = -1, name = "ferri", type = Player.Player.PlayerTy
 
 dic = {player1.name:0, player2.name:0}
 for i in range (1):
-    winner = game.play_game(player1, player2, to_print = True)
+    winner = Gui.play_game(game, player1, player2, to_print = True)
     print ("winner of the ", i, "game is: ", winner.name)
     dic[winner.name] += 1
 print(dic)
