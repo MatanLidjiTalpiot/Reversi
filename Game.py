@@ -314,6 +314,15 @@ class Game:
         num = len(self.get_legal_moves(-disk))
         return num
 
+    def is_winner_score(self, disk):
+        try:
+            if disk == self.get_winner_disk():
+                return self.get_color_disk_num(disk)
+            elif disk == -1*self.get_winner_disk():
+                return -1*self.get_opponent_disk_num(disk)
+        except:
+            return 0
+
 
 if __name__ == '__main__':
     game = Game()

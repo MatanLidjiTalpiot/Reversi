@@ -152,16 +152,20 @@ class Player:
 
 
     def choose_move(self, game):
-        if self.type == Player.PlayerTypes.MINIMAX:
-            return Minimax.alpha_beta(game, Player.DEPTH, self.get_heuristic(), True,
-                                      self.get_disk())
-        elif self.type == Player.PlayerTypes.HUMAN:
-            return self.human_move(game)
-        elif self.type == Player.PlayerTypes.NBOARD:
-            pass  # todo add choose move for Nboard player
-        elif self.type == Player.PlayerTypes.RANDOM:
-            return self.random_move(game)
-
+        try:
+            if self.type == Player.PlayerTypes.MINIMAX:
+                return Minimax.alpha_beta(game, Player.DEPTH, self.get_heuristic(), True,
+                                          self.get_disk())
+            elif self.type == Player.PlayerTypes.HUMAN:
+                return self.human_move(game)
+            elif self.type == Player.PlayerTypes.NBOARD:
+                pass  # todo add choose move for Nboard player
+            elif self.type == Player.PlayerTypes.RANDOM:
+                return self.random_move(game)
+        except Exception as e:
+            print("do again")
+            print(str(e))
+            return self.choose_move(game)
 
 Player.compare_two_players = staticmethod(Player.compare_two_players)
 Player.compare_players_list = staticmethod(Player.compare_players_list)
