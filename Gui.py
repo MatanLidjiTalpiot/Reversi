@@ -194,8 +194,8 @@ def play_game(game, p1, p2, to_print=False):
             game.do_move(players[turn % 2].get_disk(), op[1])
 
         if to_print:
-            print("player, ", players[turn % 2].name, " played ", op[1])
-            print(game.board)
+            print(players[turn % 2].name, " played: ", op[1])
+            print(players[(turn + 1) % 2].name +" it is now your turn")
         turn += 1
 
 

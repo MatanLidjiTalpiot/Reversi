@@ -120,10 +120,11 @@ class Player:
         :return: the coordinate the user inputed
         """
         not_invalid_coordinates = list(range(8))
-        coordinate = input("y space x or None if there is no legal move")
+        text = str(self.name) + "enter a coordinate or None"
+        coordinate = input(text)
         if coordinate == "None":
             if len(game.get_legal_moves(self.disk)) != 0:
-                print("do a move you fucker")
+                print("Eisner, do a move")
                 return self.human_move(game)
             else:
                 return (None, None)
