@@ -183,11 +183,9 @@ def play_game(game, p1, p2, to_print=False):
                                        32 + 50 * (y + 1), tags="highlight", fill="#008000",
                                        outline="#008000")
                     screen.create_text((68 + 50 * x + 32 + 50 * (x + 1)) / 2, (68 + 50 * y + 32 +
-                                                                               50 * (y + 1)) / 2,
-                                       text=str(y) + "," + str(x))
+                                        50 * (y + 1)) / 2, text=str(y) + "," + str(x))
 
-
-                    screen.update()
+                    screen.update()  #todo if what to not show highlight comment
         op = players[turn % 2].choose_move(game)
         if op[1] == None:
             if players[(turn + 1) % 2].choose_move(game)[1] == None:
@@ -205,6 +203,100 @@ def play_game(game, p1, p2, to_print=False):
     maybe add here somehow to get a value of winning and not just a winner - when the module is 
     more advanced! 
     """
+
+    oldarray = game.board
+    screen.delete("highlight")
+    screen.delete("tile")
+    for x in range(8):
+        for y in range(8):
+            # Could replace the circles with images later, if I want
+            if oldarray[y][x] == Game.WHITE:
+
+                screen.create_oval(54 + 50 * x, 54 + 50 * y, 96 + 50 * x, 96 + 50 * y,
+                                   tags="tile {0}-{1}".format(x, y), fill="#aaa",
+                                   outline="#aaa")
+                screen.create_oval(54 + 50 * x, 52 + 50 * y, 96 + 50 * x, 94 + 50 * y,
+                                   tags="tile {0}-{1}".format(x, y), fill="#fff",
+                                   outline="#fff")
+
+            elif oldarray[y][x] == Game.BLACK:
+                screen.create_oval(54 + 50 * x, 54 + 50 * y, 96 + 50 * x, 96 + 50 * y,
+                                   tags="tile {0}-{1}".format(x, y), fill="#000",
+                                   outline="#000")
+                screen.create_oval(54 + 50 * x, 52 + 50 * y, 96 + 50 * x, 94 + 50 * y,
+                                   tags="tile {0}-{1}".format(x, y), fill="#111",
+                                   outline="#111")
+    # Animation of new tiles
+    screen.update()
+    for x in range(8):
+        for y in range(8):
+            # Could replace the circles with images later, if I want
+            if game.board[y][x] != oldarray[y][x] and game.board[y][x] == Game.WHITE:
+                screen.delete("{0}-{1}".format(x, y))
+                # 42 is width of tile so 21 is half of that
+                # Shrinking
+                for i in range(21):
+                    screen.create_oval(54 + i + 50 * x, 54 + i + 50 * y, 96 - i + 50 * x,
+                                       96 - i + 50 * y, tags="tile animated", fill="#000",
+                                       outline="#000")
+                    screen.create_oval(54 + i + 50 * x, 52 + i + 50 * y, 96 - i + 50 * x,
+                                       94 - i + 50 * y, tags="tile animated", fill="#111",
+                                       outline="#111")
+                    if i % 3 == 0:
+                        sleep(0.01)
+                    screen.update()
+                    screen.delete("animated")
+                # Growing
+                for i in reversed(range(21)):
+                    screen.create_oval(54 + i + 50 * x, 54 + i + 50 * y, 96 - i + 50 * x,
+                                       96 - i + 50 * y, tags="tile animated", fill="#aaa",
+                                       outline="#aaa")
+                    screen.create_oval(54 + i + 50 * x, 52 + i + 50 * y, 96 - i + 50 * x,
+                                       94 - i + 50 * y, tags="tile animated", fill="#fff",
+                                       outline="#fff")
+                    if i % 3 == 0:
+                        sleep(0.01)
+                    screen.update()
+                    screen.delete("animated")
+                screen.create_oval(54 + 50 * x, 54 + 50 * y, 96 + 50 * x, 96 + 50 * y,
+                                   tags="tile", fill="#aaa", outline="#aaa")
+                screen.create_oval(54 + 50 * x, 52 + 50 * y, 96 + 50 * x, 94 + 50 * y,
+                                   tags="tile", fill="#fff", outline="#fff")
+                screen.update()
+
+            elif game.board[y][x] != oldarray[y][x] and game.board[y][x] == Game.BLACK:
+                screen.delete("{0}-{1}".format(x, y))
+                # 42 is width of tile so 21 is half of that
+                # Shrinking
+                for i in range(21):
+                    screen.create_oval(54 + i + 50 * x, 54 + i + 50 * y, 96 - i + 50 * x,
+                                       96 - i + 50 * y, tags="tile animated", fill="#aaa",
+                                       outline="#aaa")
+                    screen.create_oval(54 + i + 50 * x, 52 + i + 50 * y, 96 - i + 50 * x,
+                                       94 - i + 50 * y, tags="tile animated", fill="#fff",
+                                       outline="#fff")
+                    if i % 3 == 0:
+                        sleep(0.01)
+                    screen.update()
+                    screen.delete("animated")
+                # Growing
+                for i in reversed(range(21)):
+                    screen.create_oval(54 + i + 50 * x, 54 + i + 50 * y, 96 - i + 50 * x,
+                                       96 - i + 50 * y, tags="tile animated", fill="#000",
+                                       outline="#000")
+                    screen.create_oval(54 + i + 50 * x, 52 + i + 50 * y, 96 - i + 50 * x,
+                                       94 - i + 50 * y, tags="tile animated", fill="#111",
+                                       outline="#111")
+                    if i % 3 == 0:
+                        sleep(0.01)
+                    screen.update()
+                    screen.delete("animated")
+
+                screen.create_oval(54 + 50 * x, 54 + 50 * y, 96 + 50 * x, 96 + 50 * y,
+                                   tags="tile", fill="#000", outline="#000")
+                screen.create_oval(54 + 50 * x, 52 + 50 * y, 96 + 50 * x, 94 + 50 * y,
+                                   tags="tile", fill="#111", outline="#111")
+                screen.update()
     if game.get_winner_disk() == players[0].get_disk():
         screen.create_text(250, 550, anchor="c", font=("Consolas", 15),
                            text="The game is done!")

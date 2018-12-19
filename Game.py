@@ -1,6 +1,7 @@
 import numpy as np
 import random
 import Minimax
+import copy
 
 DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
 BLACK = 1
@@ -308,6 +309,12 @@ class Game:
                 num_of_sides += 1
         num_of_sides -= self.get_num_of_cornors(disk)
         return num_of_sides
+
+    def get_num_of_options_for_other(self, disk):
+        num = len(self.get_legal_moves(-disk))
+        return num
+
+
 if __name__ == '__main__':
     game = Game()
     '''

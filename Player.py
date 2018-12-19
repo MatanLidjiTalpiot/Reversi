@@ -19,7 +19,7 @@ class Player:
     ALL_PLAYERS = []
     ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()),
                      lambda game, player: game.get_opponent_disk_num(player.get_disk())]
-    DEPTH = 6 # 4 is arbitrary
+    DEPTH = 4 # 4 is arbitrary
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
     def __init__(self, heuristic=None, name=NUM_OF_PLAYERS, disk=None,
@@ -120,7 +120,13 @@ class Player:
         :return: the coordinate the user inputed
         """
         not_invalid_coordinates = list(range(8))
-        coordinate = input("y space x or enter if there is no legal move")
+        coordinate = input("y space x or None if there is no legal move")
+        if coordinate == "None":
+            if len(game.get_legal_moves(self.disk)) != 0:
+                print("do a move you fucker")
+                return self.human_move(game)
+            else:
+                return (None, None)
         coordinate = coordinate.split(" ")
         coordinate[0] = int (coordinate[0])
         coordinate[1] = int (coordinate[1])
@@ -129,7 +135,6 @@ class Player:
                         coordinate[1] not in not_invalid_coordinates:
             raise ValueError("not a valid coordinate")
         temp_game = copy.deepcopy(game)
-        print("fgh",coordinate)
         try:
             temp_game.do_move(self.disk, coordinate)
         except:
