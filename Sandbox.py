@@ -110,7 +110,8 @@ palti_white = [[-10, lambda game: (game.get_black_number() * palti_A * np.power(
 palti_black = Player.Player(heuristic=palti_black, disk=1, name="Computer")
 
 palti_white = Player.Player(heuristic=palti_white, disk=1, name="Computer")
-h1_white = Player.Player(disk=-1, name="h1 white", heuristic=h1_white)
+h1_white = Player.Player(disk=-1, name="h1 white", heuristic=h1_white,
+                         type = Player.Player.PlayerTypes.RANDOM)
 h1_black = Player.Player(disk=-1, name="h1 black", heuristic=h1_black)
 eisner = Player.Player(disk=-1, name="Eisner", type=Player.Player.PlayerTypes.HUMAN)
 

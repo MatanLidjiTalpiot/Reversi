@@ -323,7 +323,22 @@ class Game:
         except:
             return 0
 
+    def get_safe_areas(self, disk):
+        pass
 
+    def get_first_circle(self,disk):
+        pass
+
+    def get_second_circle(self,disk):
+        pass
+
+    def get_third_circle(self, disk):
+        pass
+
+    def get_fourth_circle(self, disk):
+        pass
+
+    def 
 if __name__ == '__main__':
     game = Game()
     '''
