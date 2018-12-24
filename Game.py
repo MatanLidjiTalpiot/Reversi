@@ -327,18 +327,19 @@ class Game:
         pass
 
     def get_first_circle(self,disk):
-        pass
+        pass #TODO
 
     def get_second_circle(self,disk):
-        pass
+        pass #TODO
 
     def get_third_circle(self, disk):
-        pass
+        pass #TODO
 
     def get_fourth_circle(self, disk):
-        pass
+        pass #TODO
 
-    def 
+        # add more TODO
+
 if __name__ == '__main__':
     game = Game()
     '''
