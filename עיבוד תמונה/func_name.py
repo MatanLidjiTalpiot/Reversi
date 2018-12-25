@@ -5,9 +5,10 @@ import math
 #circles
 r = 8 #min radius
 R = 11 #max radius
-circles_param = 2 #circles thrashhold
-up_th = 100
+circles_param = 1.9 #circles thrashhold
+up_th = 50
 down_th = 0
+red_color_majority = 50
 #images
 global cam
 img2 = cv2.imread("data1175.jpg", 0)
@@ -53,13 +54,19 @@ def img2_def(img):
 def get_color(x,y,img):
     x = int(x)
     y = int(y)
-    sum = 0
+    sum0 = 0
+    sum1 = 0
+    sum2 = 0
     window = 25
     for i in range(int(math.sqrt(window))):
         for j in range(int(math.sqrt(window))):
-            c = img[y-i][x-j]
-            sum += img[y-i][x-j]
-    if float(sum)/window < thrash_hold:
+            sum0 += img[y - i][x - j][0]
+            sum1 += img[y - i][x - j][1]
+            sum2 += img[y - i][x - j][2]
+    m0 = float(sum0)/window
+    m1 = float(sum1) / window
+    m2 = float(sum2) / window
+    if m2 - (m1+m0)/2 < red_color_majority:
         return 1
     else:
         return -1
@@ -123,22 +130,28 @@ def find_circles(img2):
 
 
 def filter_circles(circles, img):
-    # img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     filtered_circles = []
     if type(circles) != np.ndarray:
         return
     for circle in circles[0, :]:
         x = int(circle[0])
         y = int(circle[1])
-        sum = 0
+        sum0 = 0
+        sum1 = 0
+        sum2 = 0
         window = 25
         for i in range(int(math.sqrt(window))):
             for j in range(int(math.sqrt(window))):
-                c = img[y - i][x - j]
-                sum += img[y - i][x - j]
-        m = float(sum)/window
-        if m <up_th and m >down_th:
+                sum0 += img[y - i][x - j][0]
+                sum1 += img[y - i][x - j][1]
+                sum2 += img[y - i][x - j][2]
+        m0 = float(sum0) /window
+        m1 = float(sum1) / window
+        m2 = float(sum2) / window
+        m = (m0+m2+m1)/3
+        if (m2 - (m1+m0)/2) > red_color_majority or m < up_th:
             filtered_circles.append(circle)
+            # print ('m0 = ', m0, 'm1 = ', m1, 'm2 = ', m2)
     return filtered_circles
 
 
@@ -226,10 +239,9 @@ def classified_lines(filtered_lines):
 
 def create_board(red, green):
     table = []
-    sub = []
-    for i in range(len(red) - 1):
+    for i in range(8):
         sub = []
-        for i in range(len(green) - 1):
+        for i in range(8):
             sub.append(0)
         table.append(sub)
     return table
@@ -256,24 +268,28 @@ def find_board(circles, red_form,green_form, img):
     return table
 
 
-def get_board(img2):
+def get_board(img2, colored_img):
     img = img2_def(img2)
     circles = find_circles(img)
-    circles = filter_circles(circles,img)
+    circles = filter_circles(circles,colored_img)
     c = cimg_def(img)
     lines = find_lines(c)
     filtered = filter_lines(lines)
     red_forms , green_forms = classified_lines(filtered)
-    board = find_board(circles, red_forms, green_forms, img)
+    board = find_board(circles, red_forms, green_forms, colored_pic)
     return board
 
 
-def takepic():
+def take_pic():
     rval , frame = cam.read()
     cv2.imwrite('board.jpg',frame)
     board_img = cv2.imread('board.jpg', 0)
     return board_img
 
+
+def take_color_pic():
+    frame = cv2.imread('board.jpg')
+    return frame
 
 
 if __name__ == '__main__':
@@ -299,25 +315,47 @@ if __name__ == '__main__':
         if key =='p':
             p = input('set circles_parameter')
             circles_param = float(p)
-        img = takepic()
-
-        #### check
-        # img = cv2.imread('data100.jpg' , 0)
-
+        img = take_pic()
+        colored_pic = take_color_pic()
 
         print("working...")
         img = cutPicture(img)
+        colored_pic = cutPicture(colored_pic)
+
         if key == 'a' or key == 'd':
             show_image(img)
         if key == 'b' or key == 'a':
-            board = get_board(img)
-            board1 = np.array(board)
-            print(board1)
+            s_bord = np.array([[0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0]])
+            for i in range(10):
+                img = take_pic()
+                colored_pic = take_color_pic()
+                img = cutPicture(img)
+                colored_pic = cutPicture(colored_pic)
+                board = get_board(img, colored_pic)
+                board1 = np.array(board)
+                s_bord += board1
+            s_bord = 0.1*s_bord
+            for i in range(8):
+                for j in range(8):
+                    if s_bord[i][j] > 0.5:
+                        s_bord[i][j] = int(1)
+                    elif s_bord[i][j] < - 0.5:
+                        s_bord[i][j] = int(-1)
+                    else:
+                        s_bord[i][j] = int(0)
+            print(s_bord)
             if key == 'b':
                 continue
         if key == 'c' or key == 'a':
             circles = find_circles(img)
-            circles = filter_circles(circles,img)
+            circles = filter_circles(circles,colored_pic)
         c = cimg_def(img)
         if key == 'c' or key == 'a':
             draw_circles(circles,c)
