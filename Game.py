@@ -28,10 +28,10 @@ class Game:
     def set_board(self, board):
         """
         A function that sets the board
-        :param board: the board to set
+        :param board: the board to set can be an array or a np array
         :return: nothing
         """
-        self.board = board
+        self.board = np.asarray(board).astype(int)
 
     def do_move(self, disk, coordinate):
         """
