@@ -14,6 +14,7 @@ class Player:
         HUMAN = 2
         NBOARD = 3
         RANDOM = 4
+        FOUR_BY_FOUR = 5
 
     NUM_OF_PLAYERS = 0
     ALL_PLAYERS = []
@@ -151,6 +152,23 @@ class Player:
         else:
             return (None, None)
 
+    def four_by_four_move(self, game):
+        """
+        A four by four move
+        :param game: the game to play on
+        :return: a valid move on a four by four move
+        """
+        legal_moves = game.get_legal_moves(disk)
+        for move in legal_moves:
+            if move[0] not in  range(2, 5) or move[0] not in range(2, 5):
+                legal_moves.remove(move)
+        if legal_moves != []:
+            return random.choice(legal_moves)
+        else:
+            return [None, None]
+
+
+
 
     def choose_move(self, game):
         try:
@@ -163,6 +181,8 @@ class Player:
                 pass  # todo add choose move for Nboard player
             elif self.type == Player.PlayerTypes.RANDOM:
                 return self.random_move(game)
+            elif self.typr == Player.PlayerTypes.FOUR_BY_FOUR:
+                return self.four_by_four_move(game)
         except Exception as e:
             print("do again")
             print(str(e))
