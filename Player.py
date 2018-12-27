@@ -169,7 +169,6 @@ class Player:
 
 
 
-
     def choose_move(self, game):
         try:
             if self.type == Player.PlayerTypes.MINIMAX:
