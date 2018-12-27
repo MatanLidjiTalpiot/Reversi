@@ -28,6 +28,7 @@ def flip(to_flip):
 
 if __name__ == '__main__':
     take_disk()
+    game = Game.Game()
     last_board = image_processing(None)
     while True:
         if input("Play your turn and then write 'Done' (or just 'D')") in {"Done", "done", 'D', 'd'}:
