@@ -276,7 +276,7 @@ def get_board(img2, colored_img):
     lines = find_lines(c)
     filtered = filter_lines(lines)
     red_forms , green_forms = classified_lines(filtered)
-    board = find_board(circles, red_forms, green_forms, colored_pic)
+    board = find_board(circles, red_forms, green_forms, colored_img)
     return board
 
 
@@ -333,7 +333,7 @@ if __name__ == '__main__':
                             [0,0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0,0],
                             [0,0,0,0,0,0,0,0]])
-            for i in range(10):
+            for i in range(1):
                 img = take_pic()
                 colored_pic = take_color_pic()
                 img = cutPicture(img)
@@ -341,7 +341,7 @@ if __name__ == '__main__':
                 board = get_board(img, colored_pic)
                 board1 = np.array(board)
                 s_bord += board1
-            s_bord = 0.1*s_bord
+            s_bord = s_bord
             for i in range(8):
                 for j in range(8):
                     if s_bord[i][j] > 0.5:
@@ -367,8 +367,3 @@ if __name__ == '__main__':
         if key == 'c' or key == 'a':
             cv2.imshow("sad3", s)
             cv2.waitKey(0)
-
-
-
-
-

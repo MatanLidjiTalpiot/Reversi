@@ -1,6 +1,7 @@
 import cv2;
 import numpy as np;
 import math
+i
 
 def get_color(x,y,img):
     x = int(x)
