@@ -46,31 +46,31 @@ game = Game.Game()
 
 h1_black = [[1, lambda game: game.get_black_number()],
             [-1, lambda game: game.get_white_number()],
-            [100, lambda game: game.get_num_of_cornors(1)],
-            [-1000, lambda game: game.get_num_of_cornors(-1)],
+            [100, lambda game: game.get_num_of_corners(1)],
+            [-1000, lambda game: game.get_num_of_corners(-1)],
             [50, lambda game: game.get_num_of_sides(1)],
             [-200, lambda game: game.get_num_of_sides(-1)],
             [-200, lambda game: game.get_num_of_options_for_other(1)]]
 
 h2 = [[1, lambda game: game.get_black_number()],
       [-1, lambda game: game.get_white_number()],
-      [100, lambda game: game.get_num_of_cornors(1)],
-      [-1000, lambda game: game.get_num_of_cornors(-1)],
+      [100, lambda game: game.get_num_of_corners(1)],
+      [-1000, lambda game: game.get_num_of_corners(-1)],
       [50, lambda game: game.get_num_of_sides(1)],
       [-200, lambda game: game.get_num_of_sides(-1)]]
 
 h1_white = [[-1, lambda game: game.get_black_number()],
             [1, lambda game: game.get_white_number()],
-            [100, lambda game: game.get_num_of_cornors(-1)],
-            [-1000, lambda game: game.get_num_of_cornors(1)],
+            [100, lambda game: game.get_num_of_corners(-1)],
+            [-1000, lambda game: game.get_num_of_corners(1)],
             [50, lambda game: game.get_num_of_sides(-1)],
             [-200, lambda game: game.get_num_of_sides(1)],
             [-200, lambda game: game.get_num_of_options_for_other(-1)]]
 
 h4 = [[1, lambda game: game.get_black_number()],
       [-1, lambda game: game.get_white_number()],
-      [100, lambda game: game.get_num_of_cornors(-1)],
-      [-1000, lambda game: game.get_num_of_cornors(1)],
+      [100, lambda game: game.get_num_of_corners(-1)],
+      [-1000, lambda game: game.get_num_of_corners(1)],
       [50, lambda game: game.get_num_of_sides(-1)],
       [-200, lambda game: game.get_num_of_sides(1)]]
 
@@ -84,8 +84,8 @@ palti_black = [
         game.get_number_of_turns(
 
         ), palti_n))],
-    [1000, lambda game: game.get_num_of_cornors(1)],
-    [-10000, lambda game: game.get_num_of_cornors(-1)],
+    [1000, lambda game: game.get_num_of_corners(1)],
+    [-10000, lambda game: game.get_num_of_corners(-1)],
     [50, lambda game: game.get_num_of_sides(1)],
     [-200, lambda game: game.get_num_of_sides(-1)],
     [-500, lambda game: game.get_num_of_options_for_other(1)],
@@ -99,8 +99,8 @@ palti_white = [[-10, lambda game: (game.get_black_number() * palti_A * np.power(
                 lambda game: (game.get_white_number() * palti_A * np.power(game.get_number_of_turns(
 
                 ), palti_n))],
-               [1000, lambda game: game.get_num_of_cornors(-1)],
-               [-10000, lambda game: game.get_num_of_cornors(1)],
+               [1000, lambda game: game.get_num_of_corners(-1)],
+               [-10000, lambda game: game.get_num_of_corners(1)],
                [50, lambda game: game.get_num_of_sides(-1)],
                [-200, lambda game: game.get_num_of_sides(1)],
                [-500, lambda game: game.get_num_of_options_for_other(-1)],

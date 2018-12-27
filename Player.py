@@ -181,7 +181,7 @@ class Player:
                 pass  # todo add choose move for Nboard player
             elif self.type == Player.PlayerTypes.RANDOM:
                 return self.random_move(game)
-            elif self.typr == Player.PlayerTypes.FOUR_BY_FOUR:
+            elif self.type == Player.PlayerTypes.FOUR_BY_FOUR:
                 return self.four_by_four_move(game)
         except Exception as e:
             print("do again")

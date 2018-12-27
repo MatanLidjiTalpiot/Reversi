@@ -12,7 +12,7 @@ SECOND_COLOR = WHITE
 
 class Game:
 
-    def __init__(self, size=8):
+    def __init__(self, player1, player2,  size = 8):
         self.size = size
         # empty cell: 0
         # AI (black): 1
@@ -23,6 +23,30 @@ class Game:
         self.board[(3, 3)] = WHITE
         self.board[(4, 4)] = WHITE
         self.num_of_turns = 0
+        self.number_of_turns_attempted = 0
+
+        try:
+            if player1.get_disk() == player2.get_disk():
+                raise ValueError("both players have the same color")
+            if player1.get_disk() != WHITE and player1.get_disk() != BLACK:
+                raise ValueError("not a valid color for "+ player1.name)
+            if player2.get_disk() != WHITE and player2.get_disk() != WHITE:
+                raise ValueError("not a valid color for " + player2.name)
+        except Exception as e:
+            print("problem with colors")
+            print(str(e))
+            print("initializing: " +  player1.name +  " is black, " + player2.name +
+                  " is white")
+            player1.set_disk(FIRST_COLOR)
+            player2.set_disk(SECOND_COLOR)
+
+        self.player1 = player1
+        self.player2 = player2
+        if player1.get_disk() == FIRST_COLOR:
+            self.players = (self.player1, self.player2)
+        else:
+            self.players = (self.player2, self.player1)
+
         # board is shown transposed: coordinate = (y,x)
 
     def set_board(self, board):
@@ -225,41 +249,46 @@ class Game:
         else:
             raise ValueError("the game is not finished yet!")
 
-    def play_game(self, p1, p2, to_print=False):
+    def get_current_player(self):
+        return self.players[self.number_of_turns_attempted%2]
+
+    def play_game(self, to_print=False):
         """
         A function that plays a game between two heuristics
         :param p1: player number 1 (the first to play)
         :param p2: player number 2 (the second to play)
         :return: the winning player and the grades of each heuristic in the game
         """
-        players = (p1, p2)
-        p1.set_disk(FIRST_COLOR)
-        p2.set_disk(SECOND_COLOR)
+        p1 = self.players[0]
+        p2 = self.players[1]
         if p1.get_disk() == p2.get_disk():
             raise ValueError("two players can't have the same color")
-        turn = 0
+
+        self.number_of_turns_attempted = 0
         while not self.is_board_full():
-            op = players[turn % 2].choose_move(self)
+            op = self.players[self.number_of_turns_attempted % 2].choose_move(self)
 
             if op[1] is None:
-                if players[(turn + 1) % 2].choose_move(self)[1] is None:
+                if self.players[(self.number_of_turns_attempted + 1) % 2].choose_move(self)[1] is \
+                        None:
                     break
             else:
-                self.do_move(players[turn % 2].get_disk(), op[1])
+                self.do_move(self.players[self.number_of_turns_attempted % 2].get_disk(), op[1])
 
             if to_print:
-                print("player, ", players[turn % 2].name, " played ", op[1])
+                print("player, ", self.players[self.number_of_turns_attempted % 2].name,
+                      " played ", op[1])
                 print(self.board)
-            turn += 1
+            self.number_of_turns_attempted += 1
 
         """
         maybe add here somehow to get a value of winning and not just a winner - when the module is 
         more advanced! 
         """
-        if self.get_winner_disk() == players[0].get_disk():
-            return players[0]
-        elif self.get_winner_disk() == players[1].get_disk():
-            return players[1]
+        if self.get_winner_disk() == self.players[0].get_disk():
+            return self.players[0]
+        elif self.get_winner_disk() == self.players[1].get_disk():
+            return self.players[1]
         else:
             raise ValueError("something went wrong! check your code!")
 
@@ -273,9 +302,10 @@ class Game:
         self.board[(3, 3)] = WHITE
         self.board[(4, 4)] = WHITE
         self.num_of_turns = 0
+        self.number_of_turns_attempted = 0
         # board is shown transposed: coordinate = (y,x)
 
-    def get_num_of_cornors(self, disk):
+    def get_num_of_corners(self, disk):
         """
         A function that returns the number of cornors of a specific disk
         :param disk: the disk
@@ -306,7 +336,7 @@ class Game:
         for spot in self.board:
             if spot[self.size - 1] == disk:
                 num_of_sides += 1
-        num_of_sides -= self.get_num_of_cornors(disk)
+        num_of_sides -= self.get_num_of_corners(disk)
         return num_of_sides
 
     def get_num_of_options_for_other(self, disk):
