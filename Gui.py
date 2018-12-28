@@ -26,7 +26,7 @@ def drawGridBackground(outline=False):
     screen.update()
 
 
-def play_game(game, p1, p2, to_print=False):
+def play_game(game, to_print=False):
     """
     A function that plays a game between two heuristics
     :param p1: player number 1 (the first to play)
@@ -39,7 +39,9 @@ def play_game(game, p1, p2, to_print=False):
     screen.pack()
 
 
-    players = (p1, p2)
+    players = game.players
+    p1 = players[0]
+    p2 = players[1]
     p1.set_disk(Game.FIRST_COLOR)
     p2.set_disk(Game.SECOND_COLOR)
     if p1.get_disk() == p2.get_disk():

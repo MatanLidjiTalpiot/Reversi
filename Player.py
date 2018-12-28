@@ -14,22 +14,24 @@ class Player:
         HUMAN = 2
         NBOARD = 3
         RANDOM = 4
+        FOUR_BY_FOUR = 5
+        TABLE = 6
 
     NUM_OF_PLAYERS = 0
     ALL_PLAYERS = []
     ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()),
                      lambda game, player: game.get_opponent_disk_num(player.get_disk())]
-    DEPTH = 4 # 4 is arbitrary
+    DEPTH = 4  # 4 is arbitrary
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
     def __init__(self, heuristic=None, name=NUM_OF_PLAYERS, disk=None,
                  type=PlayerTypes.MINIMAX):
         if type not in [Player.PlayerTypes.HUMAN, Player.PlayerTypes.NBOARD,
-                        Player.PlayerTypes.MINIMAX, Player.PlayerTypes.RANDOM]:
+                        Player.PlayerTypes.MINIMAX, Player.PlayerTypes.RANDOM, Player.PlayerTypes.TABLE]:
             raise ValueError(type, " is not a valid type")
         if type == Player.PlayerTypes.MINIMAX:
             self.type = Player.PlayerTypes.MINIMAX
-            if heuristic == None:
+            if heuristic is None:
                 heuristic = [[1, lambda game, disk: game.get_color_disk_num(self.disk)],
                              [-1, lambda game, disk: game.get_opponent_disk_num(-1 * self.disk)]]
         self.type = type
@@ -129,11 +131,11 @@ class Player:
             else:
                 return (None, None)
         coordinate = coordinate.split(" ")
-        coordinate[0] = int (coordinate[0])
-        coordinate[1] = int (coordinate[1])
-        coordinate=tuple(coordinate) #todo: better input
+        coordinate[0] = int(coordinate[0])
+        coordinate[1] = int(coordinate[1])
+        coordinate = tuple(coordinate)  # todo: better input
         if len(coordinate) != 2 or coordinate[0] not in not_invalid_coordinates or \
-                        coordinate[1] not in not_invalid_coordinates:
+                coordinate[1] not in not_invalid_coordinates:
             raise ValueError("not a valid coordinate")
         temp_game = copy.deepcopy(game)
         try:
@@ -142,7 +144,7 @@ class Player:
             print("not a legal move")
             return self.human_move(game)
 
-        return (None,(coordinate[0], coordinate[1]))
+        return (None, (coordinate[0], coordinate[1]))
 
     def random_move(self, game):
         all_moves = game.get_legal_moves(self.disk)
@@ -151,6 +153,20 @@ class Player:
         else:
             return (None, None)
 
+    def four_by_four_move(self, game):
+        """
+        A four by four move
+        :param game: the game to play on
+        :return: a valid move on a four by four move
+        """
+        legal_moves = game.get_legal_moves(disk)
+        for move in legal_moves:
+            if move[0] not in range(2, 5) or move[0] not in range(2, 5):
+                legal_moves.remove(move)
+        if legal_moves != []:
+            return random.choice(legal_moves)
+        else:
+            return [None, None]
 
     def choose_move(self, game):
         try:
@@ -163,12 +179,17 @@ class Player:
                 pass  # todo add choose move for Nboard player
             elif self.type == Player.PlayerTypes.RANDOM:
                 return self.random_move(game)
+            elif self.type == Player.PlayerTypes.FOUR_BY_FOUR:
+                return self.four_by_four_move(game)
+            elif self.type == Player.PlayerTypes.TABLE:
+                raise ValueError("not supposed to do a move")
         except Exception as e:
             print("do again")
             print(str(e))
             return self.choose_move(game)
 
+
 Player.compare_two_players = staticmethod(Player.compare_two_players)
 Player.compare_players_list = staticmethod(Player.compare_players_list)
 Player.players_list_to_winning_dict = staticmethod(Player.players_list_to_winning_dict)
-#Player.human_move = staticmethod(Player.human_move)
+# Player.human_move = staticmethod(Player.human_move)
