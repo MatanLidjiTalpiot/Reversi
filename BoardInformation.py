@@ -43,4 +43,5 @@ def where_to_flip(board, our_player, other_player):
     """
     game_copy = Game.Game(our_player, other_player)
     game_copy.set_board(board)
-    return game_copy.to_flip(our_player.get_disk(), where_to_put(game.board, our_player, other_player))
+    return game_copy.to_flip(our_player.get_disk(),
+        where_to_put(game_copy.board, our_player, other_player))

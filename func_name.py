@@ -5,8 +5,8 @@ import math
 #circles
 r = 8 #min radius
 R = 11 #max radius
-circles_param = 1.9 #circles thrashhold
-up_th = 50
+circles_param = 1.5 #circles thrashhold
+up_th = 80
 down_th = 0
 red_color_majority = 50
 #images
@@ -281,8 +281,6 @@ def get_board(img2, colored_img):
 
 
 def take_pic():
-    global cam
-    cam = initialCamera()
     rval , frame = cam.read()
     cv2.imwrite('board.jpg',frame)
     board_img = cv2.imread('board.jpg', 0)
@@ -319,6 +317,8 @@ if __name__ == '__main__':
             circles_param = float(p)
         img = take_pic()
         colored_pic = take_color_pic()
+        if key == 'red':
+            red_color_majority = int(input('set red_color_majority'))
 
         print("working...")
         img = cutPicture(img)
