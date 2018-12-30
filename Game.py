@@ -1,6 +1,4 @@
 import numpy as np
-import random
-import Player
 
 DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
 BLACK = 1
@@ -12,8 +10,7 @@ SECOND_COLOR = BLACK
 # WHITE = -BLACK
 
 class Game:
-
-    def __init__(self, player1, player2, size = 8):
+    def __init__(self, player1, player2, size=8):
         self.size = size
         # empty cell: 0
         # AI (black): 1
@@ -30,13 +27,13 @@ class Game:
             if player1.get_disk() == player2.get_disk():
                 raise ValueError("both players have the same color")
             if player1.get_disk() != WHITE and player1.get_disk() != BLACK:
-                raise ValueError("not a valid color for "+ player1.name)
+                raise ValueError("not a valid color for " + player1.name)
             if player2.get_disk() != WHITE and player2.get_disk() != BLACK:
                 raise ValueError("not a valid color for " + player2.name)
         except Exception as e:
             print("problem with colors")
             print(str(e))
-            print("initializing: " +  player1.name +  " is black, " + player2.name +
+            print("initializing: " + player1.name + " is black, " + player2.name +
                   " is white")
             player1.set_disk(FIRST_COLOR)
             player2.set_disk(SECOND_COLOR)
@@ -48,7 +45,7 @@ class Game:
         else:
             self.players = (self.player2, self.player1)
 
-        # board is shown transposed: coordinate = (y,x)
+            # board is shown transposed: coordinate = (y,x)
 
     def set_board(self, board):
         """
@@ -99,8 +96,7 @@ class Game:
         to_flip_right_up = self.to_flip_in_line(disk, self.get_right_up(y, x))
         to_flip_right_down = self.to_flip_in_line(disk, self.get_right_down(y, x))
 
-        to_flip = to_flip_up + to_flip_down + to_flip_left + to_flip_right + \
-                  to_flip_left_up + to_flip_left_down + to_flip_right_up + to_flip_right_down
+        to_flip = to_flip_up + to_flip_down + to_flip_left + to_flip_right + to_flip_left_up + to_flip_left_down + to_flip_right_up + to_flip_right_down
         return to_flip
 
     def to_flip_in_line(self, disk, line):  # line is a nparray of tuples (y,x)
@@ -208,13 +204,14 @@ class Game:
                     number_of_whites += 1
         return number_of_whites
 
-    def get_color_disk_num(self, disk):
+    def get_color_disk_num(self, player):
         """
         A function that gets a disk and returns the number of disks of the same color on the board
-        :param disk: the color of the disk we are interested in
+        :param player: the player that  we are interested in
         :return: the number of disks of the same color on the board
         :error: if the disk parameter is not a valid color
         """
+        disk = player.get_disk()
         if disk == WHITE:
             return self.get_white_number()
 
@@ -223,13 +220,14 @@ class Game:
         else:
             raise ValueError("not a valid disk color")
 
-    def get_opponent_disk_num(self, disk):
+    def get_opponent_disk_num(self, player):
         """
         A function that gets a disk color and returns the number of disks the opponents has on
         the board
-        :param disk: the color of the players disk
+        :param player: the player that we are interested in
         :return: the number of the opponent disks on the board
         """
+        disk = player.get_disk()
         return self.get_color_disk_num(-disk)
 
     def get_winner_disk(self):
@@ -238,8 +236,7 @@ class Game:
         raised
         :return: the color of the winner
         """
-        if self.is_board_full() or (self.get_legal_moves(BLACK) == [] and self.get_legal_moves(
-                WHITE) == []):
+        if self.is_board_full() or (self.get_legal_moves(BLACK) == [] and self.get_legal_moves(WHITE) == []):
             if self.get_black_number() > self.get_white_number():
                 return BLACK
             elif self.get_black_number() == self.get_white_number():
@@ -251,14 +248,14 @@ class Game:
             raise ValueError("the game is not finished yet!")
 
     def get_current_player(self):
-        return self.players[self.number_of_turns_attempted%2]
+        return self.players[self.number_of_turns_attempted % 2]
 
     def play_game(self, to_print=False):
         """
-        A function that plays a game between two heuristics
+        A function that plays the
         :param p1: player number 1 (the first to play)
         :param p2: player number 2 (the second to play)
-        :return: the winning player and the grades of each heuristic in the game
+        :return: the winning player and the grades of each player in the game
         """
         p1 = self.players[0]
         p2 = self.players[1]
@@ -293,7 +290,7 @@ class Game:
         else:
             raise ValueError("something went wrong! check your code!")
 
-    def reset_game(self):
+    def reset_game(self, player1, player2):
         # empty cell: 0
         # AI (black): 1
         # Player (white): -1
@@ -304,14 +301,36 @@ class Game:
         self.board[(4, 4)] = WHITE
         self.num_of_turns = 0
         self.number_of_turns_attempted = 0
-        # board is shown transposed: coordinate = (y,x)
+        try:
+            if player1.get_disk() == player2.get_disk():
+                raise ValueError("both players have the same color")
+            if player1.get_disk() != WHITE and player1.get_disk() != BLACK:
+                raise ValueError("not a valid color for " + player1.name)
+            if player2.get_disk() != WHITE and player2.get_disk() != BLACK:
+                raise ValueError("not a valid color for " + player2.name)
+        except Exception as e:
+            print("problem with colors")
+            print(str(e))
+            print("initializing: " + player1.name + " is black, " + player2.name +
+                  " is white")
+            player1.set_disk(FIRST_COLOR)
+            player2.set_disk(SECOND_COLOR)
 
-    def get_num_of_corners(self, disk):
+        self.player1 = player1
+        self.player2 = player2
+        if player1.get_disk() == FIRST_COLOR:
+            self.players = (self.player1, self.player2)
+        else:
+            self.players = (self.player2, self.player1)
+            # board is shown transposed: coordinate = (y,x)
+
+    def get_num_of_corners(self, player):
         """
         A function that returns the number of cornors of a specific disk
-        :param disk: the disk
+        :param player: the player we are interested to know how many corners he has
         :return: the number of corners if the color of the disk
         """
+        disk = player.get_disk()
         nub_of_corners = 0
         if self.board[0][0] == disk:
             nub_of_corners += 1
@@ -323,7 +342,13 @@ class Game:
             nub_of_corners += 1
         return nub_of_corners
 
-    def get_num_of_sides(self, disk):
+    def get_num_of_sides(self, player):
+        """
+        A function that find how many places on the side of the board the inputed player has
+        :param player: the player we are intersted to know how many places on the sides of the board he has
+        :return: the number of places on the side of the board the player mentioned has
+        """
+        disk = player.get_disk()
         num_of_sides = 0
         for spot in self.board[0]:
             if spot == disk:
@@ -340,11 +365,23 @@ class Game:
         num_of_sides -= self.get_num_of_corners(disk)
         return num_of_sides
 
-    def get_num_of_options_for_other(self, disk):
+    def get_num_of_options_for_other(self, player):
+        """
+        A function that find how many options the other player has
+        :param player: the player that we want to know about his opponent
+        :return: the number of options the opponent of the player we inputted has
+        """
+        disk = player.get_disk()
         num = len(self.get_legal_moves(-disk))
         return num
 
-    def is_winner_score(self, disk):
+    def is_winner_score(self, player):
+        """
+        A function that determines wheter the player won and by how much
+        :param player: the player we are interested to know if he won
+        :return: a number that is proportional to the number of disks he has if he wins and that is proportional to the nube rof disks that the opponent has if he loses.
+        """
+        disk = player.get_disk()
         try:
             if disk == self.get_winner_disk():
                 return self.get_color_disk_num(disk)
@@ -352,5 +389,3 @@ class Game:
                 return -1 * self.get_opponent_disk_num(disk)
         except:
             return 0
-
-

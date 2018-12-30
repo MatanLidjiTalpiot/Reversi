@@ -16,31 +16,36 @@ class Player:
         RANDOM = 4
         FOUR_BY_FOUR = 5
         TABLE = 6
-
     NUM_OF_PLAYERS = 0
     ALL_PLAYERS = []
-    ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()),
-                     lambda game, player: game.get_opponent_disk_num(player.get_disk())]
-    DEPTH = 4  # 4 is arbitrary
+    ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()), lambda game, player: game.get_opponent_disk_num(player.get_disk())]
+    DEPTH = 4  #E 4 is arbitrary
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
-    def __init__(self, heuristic=None, name=NUM_OF_PLAYERS, disk=None,
-                 type=PlayerTypes.MINIMAX):
-        if type not in [Player.PlayerTypes.HUMAN, Player.PlayerTypes.NBOARD,
-                        Player.PlayerTypes.MINIMAX, Player.PlayerTypes.RANDOM, Player.PlayerTypes.TABLE]:
-            raise ValueError(type, " is not a valid type")
-        if type == Player.PlayerTypes.MINIMAX:
+    def __init__(self, heuristic=None, name = None, disk=None, p_type=PlayerTypes.MINIMAX):
+        if name is None:
+            name = Player.NUM_OF_PLAYERS #credit for benny
+        if p_type not in [Player.PlayerTypes.HUMAN, Player.PlayerTypes.NBOARD, Player.PlayerTypes.MINIMAX, Player.PlayerTypes.RANDOM, Player.PlayerTypes.TABLE]:
+            raise ValueError(p_type, " is not a valid p_type")
+
+        if p_type == Player.PlayerTypes.MINIMAX:
             self.type = Player.PlayerTypes.MINIMAX
+
             if heuristic is None:
-                heuristic = [[1, lambda game, disk: game.get_color_disk_num(self.disk)],
-                             [-1, lambda game, disk: game.get_opponent_disk_num(-1 * self.disk)]]
-        self.type = type
+                heuristic = [[1, lambda game, disk: game.get_color_disk_num(self.disk)], [-1, lambda game, disk: game.get_opponent_disk_num(-1 * self.disk)]]  # default heuristic
+
+        self.type = p_type
         self.heuristic = heuristic
         self.disk = disk
-        self.name = name
+        print("name",(name))#todo remove line
+
+        print("num of players "+ str(Player.NUM_OF_PLAYERS))#todo remove line
+        self.name = str(name)
+
         if self.type == Player.PlayerTypes.MINIMAX and self not in Player.ALL_PLAYERS:
             Player.NUM_OF_PLAYERS += 1
             Player.ALL_PLAYERS.append(self)
+
         else:
             pass  # todo think if to do something
 
@@ -66,7 +71,8 @@ class Player:
         else:
             raise ValueError("check your mother fucking code!")
 
-    def players_list_to_winning_dict(self, players_list):
+    @staticmethod
+    def players_list_to_winning_dict(players_list):
         """
         A method that gets a list of  players and returns a a dictionary of the players and how
         much wins each player had.
@@ -75,23 +81,27 @@ class Player:
         :param players_list: the list of players to play one against each other
         :return: the dictionary as explained above
         """
-        game = Game.Game()
         players_dict = {}
         for player in players_list:
             players_dict[player] = 0
         for m in range(len(players_list)):
             main_player = players_list[m]
             for i in range(m + 1, len(players_list)):
-                player = players_list[i]
+                curr_player = players_list[i]
+                if m == 0 and i == 1:
+                    game = Game.Game(main_player, curr_player)
+                else:
+                    game.reset_game(main_player, curr_player)
+
                 # run a game twice: each time a different player starts
-                players_dict[game.play_game(main_player, player)] += 1
-                game.reset_game()
-                players_dict[game.play_game(player, main_player)] += 1
-                game.reset_game()
+                players_dict[game.play_game] += 1
+                game.reset_game(curr_player, main_player)
+                players_dict[game.play_game] += 1
 
         return players_dict
 
-    def compare_players_list(self, players_list):
+    @staticmethod
+    def compare_players_list(players_list):
         """
         A function that gets a list of players and returns the list sorted by the most victorious
         player to the least
@@ -135,7 +145,7 @@ class Player:
         coordinate[1] = int(coordinate[1])
         coordinate = tuple(coordinate)  # todo: better input
         if len(coordinate) != 2 or coordinate[0] not in not_invalid_coordinates or \
-                coordinate[1] not in not_invalid_coordinates:
+                        coordinate[1] not in not_invalid_coordinates:
             raise ValueError("not a valid coordinate")
         temp_game = copy.deepcopy(game)
         try:
@@ -169,27 +179,36 @@ class Player:
             return [None, None]
 
     def choose_move(self, game):
-        try:
-            if self.type == Player.PlayerTypes.MINIMAX:
-                return Minimax.alpha_beta(game, Player.DEPTH, self.get_heuristic(), True,
-                                          self.get_disk())
-            elif self.type == Player.PlayerTypes.HUMAN:
-                return self.human_move(game)
-            elif self.type == Player.PlayerTypes.NBOARD:
-                pass  # todo add choose move for Nboard player
-            elif self.type == Player.PlayerTypes.RANDOM:
-                return self.random_move(game)
-            elif self.type == Player.PlayerTypes.FOUR_BY_FOUR:
-                return self.four_by_four_move(game)
-            elif self.type == Player.PlayerTypes.TABLE:
-                raise ValueError("not supposed to do a move")
-        except Exception as e:
-            print("do again")
-            print(str(e))
-            return self.choose_move(game)
+        #try:
+        if self.type == Player.PlayerTypes.MINIMAX:
+            return Minimax.alpha_beta(game, Player.DEPTH, self, True,
+                                      self.get_disk())
+        elif self.type == Player.PlayerTypes.HUMAN:
+            return self.human_move(game)
+        elif self.type == Player.PlayerTypes.NBOARD:
+            pass  # todo add choose move for Nboard player
+        elif self.type == Player.PlayerTypes.RANDOM:
+            return self.random_move(game)
+        elif self.type == Player.PlayerTypes.FOUR_BY_FOUR:
+            return self.four_by_four_move(game)
+        elif self.type == Player.PlayerTypes.TABLE:
+            raise ValueError("not supposed to do a move")
+        # except Exception as e:
+        #     print("do again")
+        #     print(str(e))
+        #     return self.choose_move(game)
 
 
-Player.compare_two_players = staticmethod(Player.compare_two_players)
-Player.compare_players_list = staticmethod(Player.compare_players_list)
-Player.players_list_to_winning_dict = staticmethod(Player.players_list_to_winning_dict)
+# Player.compare_two_players = staticmethod(Player.compare_two_players)
+# Player.compare_players_list = staticmethod(Player.compare_players_list)
 # Player.human_move = staticmethod(Player.human_move)
+h1 = [[2, (lambda game, player: game.get_color_disk_num(player))]]
+h2 = [[3, (lambda game, player: game.get_color_disk_num(player))]]
+p1 = Player(heuristic=h1)
+p2 = Player(heuristic=h2)
+game = Game.Game(p1, p2)
+print(game.board)
+print (Minimax.get_score(game, p1))
+game.do_move(p1.get_disk(), p1.choose_move(game)[1])
+print(game.board)
+print(Minimax.get_score(game, p2))

@@ -24,7 +24,7 @@ def algorithm(ai, curr_board):  # fix!!!!!!!!!!!!!
     :param curr_board: the board on which the ai finds the move
     :return: to_put_down, to_flip, next board
     """
-    table_player = Player.Player(type=Player.Player.PlayerTypes.TABLE,
+    table_player = Player.Player(p_type=Player.Player.PlayerTypes.TABLE,
                                  name="table", disk=-1 * ai.get_disk())
     our_move = BoardInformation.where_to_put(board=curr_board, our_player=ai,
                                              other_player=table_player)
@@ -109,7 +109,7 @@ if __name__ == '__main__':
             take_disk()  # take disk for the next move
             #
             last_board = curr_board  # board for next move
-    human_player = Player.Player(type=Player.Player.PlayerTypes.HUMAN,
+    human_player = Player.Player(p_type=Player.Player.PlayerTypes.HUMAN,
                                  name="human", disk=Game.SECOND_COLOR)
     winner = go_to_gui(curr_board, first_player=ai,
                        second_player=human_player)  # first player is the ai because the human player did the last move
