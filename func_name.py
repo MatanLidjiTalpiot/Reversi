@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import math
+import time
 #variables
 #circles
 r = 8 #min radius
@@ -72,8 +73,9 @@ def get_color(x,y,img):
         return -1
 
 def initialCamera():
-    return cv2.VideoCapture(0)
-
+    camera = cv2.VideoCapture(0)
+    time.sleep(0.5)
+    return camera
 
 def get_y_line_formula(dot1, dot2):
     def g(x):
@@ -294,6 +296,7 @@ def take_color_pic():
 
 if __name__ == '__main__':
     cam = initialCamera()
+    time.sleep(0.5)
     print('hi')
     key = "enter"
     while True:
