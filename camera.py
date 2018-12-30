@@ -2,9 +2,9 @@ import time
 import timeit
 import numpy as np
 import func_name as func
+from MyCamera import MyCamera
 
 # initilize  the process
-
 global avarages_constant
 avarages_constant = 10
 
@@ -21,6 +21,7 @@ def return_board():
                        [0, 0, 0, 0, 0, 0, 0, 0]])
 
     # run avarages_constant times picture analasys
+    cam = MyCamera.get_camera()
     for i in range(avarages_constant):
         img = func.take_pic()
         colored_pic = func.take_color_pic()
@@ -46,7 +47,6 @@ def return_board():
 
 
 #
-func.cam = func.initialCamera()
 
 if __name__ == '__main__':
     while True:

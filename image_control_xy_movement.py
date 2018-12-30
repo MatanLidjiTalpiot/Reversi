@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import time
 import math
+from MyCamera import MyCamera
 
 row0 = [(128, 80), (166, 80), (204, 80), (242, 80), (280, 80), (317, 80),
         (356, 80), (391, 80)]
@@ -24,8 +25,7 @@ grey_threshold = 5
 
 
 def takePicture(pic_name):
-    camera = cv2.VideoCapture(0)
-    rval, frame = camera.read()
+    rval, frame = MyCamera.get_camera().read()
     # cv2.imshow('yam_picture', frame)
     cv2.imwrite(pic_name, frame)
 
@@ -38,7 +38,7 @@ def save_green_mask(img, new_img_name):
     ## mask of green (36,25,25) ~ (86, 255,255)
     # mask = cv2.inRange(hsv, (36, 25, 25), (86, 255,255))
     mask = cv2.inRange(hsv, (
-    105 - range_green, 206 - range_green, 53 - range_green),
+        105 - range_green, 206 - range_green, 53 - range_green),
                        (70 + range_green, 255 + range_green,
                         255 + range_green))
 
@@ -101,7 +101,8 @@ def get_move_and_dist(square_num):
     x_diff = convert_pixel_to_centimeter(x_diff)  # in centimeters
     y_diff = convert_pixel_to_centimeter(y_diff)  # in centimeters
     dist = math.sqrt(x_diff ** 2 + y_diff ** 2)
-    return (x_diff, y_diff, dist)
+    return x_diff, y_diff, dist
 
 
-print(get_move_and_dist((6, 2)))
+if __name__ == '__main__':
+    takePicture('yoav')

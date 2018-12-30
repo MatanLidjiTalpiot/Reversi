@@ -8,6 +8,7 @@ import motor
 import HeuristicsSandbox
 import BoardInformation
 import Gui
+import func_name
 import numpy as np
 
 
