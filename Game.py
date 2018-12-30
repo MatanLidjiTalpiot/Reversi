@@ -31,7 +31,7 @@ class Game:
                 raise ValueError("both players have the same color")
             if player1.get_disk() != WHITE and player1.get_disk() != BLACK:
                 raise ValueError("not a valid color for "+ player1.name)
-            if player2.get_disk() != WHITE and player2.get_disk() != WHITE:
+            if player2.get_disk() != WHITE and player2.get_disk() != BLACK:
                 raise ValueError("not a valid color for " + player2.name)
         except Exception as e:
             print("problem with colors")
