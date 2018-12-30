@@ -42,8 +42,6 @@ def play_game(game, to_print=False):
     players = game.players
     p1 = players[0]
     p2 = players[1]
-    p1.set_disk(Game.FIRST_COLOR)
-    p2.set_disk(Game.SECOND_COLOR)
     if p1.get_disk() == p2.get_disk():
         raise ValueError("two players can't have the same color")
     turn = 0
