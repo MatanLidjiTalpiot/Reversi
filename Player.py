@@ -57,8 +57,8 @@ class Player:
         return self.name
 
     def compare_two_players(self, player1, player2):
-        game = Game.Game()
-        winning_player = game.play_game(player1, player2)
+        game = Game.Game(player1, player2)
+        winning_player = game.play_game()
         if player1 == winning_player:
             return POS_INT
         elif player2 == winning_player:
