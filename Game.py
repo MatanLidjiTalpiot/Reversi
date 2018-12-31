@@ -211,6 +211,7 @@ class Game:
         :return: the number of disks of the same color on the board
         :error: if the disk parameter is not a valid color
         """
+
         disk = player.get_disk()
         if disk == WHITE:
             return self.get_white_number()
@@ -220,6 +221,7 @@ class Game:
         else:
             raise ValueError("not a valid disk color")
 
+
     def get_opponent_disk_num(self, player):
         """
         A function that gets a disk color and returns the number of disks the opponents has on
@@ -227,11 +229,15 @@ class Game:
         :param player: the player that we are interested in
         :return: the number of the opponent disks on the board
         """
-        disk = player.get_disk()
-        if player is self.players[0]:
-            return self.get_color_disk_num(self.players[1])
+        disk = -player.get_disk()
+        if disk == WHITE:
+            return self.get_white_number()
+
+        elif disk == BLACK:
+            return self.get_black_number()
         else:
-            return self.get_color_disk_num(self.players[0])
+            raise ValueError("not a valid disk color")
+
 
     def get_winner_disk(self):
         """
@@ -351,11 +357,18 @@ class Game:
         :param player:
         :return:
         """
-        #todo commenting
-        if player is self.players[0]:
-            return self.get_num_of_corners(self.players[1])
-        else:
-            return self.get_num_of_corners(self.players[0])
+        # todo commenting
+        disk = -player.get_disk()
+        num_of_corners = 0
+        if self.board[0][0] == disk:
+            num_of_corners += 1
+        if self.board[0][self.size - 1] == disk:
+            num_of_corners += 1
+        if self.board[self.size - 1][self.size - 1] == disk:
+            num_of_corners += 1
+        if self.board[self.size - 1][0] == disk:
+            num_of_corners += 1
+        return num_of_corners
 
     def get_num_of_sides(self, player):
         """
@@ -378,6 +391,7 @@ class Game:
             if spot[self.size - 1] == disk:
                 num_of_sides += 1
         num_of_sides -= self.get_num_of_corners(player)
+
         return num_of_sides
 
     def get_opponent_num_of_sides(self, player):
@@ -386,11 +400,24 @@ class Game:
         :param player:
         :return:
         """
-        #TODO commenting
-        if player is self.players[0]:
-            return self.get_num_of_sides(self.players[1])
-        else:
-            return self.get_num_of_sides(self.players[0])
+        # TODO commenting
+
+        disk = -player.get_disk()
+        num_of_sides = 0
+        for spot in self.board[0]:
+            if spot == disk:
+                num_of_sides += 1
+        for spot in self.board:
+            if spot[0] == disk:
+                num_of_sides += 1
+        for spot in self.board[self.size - 1]:
+            if spot == disk:
+                num_of_sides += 1
+        for spot in self.board:
+            if spot[self.size - 1] == disk:
+                num_of_sides += 1
+        num_of_sides -= self.get_num_of_corners(player)
+        return num_of_sides
 
     def get_num_of_options_for_other(self, player):
         """
@@ -409,6 +436,7 @@ class Game:
         :return: a number that is proportional to the number of disks he has if he wins and that is proportional to the nube rof disks that the opponent has if he loses.
         """
         disk = player.get_disk()
+
         try:
             if disk == self.get_winner_disk():
                 return self.get_color_disk_num(disk)
@@ -416,3 +444,5 @@ class Game:
                 return -1 * self.get_opponent_disk_num(disk)
         except:
             return 0
+
+
