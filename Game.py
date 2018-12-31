@@ -228,7 +228,10 @@ class Game:
         :return: the number of the opponent disks on the board
         """
         disk = player.get_disk()
-        return self.get_color_disk_num(-disk)
+        if player is self.players[0]:
+            return self.get_color_disk_num(self.players[1])
+        else:
+            return self.get_color_disk_num(self.players[0])
 
     def get_winner_disk(self):
         """
@@ -331,16 +334,28 @@ class Game:
         :return: the number of corners if the color of the disk
         """
         disk = player.get_disk()
-        nub_of_corners = 0
+        num_of_corners = 0
         if self.board[0][0] == disk:
-            nub_of_corners += 1
+            num_of_corners += 1
         if self.board[0][self.size - 1] == disk:
-            nub_of_corners += 1
+            num_of_corners += 1
         if self.board[self.size - 1][self.size - 1] == disk:
-            nub_of_corners += 1
+            num_of_corners += 1
         if self.board[self.size - 1][0] == disk:
-            nub_of_corners += 1
-        return nub_of_corners
+            num_of_corners += 1
+        return num_of_corners
+
+    def get_opponent_num_of_corners(self, player):
+        """
+
+        :param player:
+        :return:
+        """
+        #todo commenting
+        if player is self.players[0]:
+            return self.get_num_of_corners(self.players[1])
+        else:
+            return self.get_num_of_corners(self.players[0])
 
     def get_num_of_sides(self, player):
         """
@@ -362,8 +377,20 @@ class Game:
         for spot in self.board:
             if spot[self.size - 1] == disk:
                 num_of_sides += 1
-        num_of_sides -= self.get_num_of_corners(disk)
+        num_of_sides -= self.get_num_of_corners(player)
         return num_of_sides
+
+    def get_opponent_num_of_sides(self, player):
+        """
+
+        :param player:
+        :return:
+        """
+        #TODO commenting
+        if player is self.players[0]:
+            return self.get_num_of_sides(self.players[1])
+        else:
+            return self.get_num_of_sides(self.players[0])
 
     def get_num_of_options_for_other(self, player):
         """

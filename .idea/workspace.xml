@@ -4,8 +4,7 @@
     <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game.py" afterPath="$PROJECT_DIR$/Game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.py" afterPath="$PROJECT_DIR$/Main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Minimax.py" afterPath="$PROJECT_DIR$/Minimax.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HeuristicsSandbox.py" afterPath="$PROJECT_DIR$/HeuristicsSandbox.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Player.py" afterPath="$PROJECT_DIR$/Player.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,10 +19,10 @@
       <file leaf-file-name="Game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+            <state relative-caret-position="159">
+              <caret line="389" column="20" lean-forward="false" selection-start-line="389" selection-start-column="20" selection-end-line="389" selection-end-column="20" />
               <folding>
-                <element signature="e#10784#11197#0" expanded="false" />
+                <element signature="e#10910#11323#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -32,20 +31,20 @@
       <file leaf-file-name="Minimax.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Minimax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="104" column="31" lean-forward="false" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+            <state relative-caret-position="139">
+              <caret line="103" column="55" lean-forward="false" selection-start-line="103" selection-start-column="55" selection-end-line="103" selection-end-column="55" />
               <folding>
-                <marker date="1546200182745" expanded="true" signature="0:7" ph="import ..." />
+                <marker date="1546218233600" expanded="true" signature="0:7" ph="import ..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Player.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="213" column="34" lean-forward="false" selection-start-line="213" selection-start-column="34" selection-end-line="213" selection-end-column="34" />
+            <state relative-caret-position="159">
+              <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -53,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeuristicsSandbox.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="HeuristicsSandbox.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="246">
+              <caret line="66" column="102" lean-forward="false" selection-start-line="66" selection-start-column="102" selection-end-line="66" selection-end-column="102" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -68,11 +67,9 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
+            <state relative-caret-position="371">
               <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,11 +77,9 @@
       <file leaf-file-name="camera.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/camera.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="408">
               <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-              <folding>
-                <marker date="1546194226562" expanded="true" signature="0:7" ph="import ..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,8 +87,8 @@
       <file leaf-file-name="Gui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="43" column="19" lean-forward="false" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+            <state relative-caret-position="1485">
+              <caret line="188" column="48" lean-forward="false" selection-start-line="188" selection-start-column="48" selection-end-line="188" selection-end-column="48" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#3167#4297#0" expanded="false" />
@@ -142,8 +137,14 @@
       <find>NUM_</find>
       <find>NUM</find>
       <find>Player</find>
-      <find>get_score</find>
       <find>todo</find>
+      <find>get_num</find>
+      <find>get_disk</find>
+      <find>corners</find>
+      <find>get_score</find>
+      <find>print</find>
+      <find>p_type</find>
+      <find>fuck</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,19 +160,20 @@
       <list>
         <option value="$PROJECT_DIR$/Genetic.py" />
         <option value="$PROJECT_DIR$/Sandbox.py" />
-        <option value="$PROJECT_DIR$/Gui.py" />
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/camera.py" />
-        <option value="$PROJECT_DIR$/Game.py" />
         <option value="$PROJECT_DIR$/Minimax.py" />
         <option value="$PROJECT_DIR$/Player.py" />
+        <option value="$PROJECT_DIR$/Game.py" />
+        <option value="$PROJECT_DIR$/Gui.py" />
+        <option value="$PROJECT_DIR$/HeuristicsSandbox.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="440" />
-    <option name="height" value="1027" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -359,8 +361,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Player">
-    <configuration name="BoardInformation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.HeuristicsSandbox">
+    <configuration name="HeuristicsSandbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -372,24 +374,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Algorithm" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BoardInformation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="FourByFour" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Algorithm" />
-      <option name="SCRIPT_NAME" value="C:\Users\t8574794\Documents\שנה ב'\פרוייקטון\Algorithm\BoardInformation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HeuristicsSandbox.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -407,6 +392,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Algorithm" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="Minimax" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Algorithm" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Minimax.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -447,18 +449,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Sandbox" />
-      <item index="1" class="java.lang.String" itemvalue="Python.FourByFour" />
-      <item index="2" class="java.lang.String" itemvalue="Python.BoardInformation" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Main" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Player" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Main" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Player" />
+      <item index="3" class="java.lang.String" itemvalue="Python.HeuristicsSandbox" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Minimax" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Player" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Sandbox" />
-        <item index="3" class="java.lang.String" itemvalue="Python.BoardInformation" />
-        <item index="4" class="java.lang.String" itemvalue="Python.FourByFour" />
+        <item index="0" class="java.lang.String" itemvalue="Python.HeuristicsSandbox" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Player" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Minimax" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Main" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Sandbox" />
       </list>
     </recent_temporary>
   </component>
@@ -574,7 +576,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546194407996</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="now the heuristics are more generic - call them only with lambda: game, player">
+      <created>1546200340114</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1546200340114</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -587,20 +596,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0886144" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18333334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61335015" sideWeight="0.5065502" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11633109" sideWeight="0.49570355" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299748" sideWeight="0.46561137" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45591938" sideWeight="0.49555555" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49105147" sideWeight="0.49344978" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36045197" sideWeight="0.49344978" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871535" sideWeight="0.49555555" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32662192" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32316384" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -648,38 +656,19 @@
     <MESSAGE value="added the go to gui when the board has disks out of 4b4" />
     <MESSAGE value="fixed compare two players bug" />
     <MESSAGE value="deleted unnececery stuff from game" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted unnececery stuff from game" />
+    <MESSAGE value="now the heuristics are more generic - call them only with lambda: game, player" />
+    <option name="LAST_COMMIT_MESSAGE" value="now the heuristics are more generic - call them only with lambda: game, player" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Game.py</url>
-          <line>30</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Minimax.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Minimax.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Minimax.py</url>
-          <line>3</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Player.py</url>
-          <line>210</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/Gui.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="16" />
+      <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -848,37 +837,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="43" column="19" lean-forward="false" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#3167#4297#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding>
-            <marker date="1546194226562" expanded="true" signature="0:7" ph="import ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -890,42 +849,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
+    <entry file="file://$PROJECT_DIR$/camera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="408">
+          <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Minimax.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="104" column="31" lean-forward="false" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+        <state relative-caret-position="139">
+          <caret line="103" column="55" lean-forward="false" selection-start-line="103" selection-start-column="55" selection-end-line="103" selection-end-column="55" />
           <folding>
-            <marker date="1546200182745" expanded="true" signature="0:7" ph="import ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="e#10784#11197#0" expanded="false" />
+            <marker date="1546218233600" expanded="true" signature="0:7" ph="import ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Player.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="213" column="34" lean-forward="false" selection-start-line="213" selection-start-column="34" selection-end-line="213" selection-end-column="34" />
+        <state relative-caret-position="159">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="389" column="20" lean-forward="false" selection-start-line="389" selection-start-column="20" selection-end-line="389" selection-end-column="20" />
+          <folding>
+            <element signature="e#10910#11323#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="188" column="48" lean-forward="false" selection-start-line="188" selection-start-column="48" selection-end-line="188" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#3167#4297#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="66" column="102" lean-forward="false" selection-start-line="66" selection-start-column="102" selection-end-line="66" selection-end-column="102" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

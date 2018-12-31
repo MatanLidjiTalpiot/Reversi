@@ -16,15 +16,16 @@ class Player:
         RANDOM = 4
         FOUR_BY_FOUR = 5
         TABLE = 6
+
     NUM_OF_PLAYERS = 0
     ALL_PLAYERS = []
     ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()), lambda game, player: game.get_opponent_disk_num(player.get_disk())]
-    DEPTH = 4  #E 4 is arbitrary
+    DEPTH = 4  # 4 is arbitrary
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
-    def __init__(self, heuristic=None, name = None, disk=None, p_type=PlayerTypes.MINIMAX):
+    def __init__(self, heuristic=None, name=None, disk=None, p_type=PlayerTypes.MINIMAX):
         if name is None:
-            name = Player.NUM_OF_PLAYERS #credit for benny
+            name = Player.NUM_OF_PLAYERS  # credit for benny
         if p_type not in [Player.PlayerTypes.HUMAN, Player.PlayerTypes.NBOARD, Player.PlayerTypes.MINIMAX, Player.PlayerTypes.RANDOM, Player.PlayerTypes.TABLE]:
             raise ValueError(p_type, " is not a valid p_type")
 
@@ -32,14 +33,11 @@ class Player:
             self.type = Player.PlayerTypes.MINIMAX
 
             if heuristic is None:
-                heuristic = [[1, lambda game, disk: game.get_color_disk_num(self.disk)], [-1, lambda game, disk: game.get_opponent_disk_num(-1 * self.disk)]]  # default heuristic
+                raise ValueError("no heuristic was inputted")
 
         self.type = p_type
         self.heuristic = heuristic
         self.disk = disk
-        print("name",(name))#todo remove line
-
-        print("num of players "+ str(Player.NUM_OF_PLAYERS))#todo remove line
         self.name = str(name)
 
         if self.type == Player.PlayerTypes.MINIMAX and self not in Player.ALL_PLAYERS:
@@ -179,36 +177,26 @@ class Player:
             return [None, None]
 
     def choose_move(self, game):
-        #try:
-        if self.type == Player.PlayerTypes.MINIMAX:
-            return Minimax.alpha_beta(game, Player.DEPTH, self, True,
-                                      self.get_disk())
-        elif self.type == Player.PlayerTypes.HUMAN:
-            return self.human_move(game)
-        elif self.type == Player.PlayerTypes.NBOARD:
-            pass  # todo add choose move for Nboard player
-        elif self.type == Player.PlayerTypes.RANDOM:
-            return self.random_move(game)
-        elif self.type == Player.PlayerTypes.FOUR_BY_FOUR:
-            return self.four_by_four_move(game)
-        elif self.type == Player.PlayerTypes.TABLE:
-            raise ValueError("not supposed to do a move")
+        # try:
+            if self.type == Player.PlayerTypes.MINIMAX:
+                return Minimax.alpha_beta(game, Player.DEPTH, self, True,
+                                          self.get_disk())
+            elif self.type == Player.PlayerTypes.HUMAN:
+                return self.human_move(game)
+            elif self.type == Player.PlayerTypes.NBOARD:
+                pass  # todo add choose move for Nboard player
+            elif self.type == Player.PlayerTypes.RANDOM:
+                return self.random_move(game)
+            elif self.type == Player.PlayerTypes.FOUR_BY_FOUR:
+                return self.four_by_four_move(game)
+            elif self.type == Player.PlayerTypes.TABLE:
+                raise ValueError("not supposed to do a move")
         # except Exception as e:
         #     print("do again")
         #     print(str(e))
         #     return self.choose_move(game)
 
 
-# Player.compare_two_players = staticmethod(Player.compare_two_players)
-# Player.compare_players_list = staticmethod(Player.compare_players_list)
+Player.compare_two_players = staticmethod(Player.compare_two_players)
+Player.compare_players_list = staticmethod(Player.compare_players_list)
 # Player.human_move = staticmethod(Player.human_move)
-h1 = [[2, (lambda game, player: game.get_color_disk_num(player))]]
-h2 = [[3, (lambda game, player: game.get_color_disk_num(player))]]
-p1 = Player(heuristic=h1)
-p2 = Player(heuristic=h2)
-game = Game.Game(p1, p2)
-print(game.board)
-print (Minimax.get_score(game, p1))
-game.do_move(p1.get_disk(), p1.choose_move(game)[1])
-print(game.board)
-print(Minimax.get_score(game, p2))
