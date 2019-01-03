@@ -57,11 +57,10 @@ palti_white_h = [
     [-200, lambda game: game.get_num_of_sides(1)],
     [-500, lambda game: game.get_num_of_options_for_other(-1)],
     [sys.maxsize / 128, lambda game: game.is_winner_score(-1)]]
-"""
+
 palti_black = Player.Player(heuristic=palti_black_h, disk=1, name="Computer")
 
 palti_white = Player.Player(heuristic=palti_white_h, disk=1, name="Computer")
 p1_white = Player.Player(disk=-1, name="h1 white", heuristic=h1_white)
 p1_black = Player.Player(disk=-1, name="h1 black", heuristic=h1_black)
 eisner = Player.Player(disk=-1, name="Eisner", type=Player.Player.PlayerTypes.HUMAN)
-"""
