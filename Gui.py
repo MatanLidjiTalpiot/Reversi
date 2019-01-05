@@ -185,7 +185,7 @@ def play_game(game, to_print=False):
                     screen.create_text((68 + 50 * x + 32 + 50 * (x + 1)) / 2, (68 + 50 * y + 32 +
                                         50 * (y + 1)) / 2, text=str(y) + "," + str(x))
 
-                    screen.update()  #todo if what to not show highlight comment
+                    screen.update()  #todo comment if i want to not show highlight comment
         op = players[turn % 2].choose_move(game)
         if op[1] == None:
             if players[(turn + 1) % 2].choose_move(game)[1] == None:

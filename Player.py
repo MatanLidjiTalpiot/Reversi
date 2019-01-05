@@ -141,7 +141,7 @@ class Player:
         coordinate = coordinate.split(" ")
         coordinate[0] = int(coordinate[0])
         coordinate[1] = int(coordinate[1])
-        coordinate = tuple(coordinate)  # todo: better input
+        coordinate = tuple(coordinate)
         if len(coordinate) != 2 or coordinate[0] not in not_invalid_coordinates or \
                         coordinate[1] not in not_invalid_coordinates:
             raise ValueError("not a valid coordinate")
@@ -177,7 +177,7 @@ class Player:
             return [None, None]
 
     def choose_move(self, game):
-        # try:
+         try:
             if self.type == Player.PlayerTypes.MINIMAX:
                 return Minimax.alpha_beta(game, Player.DEPTH, self, True,
                                           self.get_disk())
@@ -191,12 +191,12 @@ class Player:
                 return self.four_by_four_move(game)
             elif self.type == Player.PlayerTypes.TABLE:
                 raise ValueError("not supposed to do a move")
-        # except Exception as e:
-        #     print("do again")
-        #     print(str(e))
-        #     return self.choose_move(game)
+         except Exception as e:
+             print("do again")
+             print(str(e))
+             return self.choose_move(game)
 
 
 Player.compare_two_players = staticmethod(Player.compare_two_players)
 Player.compare_players_list = staticmethod(Player.compare_players_list)
-# Player.human_move = staticmethod(Player.human_move)
+

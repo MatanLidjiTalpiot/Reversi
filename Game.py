@@ -221,7 +221,6 @@ class Game:
         else:
             raise ValueError("not a valid disk color")
 
-
     def get_opponent_disk_num(self, player):
         """
         A function that gets a disk color and returns the number of disks the opponents has on
@@ -237,7 +236,6 @@ class Game:
             return self.get_black_number()
         else:
             raise ValueError("not a valid disk color")
-
 
     def get_winner_disk(self):
         """
@@ -335,7 +333,7 @@ class Game:
 
     def get_num_of_corners(self, player):
         """
-        A function that returns the number of cornors of a specific disk
+        A function that returns the number of corners of a specific disk
         :param player: the player we are interested to know how many corners he has
         :return: the number of corners if the color of the disk
         """
@@ -354,10 +352,9 @@ class Game:
     def get_opponent_num_of_corners(self, player):
         """
 
-        :param player:
-        :return:
+        :param player: the player we are interested in getting his opponents number of concurred corners
+        :return: the number of corners the players opponent holds
         """
-        # todo commenting
         disk = -player.get_disk()
         num_of_corners = 0
         if self.board[0][0] == disk:
@@ -373,7 +370,7 @@ class Game:
     def get_num_of_sides(self, player):
         """
         A function that find how many places on the side of the board the inputed player has
-        :param player: the player we are intersted to know how many places on the sides of the board he has
+        :param player: the player we are interested to know how many places on the sides of the board he has
         :return: the number of places on the side of the board the player mentioned has
         """
         disk = player.get_disk()
@@ -397,11 +394,9 @@ class Game:
     def get_opponent_num_of_sides(self, player):
         """
 
-        :param player:
-        :return:
+        :param player: the player we are interested in getting his opponents number of disks on the side of the board
+        :return: the player we are intersted to know about his opponent
         """
-        # TODO commenting
-
         disk = -player.get_disk()
         num_of_sides = 0
         for spot in self.board[0]:
@@ -444,5 +439,3 @@ class Game:
                 return -1 * self.get_opponent_disk_num(disk)
         except:
             return 0
-
-

@@ -23,7 +23,7 @@ def evolve_q_time(players_list, n, q):
     while len(players_list) < n:
         for i in range(len(players_list)):
             player = players_list[i]
-            for p in evolve(player, (5 - (i * 4) / len(players_list))):  # 5 - (i * 4) is arbitrary
+            for p in evolve(player, (5 - (i * 4) / len(players_list))):  # todo 5 - (i * 4) is arbitrary
                 players_list.append(p)
 
     players_list = Player.compare_players_list(players_list)
@@ -46,7 +46,7 @@ def evolve(player, n):
     for i in range(n):
         h = heuristic  # todo deepcopy
         for feature in h:
-            add_noise(feature, 0.3)  # 0.3 is arbitrary
+            add_noise(feature, 0.3)  #todo 0.3 is arbitrary
         player = Player.Player(h)
         players_list.append(player)
     return players_list
