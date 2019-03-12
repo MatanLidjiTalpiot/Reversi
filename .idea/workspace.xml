@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Genetic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Gui.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sandbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minimax.py" beforeDir="false" afterPath="$PROJECT_DIR$/Minimax.py" afterDir="false" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Player.py" afterPath="$PROJECT_DIR$/Player.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Genetic.py" afterPath="$PROJECT_DIR$/Genetic.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HeuristicsSandbox.py" afterPath="$PROJECT_DIR$/HeuristicsSandbox.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game.py" afterPath="$PROJECT_DIR$/Game.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,14 +16,64 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="Game.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="244" column="72" lean-forward="true" selection-start-line="244" selection-start-column="72" selection-end-line="244" selection-end-column="72" />
+            <state relative-caret-position="-3165">
+              <caret line="301" column="74" lean-forward="false" selection-start-line="301" selection-start-column="74" selection-end-line="301" selection-end-column="74" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#1890#2035#0" expanded="false" />
+                <element signature="e#2086#2895#0" expanded="false" />
+                <element signature="e#2947#2976#0" expanded="false" />
+                <element signature="e#3015#3090#0" expanded="false" />
+                <element signature="e#3141#3938#0" expanded="false" />
+                <element signature="e#4620#4721#0" expanded="false" />
+                <element signature="e#4761#4880#0" expanded="false" />
+                <element signature="e#4920#5027#0" expanded="false" />
+                <element signature="e#5068#5190#0" expanded="false" />
+                <element signature="e#5236#5417#0" expanded="false" />
+                <element signature="e#5461#5694#0" expanded="false" />
+                <element signature="e#5739#5905#0" expanded="false" />
+                <element signature="e#5948#6096#0" expanded="false" />
+                <element signature="e#6143#6438#0" expanded="false" />
+                <element signature="e#6483#6518#0" expanded="false" />
+                <element signature="e#6557#6608#0" expanded="false" />
+                <element signature="e#6650#6840#0" expanded="false" />
+                <element signature="e#6882#7072#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Genetic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Genetic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="84" column="7" lean-forward="true" selection-start-line="84" selection-start-column="7" selection-end-line="84" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Player.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="187" column="41" lean-forward="false" selection-start-line="187" selection-start-column="41" selection-end-line="187" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#2524#2540#0" expanded="false" />
+                <element signature="e#2579#2600#0" expanded="false" />
+                <element signature="e#2634#2650#0" expanded="false" />
+                <element signature="e#2684#2700#0" expanded="false" />
+                <element signature="e#3153#4280#0" expanded="false" />
+                <element signature="e#4323#4492#0" expanded="false" />
+                <element signature="e#4541#4996#0" expanded="false" />
+                <element signature="e#5040#5923#0" expanded="false" />
+                <element signature="e#6003#6394#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -33,8 +82,67 @@
       <file leaf-file-name="Minimax.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Minimax.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="9" />
+            <state relative-caret-position="2325">
+              <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HeuristicsSandbox.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="93" column="46" lean-forward="false" selection-start-line="93" selection-start-column="46" selection-end-line="93" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#4067#5210#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PickleTry.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PickleTry.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gui.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="193" column="24" lean-forward="false" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#3167#4297#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoardInformation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BoardInformation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,45 +158,81 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>num_of_turns</find>
-      <find>get_legal_moves</find>
-      <find>print(</find>
-      <find>self.board[</find>
-      <find>do_move</find>
-      <find>to_fli</find>
+      <find>7</find>
+      <find>8</find>
+      <find>9</find>
+      <find>line p</find>
+      <find>p_type</find>
+      <find>get_</find>
+      <find>get_opponent_num_of_sides</find>
+      <find>corners</find>
+      <find>get_op</find>
+      <find>opponent</find>
+      <find>r_val</find>
       <find>todo</find>
-      <find>compare_players_list</find>
-      <find>drori</find>
-      <find>none</find>
+      <find>save</find>
+      <find>name</find>
+      <find>problem</find>
+      <find>color</find>
+      <find>initializing</find>
+      <find>is black</find>
+      <find>2, 4</find>
+      <find>rese</find>
+      <find>Gui</find>
+      <find>load</find>
+      <find>sort</find>
+      <find>time</find>
+      <find>compare_player</find>
+      <find>compare_pl</find>
+      <find>play_game</find>
+      <find>+=</find>
+      <find>compare</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Algorithem" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Genetic.py" />
         <option value="$PROJECT_DIR$/Sandbox.py" />
-        <option value="$PROJECT_DIR$/Player.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/camera.py" />
         <option value="$PROJECT_DIR$/Minimax.py" />
+        <option value="$PROJECT_DIR$/Gui.py" />
+        <option value="$PROJECT_DIR$/PickleTry.py" />
+        <option value="$PROJECT_DIR$/Genetic.py" />
+        <option value="$PROJECT_DIR$/HeuristicsSandbox.py" />
+        <option value="$PROJECT_DIR$/Player.py" />
         <option value="$PROJECT_DIR$/Game.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1270" />
-    <option name="width" value="1302" />
-    <option name="height" value="1372" />
+    <option name="x" value="940" />
+    <option name="y" value="-1116" />
+    <option name="width" value="433" />
+    <option name="height" value="458" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -96,14 +240,25 @@
         <subPane>
           <expand>
             <path>
-              <item name="Reversi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reversi" type="462c0819:PsiDirectoryNode" />
+              <item name="Algorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Algorithm" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Algorithm" type="cbb8eebc:String" user="Algorithm" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -121,9 +276,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Sandbox">
-    <configuration name="Game" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Algorithm" />
+  <component name="RunManager" selected="Python.HeuristicsSandbox">
+    <configuration name="BoardInformation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -134,14 +288,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Game.py" />
+      <module name="Algorithm" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BoardInformation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Genetic" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Algorithm" />
+    <configuration name="HeuristicsSandbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -152,14 +305,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Genetic.py" />
+      <module name="Algorithm" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HeuristicsSandbox.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="Minimax" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Algorithm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -170,14 +322,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Algorithm" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Minimax.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Sandbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Algorithm" />
+    <configuration name="PickleTry" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -188,27 +339,48 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Sandbox.py" />
+      <module name="Algorithm" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PickleTry.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list>
-      <item itemvalue="Python.Game" />
-      <item itemvalue="Python.Minimax" />
-      <item itemvalue="Python.Genetic" />
-      <item itemvalue="Python.Sandbox" />
+    <configuration name="Player" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Algorithm" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Player.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.Player" />
+      <item index="1" class="java.lang.String" itemvalue="Python.HeuristicsSandbox" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Minimax" />
+      <item index="3" class="java.lang.String" itemvalue="Python.BoardInformation" />
+      <item index="4" class="java.lang.String" itemvalue="Python.PickleTry" />
     </list>
     <recent_temporary>
-      <list>
-        <item itemvalue="Python.Sandbox" />
-        <item itemvalue="Python.Genetic" />
-        <item itemvalue="Python.Game" />
-        <item itemvalue="Python.Minimax" />
-        <item itemvalue="Python.Game" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.HeuristicsSandbox" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Player" />
+        <item index="2" class="java.lang.String" itemvalue="Python.PickleTry" />
+        <item index="3" class="java.lang.String" itemvalue="Python.BoardInformation" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Minimax" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -291,7 +463,56 @@
       <option name="project" value="LOCAL" />
       <updated>1544658147010</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added the go to gui when the board has disks out of 4b4">
+      <created>1546175680751</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1546175680751</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added the go to gui when the board has disks out of 4b4">
+      <created>1546181241159</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1546181241159</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fixed compare two players bug">
+      <created>1546194310152</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1546194310152</updated>
+    </task>
+    <task id="LOCAL-00014" summary="deleted unnececery stuff from game">
+      <created>1546194407996</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1546194407996</updated>
+    </task>
+    <task id="LOCAL-00015" summary="now the heuristics are more generic - call them only with lambda: game, player">
+      <created>1546200340114</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1546200340114</updated>
+    </task>
+    <task id="LOCAL-00016" summary="working without bugs - now checking if preforming like without the generic changes">
+      <created>1546219869628</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1546219869628</updated>
+    </task>
+    <task id="LOCAL-00017" summary="commented">
+      <created>1546729184854</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1546729184854</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -304,27 +525,49 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="-1091" width="1942" height="1062" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12569611" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.21505377" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502439" side_tool="true" visible="true" weight="0.34767026" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297491" />
-      <window_info anchor="bottom" id="Python Console" order="8" weight="0.3297491" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49756098" weight="0.35934663" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297491" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297491" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12486428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06755127" sideWeight="0.5086862" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.46561137" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45476478" sideWeight="0.49555555" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06755127" sideWeight="0.4913138" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810616" sideWeight="0.49555555" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3220748" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11633109" sideWeight="0.49570355" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61335015" sideWeight="0.5065502" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.46561137" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45476478" sideWeight="0.49555555" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2907117" sideWeight="0.49344978" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810616" sideWeight="0.49555555" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12486428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11633109" sideWeight="0.49570355" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3220748" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -339,31 +582,42 @@
     <MESSAGE value="Minimax is now working properly" />
     <MESSAGE value="Added alpha-beta" />
     <MESSAGE value="Added time-measuring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added time-measuring" />
+    <MESSAGE value="added the go to gui when the board has disks out of 4b4" />
+    <MESSAGE value="fixed compare two players bug" />
+    <MESSAGE value="deleted unnececery stuff from game" />
+    <MESSAGE value="now the heuristics are more generic - call them only with lambda: game, player" />
+    <MESSAGE value="working without bugs - now checking if preforming like without the generic changes" />
+    <MESSAGE value="fixed merging conflicts" />
+    <MESSAGE value="commented" />
+    <MESSAGE value="saving files after evolution" />
+    <MESSAGE value="can do evolution and save players sorted.&#10;takes a lot of time&#10;fixed the bug when it is tied" />
+    <option name="LAST_COMMIT_MESSAGE" value="can do evolution and save players sorted.&#10;takes a lot of time&#10;fixed the bug when it is tied" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Game.py</url>
+          <url>file://$PROJECT_DIR$/Player.py</url>
+          <line>231</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="30" />
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="coordinate" />
+        <watch expression="options" />
+        <watch expression="op" />
+        <watch expression="line[0]" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Minimax.py" />
-    <entry file="file://$PROJECT_DIR$/Genetic.py" />
-    <entry file="file://$PROJECT_DIR$/Gui.py" />
-    <entry file="file://$PROJECT_DIR$/Player.py" />
-    <entry file="file://$PROJECT_DIR$/Sandbox.py" />
-    <entry file="file://$PROJECT_DIR$/Minimax.py" />
-    <entry file="file://$PROJECT_DIR$/Player.py" />
-    <entry file="file://$PROJECT_DIR$/Genetic.py" />
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3638">
-          <caret line="214" column="13" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
+          <caret line="214" column="13" lean-forward="false" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -371,7 +625,7 @@
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3621">
-          <caret line="214" column="13" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
+          <caret line="214" column="13" lean-forward="false" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -379,7 +633,7 @@
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3638">
-          <caret line="214" column="13" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
+          <caret line="214" column="13" lean-forward="false" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -387,7 +641,7 @@
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
-          <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -395,7 +649,7 @@
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
-          <caret line="66" column="25" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -403,7 +657,7 @@
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3332">
-          <caret line="196" column="14" selection-start-line="196" selection-start-column="14" selection-end-line="196" selection-end-column="14" />
+          <caret line="196" column="14" lean-forward="false" selection-start-line="196" selection-start-column="14" selection-end-line="196" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -420,17 +674,217 @@
     <entry file="file://$PROJECT_DIR$/Genetic.py" />
     <entry file="file://$PROJECT_DIR$/Minimax.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="244" column="72" lean-forward="true" selection-start-line="244" selection-start-column="72" selection-end-line="244" selection-end-column="72" />
+          <caret line="244" column="72" lean-forward="false" selection-start-line="244" selection-start-column="72" selection-end-line="244" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minimax.py" />
+    <entry file="file://$PROJECT_DIR$/Genetic.py" />
+    <entry file="file://$PROJECT_DIR$/Gui.py" />
+    <entry file="file://$PROJECT_DIR$/Player.py" />
+    <entry file="file://$PROJECT_DIR$/Sandbox.py" />
+    <entry file="file://$PROJECT_DIR$/Minimax.py" />
+    <entry file="file://$PROJECT_DIR$/Player.py" />
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3638">
+          <caret line="214" column="13" lean-forward="false" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minimax.py" />
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3621">
+          <caret line="214" column="13" lean-forward="false" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minimax.py" />
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3638">
+          <caret line="214" column="13" lean-forward="false" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minimax.py" />
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minimax.py" />
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="25" selection-end-line="66" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minimax.py" />
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3332">
+          <caret line="196" column="14" lean-forward="false" selection-start-line="196" selection-start-column="14" selection-end-line="196" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="2002" column="8" lean-forward="false" selection-start-line="2002" selection-start-column="8" selection-end-line="2002" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sandbox.py" />
+    <entry file="file://$PROJECT_DIR$/camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="28" column="50" lean-forward="false" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BoardInformation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PickleTry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="199" column="0" lean-forward="true" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="40" column="46" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="193" column="24" lean-forward="false" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#3167#4297#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Minimax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2325">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Genetic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="84" column="7" lean-forward="true" selection-start-line="84" selection-start-column="7" selection-end-line="84" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="187" column="41" lean-forward="false" selection-start-line="187" selection-start-column="41" selection-end-line="187" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#2524#2540#0" expanded="false" />
+            <element signature="e#2579#2600#0" expanded="false" />
+            <element signature="e#2634#2650#0" expanded="false" />
+            <element signature="e#2684#2700#0" expanded="false" />
+            <element signature="e#3153#4280#0" expanded="false" />
+            <element signature="e#4323#4492#0" expanded="false" />
+            <element signature="e#4541#4996#0" expanded="false" />
+            <element signature="e#5040#5923#0" expanded="false" />
+            <element signature="e#6003#6394#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="93" column="46" lean-forward="false" selection-start-line="93" selection-start-column="46" selection-end-line="93" selection-end-column="46" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#4067#5210#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3165">
+          <caret line="301" column="74" lean-forward="false" selection-start-line="301" selection-start-column="74" selection-end-line="301" selection-end-column="74" />
+          <folding>
+            <element signature="e#1890#2035#0" expanded="false" />
+            <element signature="e#2086#2895#0" expanded="false" />
+            <element signature="e#2947#2976#0" expanded="false" />
+            <element signature="e#3015#3090#0" expanded="false" />
+            <element signature="e#3141#3938#0" expanded="false" />
+            <element signature="e#4620#4721#0" expanded="false" />
+            <element signature="e#4761#4880#0" expanded="false" />
+            <element signature="e#4920#5027#0" expanded="false" />
+            <element signature="e#5068#5190#0" expanded="false" />
+            <element signature="e#5236#5417#0" expanded="false" />
+            <element signature="e#5461#5694#0" expanded="false" />
+            <element signature="e#5739#5905#0" expanded="false" />
+            <element signature="e#5948#6096#0" expanded="false" />
+            <element signature="e#6143#6438#0" expanded="false" />
+            <element signature="e#6483#6518#0" expanded="false" />
+            <element signature="e#6557#6608#0" expanded="false" />
+            <element signature="e#6650#6840#0" expanded="false" />
+            <element signature="e#6882#7072#0" expanded="false" />
           </folding>
         </state>
       </provider>

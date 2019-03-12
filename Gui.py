@@ -26,7 +26,7 @@ def drawGridBackground(outline=False):
     screen.update()
 
 
-def play_game(game, p1, p2, to_print=False):
+def play_game(game, to_print=False):
     """
     A function that plays a game between two heuristics
     :param p1: player number 1 (the first to play)
@@ -39,9 +39,9 @@ def play_game(game, p1, p2, to_print=False):
     screen.pack()
 
 
-    players = (p1, p2)
-    p1.set_disk(Game.FIRST_COLOR)
-    p2.set_disk(Game.SECOND_COLOR)
+    players = game.players
+    p1 = players[0]
+    p2 = players[1]
     if p1.get_disk() == p2.get_disk():
         raise ValueError("two players can't have the same color")
     turn = 0
@@ -185,7 +185,7 @@ def play_game(game, p1, p2, to_print=False):
                     screen.create_text((68 + 50 * x + 32 + 50 * (x + 1)) / 2, (68 + 50 * y + 32 +
                                         50 * (y + 1)) / 2, text=str(y) + "," + str(x))
 
-                    screen.update()  #todo if what to not show highlight comment
+                    screen.update()  #todo comment if i want to not show highlight comment
         op = players[turn % 2].choose_move(game)
         if op[1] == None:
             if players[(turn + 1) % 2].choose_move(game)[1] == None:
