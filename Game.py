@@ -70,9 +70,12 @@ class Game:
         if self.size <= coordinate[0] or self.size <= coordinate[1]:
             raise ValueError("Illegal move! coordinate exceeds board")
         if self.board[coordinate] != 0:
+            print(coordinate)
+            input()
             raise ValueError("Illegal move! coordinate already occupied")
         to_flip = self.to_flip(disk, coordinate)
         if len(to_flip) == 0:
+            print(coordinate)
             raise ValueError("Illegal move! nothing to flip")
 
         self.put_disk(disk, coordinate)
@@ -444,3 +447,9 @@ class Game:
                 return -1 * self.get_opponent_disk_num(disk)
         except:
             return 0
+
+    def __hash__(self):
+        hash_val = hash(tuple(map(tuple,self.board)))
+        return hash_val
+
+

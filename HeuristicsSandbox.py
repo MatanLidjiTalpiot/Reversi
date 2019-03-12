@@ -5,6 +5,7 @@ import Gui
 import Player
 import Game
 import time
+import Minimax
 h1_black = [[1, lambda game: game.get_black_number()],
             [-1, lambda game: game.get_white_number()],
             [100, lambda game: game.get_num_of_corners(1)],
@@ -82,16 +83,17 @@ diff_h = [[10, (lambda game, player: (game.get_color_disk_num(player) * palti_A 
            [-500, lambda game, player: game.get_num_of_options_for_other(player) -  game.get_num_of_options_for_other_with_disk(-1)],
            [sys.maxsize / 128, lambda game, player: game.is_winner_score(player) - game.is_winner_score_with_disk(-1)]] #remove heuristic after debugging
 
-# palti = Player.Player.load_player('pklFiles/palti_player.pkl')
+palti = Player.Player.load_player('pklFiles/palti_player.pkl')
+p = Player.Player.load_player('pklFiles/palti_player.pkl')
+game = Game.Game(palti, p)
+t1 = time.time()
+winner = Gui.play_game(game, to_print = False)
+t2 = time.time()
+print(t2-t1)
+print("entry num is: ", Minimax.ENTRY_NUM )
+print("non entry num is: ", Minimax.NON_ENTRY_NUM)
+
 # evolution = Genetic.evolve(palti, 3)
 # evolved_by_order = Player.Player.compare_players_list(evolution)
 # Player.Player.save_sorted_list_to_folder(evolved_by_order, "evolve1")
-all_players = []
-random_players = []
-for i in range(10):
-    random_players.append(Genetic.create_player_with_heuristic())
-for player in random_players:
-    all_players.extend(Genetic.evolve(player,1))
-s_list = Player.Player.compare_players_list(all_players)
-Player.Player.save_sorted_list_to_folder(s_list, '12_3_2019')
 
