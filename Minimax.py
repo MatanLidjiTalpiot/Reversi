@@ -1,6 +1,6 @@
 import copy
-
-
+import Game
+SCORE_MEMO = {}
 def get_score(game, player):
     """
     A method that gives a score to a certin state of the board
@@ -9,10 +9,15 @@ def get_score(game, player):
     :param game: the game
     :return: the score of the state of the board according to the heuristic
     """
-    sum = 0
-    for feature in player.get_heuristic():
-        sum += feature[0] * feature[1](game, player)
-    return sum
+    global SCORE_MEMO
+    if game.__hash__() not in SCORE_MEMO:
+        sum = 0
+        for feature in player.get_heuristic():
+            sum += feature[0] * feature[1](game, player)
+        SCORE_MEMO[game.__hash__()] = sum
+        return sum
+    else:
+        return SCORE_MEMO[game.__hash__()]
 
 
 def minimax(game, depth, player, maximizing_player, disk):
@@ -77,7 +82,8 @@ def minimax_in(game, depth, initial_depth, player, maximizing_player, disk, chos
                 val = m
         return val
 
-
+WHITE_OPTIONS = {}
+BLACK_OPTIONS = {}
 def alpha_beta_in(game, depth, initial_depth, player, a, b, maximizing_player, disk, chosen_op):
     """
     :param game: the current game
@@ -91,7 +97,25 @@ def alpha_beta_in(game, depth, initial_depth, player, a, b, maximizing_player, d
     :param chosen_op: the first operation in the decision tree
     :return: a tuple (score, op)
     """
-    options = game.get_legal_moves(disk)
+    global WHITE_OPTIONS, BLACK_OPTIONS
+    key = tuple(map(tuple, game.board))
+    if disk == Game.WHITE:
+        if key not in WHITE_OPTIONS:
+            options = game.get_legal_moves(disk)
+            WHITE_OPTIONS[key] = options
+        else:
+            options = WHITE_OPTIONS[key]
+    else:
+        if key not in BLACK_OPTIONS:
+            options = game.get_legal_moves(disk)
+            BLACK_OPTIONS[key] = options
+        else:
+            options = BLACK_OPTIONS[key]
+    if options != game.get_legal_moves(disk):
+        print("options: ", options)
+        print("Get legal moves: ", game.get_legal_moves(disk))
+
+    # options = game.get_legal_moves(disk)
     if depth == 0 or game.is_board_full() or options == []:  # todo options == [] is a patch -
         # todo think if we need to do something smarter
         return get_score(game, player), chosen_op

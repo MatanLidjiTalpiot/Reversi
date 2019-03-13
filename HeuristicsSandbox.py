@@ -4,8 +4,10 @@ import Genetic
 import Gui
 import Player
 import Game
+import Move_Helper
 import time
 import Minimax
+import copy
 h1_black = [[1, lambda game: game.get_black_number()],
             [-1, lambda game: game.get_white_number()],
             [100, lambda game: game.get_num_of_corners(1)],
@@ -83,17 +85,32 @@ diff_h = [[10, (lambda game, player: (game.get_color_disk_num(player) * palti_A 
            [-500, lambda game, player: game.get_num_of_options_for_other(player) -  game.get_num_of_options_for_other_with_disk(-1)],
            [sys.maxsize / 128, lambda game, player: game.is_winner_score(player) - game.is_winner_score_with_disk(-1)]] #remove heuristic after debugging
 
-palti = Player.Player.load_player('pklFiles/palti_player.pkl')
-p = Player.Player.load_player('pklFiles/palti_player.pkl')
-game = Game.Game(palti, p)
-t1 = time.time()
-winner = Gui.play_game(game, to_print = False)
-t2 = time.time()
-print(t2-t1)
-print("entry num is: ", Minimax.ENTRY_NUM )
-print("non entry num is: ", Minimax.NON_ENTRY_NUM)
 
-# evolution = Genetic.evolve(palti, 3)
-# evolved_by_order = Player.Player.compare_players_list(evolution)
-# Player.Player.save_sorted_list_to_folder(evolved_by_order, "evolve1")
+def learn_more_with_random(n):
+    Move_Helper.Move_Helper.update()
+    game = Game.Game(random1, random2)
+    while game.move_helper.size() < n:
+        print(game.move_helper.size())
+        Gui.play_game(game, to_print=False)
+        game.move_helper.save_move_helper()
+        game.reset_game(random2, random1)
+    print(game.move_helper.size())
 
+
+random1 = Player.Player.load_player('pklFiles/random_player.pkl')
+random2 = Player.Player.load_player('pklFiles/random_player.pkl')
+palti2 = Player.Player.load_player('pklFiles/palti_player_d2.pkl')
+palti2_other = Player.Player.load_player('pklFiles/palti_player_d2.pkl')
+benny = Player.Player.load_player('pklFiles/human_player.pkl')
+game1 = Game.Game(random1, random2, use_helper=False)
+game2 = Game.Game(palti2, random2, use_helper=True)
+# print(game.move_helper.size())
+# t1 = time.time()
+# game1.play_game()
+# t2 = time.time()
+Gui.play_game(game2)
+# t3 = time.time()
+
+print("time without: ", t2-t1)
+print("time with: ", t3-t2)
+# print(game.move_helper.size())

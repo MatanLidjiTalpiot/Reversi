@@ -33,7 +33,7 @@ class Player:
                     lambda game, player: game.get_opponent_num_of_sides(player),
                     lambda game, player: game.get_num_of_options_for_other(player),
                     lambda game, player: game.is_winner_score(player)]
-    DEPTH = 4  # 4 is arbitrary
+    DEPTH = 2  # 4 is arbitrary
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
     def __init__(self, heuristic=None, name=None, disk=None, p_type=PlayerTypes.MINIMAX):

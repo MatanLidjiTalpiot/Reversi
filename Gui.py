@@ -34,9 +34,9 @@ def play_game(game, to_print=False):
     :return: the winning player and the grades of each heuristic in the game
     """
     outline = False
-    root = Tk()
-    screen = Canvas(root, width=500, height=600, background="#222", highlightthickness=0)
-    screen.pack()
+    # root = Tk()
+    # screen = Canvas(root, width=500, height=600, background="#222", highlightthickness=0)
+    # screen.pack()
 
 
     players = game.players
@@ -306,8 +306,7 @@ def play_game(game, to_print=False):
                            text="The game is done!")
         return players[1]
     else:
-        raise ValueError("something went wrong! check your code!")
-
+        return players[0] #tie
 
     # if not self.won:
     #     # Draw the scoreboard and update the screen

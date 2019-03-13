@@ -1,5 +1,6 @@
 import numpy as np
-
+import dill
+import copy
 DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
 BLACK = 1
 WHITE = -1
@@ -10,7 +11,8 @@ SECOND_COLOR = BLACK
 # WHITE = -BLACK
 
 class Game:
-    def __init__(self, player1, player2, size=8):
+
+    def __init__(self, player1, player2, size=8, use_helper = False):
         self.size = size
         # empty cell: 0
         # AI (black): 1
@@ -24,6 +26,9 @@ class Game:
         self.number_of_turns_attempted = 0
         player1.set_disk(FIRST_COLOR) #todo if works good! else remove
         player2.set_disk(SECOND_COLOR) #todo if works good! else remove
+
+        self.move_helper = Game.load_move_helper()
+        self.use_move_helper = use_helper
 
         try:
             if player1.get_disk() == player2.get_disk():
@@ -57,6 +62,23 @@ class Game:
         """
         self.board = board
 
+    def calculate_move(self, disk, coordinate):
+        """
+        assumptions: we assume that the disk and the coordinate are legal
+        a function that calculates a move
+        :param disk: the color of the disk that we place in this move
+        :param coordinate: the coordinate that we place the disk in
+        :return: the board after the placement of the disk
+        """
+        game = copy.deepcopy(self)
+        to_flip = game.to_flip(disk, coordinate)
+        if len(to_flip) == 0:
+            print(coordinate)
+            raise ValueError("Illegal move! nothing to flip")
+        game.put_disk(disk, coordinate)
+        game.flip(to_flip)
+        return game.board
+
     def do_move(self, disk, coordinate):
         """
         A function that does a move
@@ -70,17 +92,21 @@ class Game:
         if self.size <= coordinate[0] or self.size <= coordinate[1]:
             raise ValueError("Illegal move! coordinate exceeds board")
         if self.board[coordinate] != 0:
-            print(coordinate)
-            input()
             raise ValueError("Illegal move! coordinate already occupied")
-        to_flip = self.to_flip(disk, coordinate)
-        if len(to_flip) == 0:
-            print(coordinate)
-            raise ValueError("Illegal move! nothing to flip")
 
-        self.put_disk(disk, coordinate)
-        self.flip(to_flip)
-        self.num_of_turns += 1
+
+        if self.use_move_helper:
+            state = self.move_helper.get_state(self, coordinate, disk)
+            if  state == []:
+                board_after_move = self.calculate_move(disk, coordinate)
+                self.move_helper.get_new_move(self, coordinate, disk, board_after_move)
+                self.board = board_after_move
+                self.num_of_turns += 1
+            else:
+                self.board = state
+                self.num_of_turns += 1
+        else:
+             self.board = self.calculate_move(disk, coordinate)
 
     def put_disk(self, disk, coordinate):
         self.board[coordinate] = disk
@@ -448,8 +474,7 @@ class Game:
         except:
             return 0
 
-    def __hash__(self):
-        hash_val = hash(tuple(map(tuple,self.board)))
-        return hash_val
-
-
+    @staticmethod
+    def load_move_helper():
+        with open('move_helper/Move_Helper.pkl', 'rb') as input:
+            return dill.load(input)
