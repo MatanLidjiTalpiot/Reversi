@@ -4,16 +4,21 @@ import numpy as np
 import sys
 import copy
 import Game
+
 palti_n = np.log(10) / np.log(1.5)  # a somewhat arbitrary constant
 palti_A = 1 / (40 ** palti_n)  # a somewhat arbitrary constant
-ALL_FUNCTIONS =[lambda game, player: game.get_color_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n), #pos
-                lambda game, player: -(game.get_opponent_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n)),#neg
-                lambda game, player: game.get_num_of_corners(player), #pos
-                lambda game, player: -game.get_opponent_num_of_corners(player), #neg
-                lambda game, player: game.get_num_of_sides(player), #pos
-                lambda game, player: -game.get_opponent_num_of_sides(player), #neg
-                lambda game, player: -game.get_num_of_options_for_other(player), #neg
-                lambda game, player: game.is_winner_score(player)] #pos
+ALL_FUNCTIONS = [
+    lambda game, player: game.get_color_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n),
+    # pos
+    lambda game, player: -(
+            game.get_opponent_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n)),
+    # neg
+    lambda game, player: game.get_num_of_corners(player),  # pos
+    lambda game, player: -game.get_opponent_num_of_corners(player),  # neg
+    lambda game, player: game.get_num_of_sides(player),  # pos
+    lambda game, player: -game.get_opponent_num_of_sides(player),  # neg
+    lambda game, player: -game.get_num_of_options_for_other(player),  # neg
+    lambda game, player: game.is_winner_score(player)]  # pos
 
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 
@@ -59,7 +64,7 @@ def evolve(player, n):
     for i in range(n):
         h = copy.deepcopy(heuristic)
         for feature in h:
-            add_noise(feature, 0.3)  #todo 0.3 is arbitrary
+            add_noise(feature, 0.3)  # todo 0.3 is arbitrary
         p = Player.Player(h)
         players_list.append(p)
     players_list.append(player)
@@ -77,53 +82,87 @@ def add_noise(feature, max_noise):
     noise = max_noise * lim * rand
     feature[0] += noise  # todo make sure that feature is a list and not a tuple, worst case return
 
+
 def create_player_with_heuristic():
     """
     a function that creates a player with a random heuristic
     :return: a player with a random heuristic
     """
     heuristic = []
-    for i in range (NUM_OF_PARAMS):
-        weight = randrange(0, sys.maxsize, 1)/128
+    for i in range(NUM_OF_PARAMS):
+        weight = randrange(0, sys.maxsize, 1) / 128
         tup = [weight, ALL_FUNCTIONS[i]]
         heuristic.append(tup)
-    player = Player.Player(heuristic = heuristic, name= str(Player.Player.number_of_saved_players() + 1), p_type = Player.Player.PlayerTypes.MINIMAX)
+    player = Player.Player(heuristic=heuristic, name=str(Player.Player.number_of_saved_players() + 1),
+                           p_type=Player.Player.PlayerTypes.MINIMAX)
     return player
 
-def selection(players_list, precentage, n):
+
+def selection(players_list, scores_list):
     """
     The idea of selection phase is to select the fittest individuals and let them pass their genes to the next generation.
     Two pairs of individuals (parents) are selected based on their fitness scores. Individuals with high fitness have more
     chance to be selected for reproduction.
     in short - takes a list of players and decide which players pass their genes
     :param players_list: a list of players
+    :param scores_list: the scores of the players in players_list (same order)
     :return: a list of players that are chosen to create the new generation
     """
-    pass
+    s = sum(scores_list)
+    new_gen = []
+    for i in range(len(players_list)):
+        score_sum = 0
+        parent1_score = s * random()
+        parent2_score = s * random()
+        parent1 = 0
+        parent2 = 0
+        for j in range(len(players_list)):
+            score_sum += scores_list[i]
+            if score_sum < parent1_score <= score_sum + scores_list[i]:
+                parent1 = j
+            if score_sum < parent2_score <= score_sum + scores_list[i]:
+                parent2 = j
+        new_gen[i] = crossover(players_list[parent1], players_list[parent2], scores_list[parent1], scores_list[parent2])
+    return new_gen
 
 
-def crossover(p1, p2):
+def crossover(player1, player2, score1, score2):
     """
     Crossover is the most significant phase in a genetic algorithm.
     For each pair of parents to be mated, a crossover point is chosen at random from within the genes.
     in short - creating the new generation from two parents
-    :param p1: player 1
-    :param p2: player 2
+    :param player1: player 1
+    :param player2: player 2
+    :param score1: score of player 1
+    :param score2: score of player 2
     :return: a new player that is the "child" of the two players
     """
-    pass
+    heuristic = player1.heuristic
+    for i in range(len(heuristic)):
+        heuristic[i][0] *= score1 / (score1 + score2)
+        heuristic[i][0] += score2 / (score1 + score2) * player2.heuristic[i][0]
+    return Player.Player(heuristic=heuristic)  # todo: change name and disk
 
-def mutation(p):
+
+def mutation(player, prob):
     """
     In certain new offspring formed, some of their genes can be subjected to a mutation with a low random probability.
     This implies that some of the bits in the bit string can be flipped.
     in short - creating a mutation from a player
-    :param p: a player to mutate from
+    :param player: a player to mutate from
+    :param prob: the probability to mutate
     :return: a mutated player
     """
+    e = random()
+    if e > prob:
+        return player
+    heuristic = player.heuristic
+    feature = randint(0, len(heuristic))  # the feature to mutate
+    heuristic[feature][0] *= 2 * random()  # mutation ratio
+    return Player.Player(heuristic=heuristic, name=player.name, disk=player.disk)  # todo: change name and disk
 
 
-def fitness_level(p,n):
+def fitness_level(p, n):
     """
     a basic function which determies the fitness level of the player
     :param p: the player we need to determine what it's fitness level
@@ -134,14 +173,14 @@ def fitness_level(p,n):
     game1 = Game.Game(p, random)
     game2 = Game.Game(random, p)
     for i in range(n):
-        if(game1.play_game() == p):
+        if (game1.play_game() == p):
             num_wins += 1
         else:
             num_wins -= 1
-        if(game2.play_game() == p):
+        if (game2.play_game() == p):
             num_wins += 1
         else:
-            num_wins -=1
+            num_wins -= 1
     return num_wins
 
 
@@ -154,4 +193,4 @@ def termination(p, precentage, n):
         :param p: the player to decide if to "kill" or not
         :return: True we kill him, False otherwise .
         """
-    return ((fitness_level(p,n)/n) <= precentage)
+    return ((fitness_level(p, n) / n) <= precentage)

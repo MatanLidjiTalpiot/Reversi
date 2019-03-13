@@ -27,7 +27,8 @@ class Game:
         player1.set_disk(FIRST_COLOR) #todo if works good! else remove
         player2.set_disk(SECOND_COLOR) #todo if works good! else remove
 
-        self.move_helper = Game.load_move_helper()
+        if use_helper:
+            self.move_helper = Game.load_move_helper()
         self.use_move_helper = use_helper
 
         try:

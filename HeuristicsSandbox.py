@@ -99,18 +99,16 @@ def learn_more_with_random(n):
 
 random1 = Player.Player.load_player('pklFiles/random_player.pkl')
 random2 = Player.Player.load_player('pklFiles/random_player.pkl')
-palti2 = Player.Player.load_player('pklFiles/palti_player_d2.pkl')
+palti2 = Player.Player.load_player('pklFiles/palti_player.pkl')
 palti2_other = Player.Player.load_player('pklFiles/palti_player_d2.pkl')
 benny = Player.Player.load_player('pklFiles/human_player.pkl')
-game1 = Game.Game(random1, random2, use_helper=False)
-game2 = Game.Game(palti2, random2, use_helper=True)
-# print(game.move_helper.size())
-# t1 = time.time()
-# game1.play_game()
-# t2 = time.time()
-Gui.play_game(game2)
-# t3 = time.time()
+
+bot = Player.Player(heuristic=palti_h, name = "palti_player_d2")
+# Player.Player.save_to_folder(bot)
+
+game1 = Game.Game(bot, random2, use_helper=False)
+t1 = time.time()
+game1.play_game()
+t2 = time.time()
 
 print("time without: ", t2-t1)
-print("time with: ", t3-t2)
-# print(game.move_helper.size())
