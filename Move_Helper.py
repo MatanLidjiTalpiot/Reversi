@@ -1,6 +1,7 @@
 import Game
 import dill
 import numpy as np
+import copy
 
 
 class Move_Helper:
@@ -52,6 +53,7 @@ class Move_Helper:
         filename = 'Move_Helper'
         with open('move_helper/' + filename+'.pkl', 'wb') as output:
             dill.dump(self, output, dill.HIGHEST_PROTOCOL)
+        output.close()
 
     def size(self):
         return len(self.bmdw) + len(self.bmdb)

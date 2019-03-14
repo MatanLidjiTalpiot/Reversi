@@ -175,16 +175,20 @@ def fitness_level(p, n):
     :param p: the player we need to determine what it's fitness level
     :return: a basic fitness level (a number)
     """
-    num_wins = 0
-    random = Player.Player.load_player('pklFiles/random_player.pkl')
-    game1 = Game.Game(p, random)
-    game2 = Game.Game(random, p)
-    for i in range(n):
-        if (game1.play_game() == p):
-            num_wins += 1
-        if (game2.play_game() == p):
-            num_wins += 1
-    return num_wins
+    # pass
+    # grade = 0
+    # random = Player.Player.load_player('pklFiles/random_player.pkl')
+    # game = Game.Game(p, random)
+    # for i in range(n):
+    #     game.final_board_in_game()
+    #     if (np.count_nonzero()game.final_board_in_game()):
+    #         grade +=
+    #     game.reset_game(random, p)
+    #     if (game.final_board_in_game() == p):
+    #         num_wins += 1
+    #     game.reset_game(p, random)
+    #
+    # return num_wins
 
 
 def termination(p, precentage, n):

@@ -238,7 +238,9 @@ class Game:
         if self.use_legal_moves_helper:
             state = Game.LEGAL_MOVES_HELPER.get_state(self, disk)
             if state == []:
-                Game.LEGAL_MOVES_HELPER.get_new_legal_moves(self, disk, self.calculate_legal_moves(disk))
+                calculate_legal_moves = self.calculate_legal_moves(disk)
+                Game.LEGAL_MOVES_HELPER.get_new_legal_moves(self, disk, calculate_legal_moves)
+                return calculate_legal_moves
             else:
                 return state
         else:
@@ -326,12 +328,12 @@ class Game:
     def get_current_player(self):
         return self.players[self.number_of_turns_attempted % 2]
 
-    def play_game(self, to_print=False):
+
+    def final_board_in_game(self, to_print = False):
         """
-        A function that plays the
-        :param p1: player number 1 (the first to play)
-        :param p2: player number 2 (the second to play)
-        :return: the winning player and the grades of each player in the game
+        a function that plays the game and returns the final board of the game
+        :param to_print: whether to print during the game
+        :return: the final board of the game
         """
         p1 = self.players[0]
         p2 = self.players[1]
@@ -352,13 +354,22 @@ class Game:
             if to_print:
                 print("player, ", self.players[self.number_of_turns_attempted % 2].name,
                       " played ", op[1])
-                #fprint(self.board)
             self.number_of_turns_attempted += 1
 
         """
         maybe add here somehow to get a value of winning and not just a winner - when the module is 
         more advanced! 
         """
+        return self.board
+
+    def play_game(self, to_print=False):
+        """
+        A function that plays the
+        :param p1: player number 1 (the first to play)
+        :param p2: player number 2 (the second to play)
+        :return: the winning player and the grades of each player in the game
+        """
+        self.board = self.final_board_in_game(to_print= to_print)
         if self.get_winner_disk() == self.players[0].get_disk():
             self.players[0].number_of_wins += 1
             return self.players[0]
@@ -425,7 +436,6 @@ class Game:
 
     def get_opponent_num_of_corners(self, player):
         """
-
         :param player: the player we are interested in getting his opponents number of concurred corners
         :return: the number of corners the players opponent holds
         """
@@ -517,12 +527,16 @@ class Game:
     @staticmethod
     def load_move_helper():
         with open('move_helper/Move_Helper.pkl', 'rb') as input:
-            return dill.load(input)
+            r_obj =  dill.load(input)
+            input.close()
+            return r_obj
 
     @staticmethod
     def load_legal_moves_helper():
-        with open('legal_move_helper/Legal_Move_Helper.pkl', 'rb') as input:
-            return dill.load(input)
+        with open('legal_moves_helper/Legal_Moves_Helper.pkl', 'rb') as input:
+            r_obj = dill.load(input)
+            input.close()
+            return r_obj
 
     @staticmethod
     def put_disk_on_board(disk, coordinate, board):

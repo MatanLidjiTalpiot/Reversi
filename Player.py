@@ -217,6 +217,7 @@ class Player:
         """
         with open(filename, 'rb') as input:
             player = dill.load(input)
+            input.close()
             player.number_of_wins = 0
         return player
 
@@ -230,9 +231,13 @@ class Player:
         """
 
         filename = player.get_name()
-
         with open(folder_name + '/' + filename + '.pkl', 'wb') as output:
             dill.dump(player, output, dill.HIGHEST_PROTOCOL)
+
+        with open(folder_name + '/' + filename + '_copy.pkl', 'wb') as output_copy:
+            output_copy = copy.deepcopy(output)
+            output.close()
+            output_copy.close()
         # except:
         #     os.mkdir(folder_name)
         #     with open(folder_name + '/' + filename + '.pkl', 'wb') as output:

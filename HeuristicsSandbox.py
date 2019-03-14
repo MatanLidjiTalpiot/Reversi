@@ -89,7 +89,8 @@ diff_h = [[10, (lambda game, player: (game.get_color_disk_num(player) * palti_A 
            [-500, lambda game, player: game.get_num_of_options_for_other(player) -  game.get_num_of_options_for_other_with_disk(-1)],
            [sys.maxsize / 128, lambda game, player: game.is_winner_score(player) - game.is_winner_score_with_disk(-1)]] #remove heuristic after debugging
 
-
+Legal_Moves_Helper.Legal_Moves_Helper.create_new("shit happened we need a new one")
+Move_Helper.Move_Helper.create_new("shit happened we need a new one")
 # random1 = Player.Player.load_player('pklFiles/random_player.pkl')
 random = Player.Player.load_player('pklFiles/random_player.pkl')
 palti_4 = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
@@ -99,12 +100,21 @@ game2 = Game.Game(palti_4, palti_4_two, use_move_helper=True)
 # with open('game_state', 'rb') as input:
 #     game = dill.load(input)
 t2 = time.time()
-
 Gui.play_game(game2)
 t3 = time.time()
 print("game is done:", t3-t2)
+game2.reset_game(palti_4_two,palti_4)
+t4 = time.time()
+Gui.play_game(game2)
+t5 = time.time()
+print("the second game is done: ", t5-t4)
+t6 = time.time()
+game2.reset_game(palti_4_two,palti_4)
+t7 = time.time()
+print("the third game is done: ", t7 - t6)
+
 # game2.MOVE_HELPER.save_move_helper()
-game2.LEGAL_MOVES_HEALPER.save_legal_moves_helper()
+# game2.LEGAL_MOVES_HELPER.save_legal_moves_helper()
 # print(t3-t2)
 
 
