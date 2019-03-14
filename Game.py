@@ -1,6 +1,5 @@
 import numpy as np
 import dill
-import copy
 DEPTH = 1  # for the meanwhile - the searching depth in the heuristic
 BLACK = 1
 WHITE = -1
@@ -12,7 +11,9 @@ SECOND_COLOR = BLACK
 
 class Game:
 
-    def __init__(self, player1, player2, size=8, use_helper = False):
+    global MOVE_HELPER, LEGAL_MOVES_HELPER
+
+    def __init__(self, player1, player2, size=8, use_move_helper = True, use_legal_moves_helper = True):
         self.size = size
         # empty cell: 0
         # AI (black): 1
@@ -27,10 +28,8 @@ class Game:
         player1.set_disk(FIRST_COLOR) #todo if works good! else remove
         player2.set_disk(SECOND_COLOR) #todo if works good! else remove
 
-        if use_helper:
-            self.move_helper = Game.load_move_helper()
-        self.use_move_helper = use_helper
-
+        self.use_move_helper = use_move_helper
+        self.use_legal_moves_helper = use_legal_moves_helper
         try:
             if player1.get_disk() == player2.get_disk():
                 raise ValueError("both players have the same color")
@@ -52,8 +51,19 @@ class Game:
             self.players = (self.player1, self.player2)
         else:
             self.players = (self.player2, self.player1)
+        # global MOVE_HELPER
+        if use_move_helper:
+            with open('move_helper/Move_Helper.pkl', 'rb') as input:
+                Game.MOVE_HELPER = dill.load(input)
+                # Game.MOVE_HELPER.update()
 
+        if use_legal_moves_helper:
+            with open('legal_moves_helper/Legal_Moves_Helper.pkl', 'rb') as input:
+                Game.LEGAL_MOVES_HELPER = dill.load(input)
+                Game.LEGAL_MOVES_HELPER.update()
             # board is shown transposed: coordinate = (y,x)
+
+
 
     def set_board(self, board):
         """
@@ -71,14 +81,14 @@ class Game:
         :param coordinate: the coordinate that we place the disk in
         :return: the board after the placement of the disk
         """
-        game = copy.deepcopy(self)
-        to_flip = game.to_flip(disk, coordinate)
+        board = np.copy(self.board)
+        to_flip = self.to_flip(disk, coordinate)
         if len(to_flip) == 0:
             print(coordinate)
             raise ValueError("Illegal move! nothing to flip")
-        game.put_disk(disk, coordinate)
-        game.flip(to_flip)
-        return game.board
+
+        Game.put_disk_on_board(disk, coordinate, board)
+        return Game.flip_on_board(to_flip, board)
 
     def do_move(self, disk, coordinate):
         """
@@ -97,10 +107,10 @@ class Game:
 
 
         if self.use_move_helper:
-            state = self.move_helper.get_state(self, coordinate, disk)
+            state = Game.MOVE_HELPER.get_state(self, coordinate, disk)
             if  state == []:
                 board_after_move = self.calculate_move(disk, coordinate)
-                self.move_helper.get_new_move(self, coordinate, disk, board_after_move)
+                Game.MOVE_HELPER.get_new_move(self, coordinate, disk, board_after_move)
                 self.board = board_after_move
                 self.num_of_turns += 1
             else:
@@ -112,9 +122,14 @@ class Game:
     def put_disk(self, disk, coordinate):
         self.board[coordinate] = disk
 
+
+
     def flip(self, to_flip):
         for square in to_flip:
             self.board[square] = -self.board[square]
+
+
+
 
     def to_flip(self, disk, coordinate):
         y, x = coordinate
@@ -131,7 +146,7 @@ class Game:
         to_flip = to_flip_up + to_flip_down + to_flip_left + to_flip_right + to_flip_left_up + to_flip_left_down + to_flip_right_up + to_flip_right_down
         return to_flip
 
-    def to_flip_in_line(self, disk, line):  # line is a nparray of tuples (y,x)
+    def to_flip_in_line(self, disk, line):  # line is a nparray of tuples (y,x) todo see if we can make this faster
         if len(line) == 0 or self.board[line[0]] != -disk:  # if line doesnt start with the opponent's disk
             return []
         ret = []
@@ -205,7 +220,9 @@ class Game:
             s_left_up += [(y, x)]
         return s_left_up
 
-    def get_legal_moves(self, disk):
+
+
+    def calculate_legal_moves(self, disk):
         legal_moves = []
         for row in range(self.size):
             for column in range(self.size):
@@ -213,6 +230,26 @@ class Game:
                 if self.board[square] == 0 and not self.to_flip(disk, square) == []:
                     legal_moves.append(square)
         return legal_moves
+
+
+
+
+    def get_legal_moves(self, disk):
+        if self.use_legal_moves_helper:
+            state = Game.LEGAL_MOVES_HELPER.get_state(self, disk)
+            if state == []:
+                Game.LEGAL_MOVES_HELPER.get_new_legal_moves(self, disk, self.calculate_legal_moves(disk))
+            else:
+                return state
+        else:
+            return self.calculate_legal_moves(disk)
+        # legal_moves = []
+        # for row in range(self.size):
+        #     for column in range(self.size):
+        #         square = (row, column)
+        #         if self.board[square] == 0 and not self.to_flip(disk, square) == []:
+        #             legal_moves.append(square)
+        # return legal_moves
 
     def get_number_of_turns(self):
         return np.count_nonzero(self.board)
@@ -330,6 +367,8 @@ class Game:
             return self.players[1]
         else:
             return self.players[0] #todo remember that this state is a tie
+
+
     def reset_game(self, player1, player2):
         # empty cell: 0
         # AI (black): 1
@@ -479,3 +518,19 @@ class Game:
     def load_move_helper():
         with open('move_helper/Move_Helper.pkl', 'rb') as input:
             return dill.load(input)
+
+    @staticmethod
+    def load_legal_moves_helper():
+        with open('legal_move_helper/Legal_Move_Helper.pkl', 'rb') as input:
+            return dill.load(input)
+
+    @staticmethod
+    def put_disk_on_board(disk, coordinate, board):
+        board[coordinate] = disk
+        return board
+
+    @staticmethod
+    def flip_on_board(to_flip, board):
+        for square in to_flip:
+            board[square] = -board[square]
+        return board

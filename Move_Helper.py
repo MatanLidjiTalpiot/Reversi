@@ -1,6 +1,8 @@
 import Game
 import dill
 import numpy as np
+
+
 class Move_Helper:
 
     def __init__(self):
@@ -54,14 +56,7 @@ class Move_Helper:
     def size(self):
         return len(self.bmdw) + len(self.bmdb)
 
-    @staticmethod
-    def update():
-        old = Game.Game.load_move_helper()
-        new = Move_Helper()
-        new.bmdb = old.bmdb
-        new.bmdw = old.bmdw
-        new.save_move_helper()
-        return new
+
 
     @staticmethod
     def create_new(password):
@@ -74,5 +69,11 @@ class Move_Helper:
         mh = Move_Helper()
         mh.save_move_helper()
 
-
-
+    @staticmethod
+    def update():
+        old = Game.Game.load_move_helper()
+        new = Move_Helper()
+        new.bmdb = old.bmdb
+        new.bmdw = old.bmdw
+        new.save_move_helper()
+        return new
