@@ -5,13 +5,13 @@ import sys
 import copy
 import Game
 
+
 palti_n = np.log(10) / np.log(1.5)  # a somewhat arbitrary constant
 palti_A = 1 / (40 ** palti_n)  # a somewhat arbitrary constant
 ALL_FUNCTIONS = [
     lambda game, player: game.get_color_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n),
     # pos
-    lambda game, player: -(
-            game.get_opponent_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n)),
+    lambda game, player: -(game.get_opponent_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n)),
     # neg
     lambda game, player: game.get_num_of_corners(player),  # pos
     lambda game, player: -game.get_opponent_num_of_corners(player),  # neg
@@ -108,25 +108,25 @@ def selection(players_list, scores_list):
     :param scores_list: the scores of the players in players_list (same order)
     :return: a list of players that are chosen to create the new generation
     """
-    s = sum(scores_list)
+    total_score = sum(scores_list)
     new_gen = []
     for i in range(len(players_list)):
         score_sum = 0
-        parent1_score = s * random()
-        parent2_score = s * random()
+        parent1_score = total_score * random()
+        parent2_score = total_score * random()
         parent1 = 0
         parent2 = 0
         for j in range(len(players_list)):
-            score_sum += scores_list[i]
             if score_sum < parent1_score <= score_sum + scores_list[i]:
                 parent1 = j
             if score_sum < parent2_score <= score_sum + scores_list[i]:
                 parent2 = j
+            score_sum += scores_list[i]
         new_gen[i] = crossover(players_list[parent1], players_list[parent2], scores_list[parent1], scores_list[parent2])
     return new_gen
 
 
-def crossover(player1, player2, score1, score2):
+def crossover(player1, player2, score1, score2, gen_number, folder_name):
     """
     Crossover is the most significant phase in a genetic algorithm.
     For each pair of parents to be mated, a crossover point is chosen at random from within the genes.
@@ -135,31 +135,38 @@ def crossover(player1, player2, score1, score2):
     :param player2: player 2
     :param score1: score of player 1
     :param score2: score of player 2
+    :param gen_number: the number of the generation that we are running
+    :param folder_name: the name of the folder to save the player
     :return: a new player that is the "child" of the two players
     """
     heuristic = player1.heuristic
+    h_other = player2.heuristic
     for i in range(len(heuristic)):
-        heuristic[i][0] *= score1 / (score1 + score2)
-        heuristic[i][0] += score2 / (score1 + score2) * player2.heuristic[i][0]
-    return Player.Player(heuristic=heuristic)  # todo: change name and disk
+        if random > 0.5:
+            heuristic[i][0] = h_other[i][0]
+    p = Player.Player(heuristic=heuristic)
+    Player.Player.save_to_folder(p,folder_name= folder_name+'/gen' + gen_number)
+    return p
 
-
-def mutation(player, prob):
+def mutation(player, prob, gen_number, folder_name):
     """
     In certain new offspring formed, some of their genes can be subjected to a mutation with a low random probability.
     This implies that some of the bits in the bit string can be flipped.
     in short - creating a mutation from a player
     :param player: a player to mutate from
     :param prob: the probability to mutate
+    :param gen_number: the number of the generation that we are running
+    :param folder_name: the name of the folder to save the player
     :return: a mutated player
     """
-    e = random()
-    if e > prob:
+    if random() > prob:
         return player
     heuristic = player.heuristic
     feature = randint(0, len(heuristic))  # the feature to mutate
     heuristic[feature][0] *= 2 * random()  # mutation ratio
-    return Player.Player(heuristic=heuristic, name=player.name, disk=player.disk)  # todo: change name and disk
+    p = Player.Player(heuristic=heuristic)
+    Player.Player.save_to_folder(p, folder_name=folder_name+'/gen' + gen_number)
+    return p
 
 
 def fitness_level(p, n):
@@ -175,12 +182,8 @@ def fitness_level(p, n):
     for i in range(n):
         if (game1.play_game() == p):
             num_wins += 1
-        else:
-            num_wins -= 1
         if (game2.play_game() == p):
             num_wins += 1
-        else:
-            num_wins -= 1
     return num_wins
 
 
