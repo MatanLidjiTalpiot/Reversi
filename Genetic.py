@@ -6,6 +6,8 @@ import copy
 import Game
 palti_n = np.log(10) / np.log(1.5)  # a somewhat arbitrary constant
 palti_A = 1 / (40 ** palti_n)  # a somewhat arbitrary constant
+
+
 ALL_FUNCTIONS =[lambda game, player: game.get_color_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n), #pos
                 lambda game, player: -(game.get_opponent_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n)),#neg
                 lambda game, player: game.get_num_of_corners(player), #pos
@@ -121,7 +123,7 @@ def mutation(p):
     :param p: a player to mutate from
     :return: a mutated player
     """
-
+    pass
 
 def fitness_level(p,n):
     """

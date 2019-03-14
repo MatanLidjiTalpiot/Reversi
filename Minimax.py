@@ -10,14 +10,15 @@ def get_score(game, player):
     :return: the score of the state of the board according to the heuristic
     """
     global SCORE_MEMO
-    if game.__hash__() not in SCORE_MEMO:
+    key =  (tuple(map(tuple, game.board)))
+    if key not in SCORE_MEMO:
         sum = 0
         for feature in player.get_heuristic():
             sum += feature[0] * feature[1](game, player)
-        SCORE_MEMO[game.__hash__()] = sum
+        SCORE_MEMO[key] = sum
         return sum
     else:
-        return SCORE_MEMO[game.__hash__()]
+        return SCORE_MEMO[key]
 
 
 def minimax(game, depth, player, maximizing_player, disk):

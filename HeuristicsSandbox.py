@@ -6,8 +6,12 @@ import Player
 import Game
 import Move_Helper
 import time
+import cProfile
 import Minimax
 import copy
+import dill
+import Legal_Moves_Helper
+
 h1_black = [[1, lambda game: game.get_black_number()],
             [-1, lambda game: game.get_white_number()],
             [100, lambda game: game.get_num_of_corners(1)],
@@ -86,31 +90,22 @@ diff_h = [[10, (lambda game, player: (game.get_color_disk_num(player) * palti_A 
            [sys.maxsize / 128, lambda game, player: game.is_winner_score(player) - game.is_winner_score_with_disk(-1)]] #remove heuristic after debugging
 
 
-def learn_more_with_random(n):
-    Move_Helper.Move_Helper.update()
-    game = Game.Game(random1, random2)
-    while game.move_helper.size() < n:
-        print(game.move_helper.size())
-        Gui.play_game(game, to_print=False)
-        game.move_helper.save_move_helper()
-        game.reset_game(random2, random1)
-    print(game.move_helper.size())
+# random1 = Player.Player.load_player('pklFiles/random_player.pkl')
+random = Player.Player.load_player('pklFiles/random_player.pkl')
+palti_4 = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
+palti_4_two = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
+# game1 = Game.Game(palti_4, palti_4_two, use_move_helper=False)
+game2 = Game.Game(palti_4, palti_4_two, use_move_helper=True)
+# with open('game_state', 'rb') as input:
+#     game = dill.load(input)
+t2 = time.time()
 
-
-random1 = Player.Player.load_player('pklFiles/random_player.pkl')
-random2 = Player.Player.load_player('pklFiles/random_player.pkl')
-palti2 = Player.Player.load_player('pklFiles/palti_player_d2.pkl')
-palti2_other = Player.Player.load_player('pklFiles/palti_player_d2.pkl')
-benny = Player.Player.load_player('pklFiles/human_player.pkl')
-game1 = Game.Game(random1, random2, use_helper=False)
-game2 = Game.Game(palti2, random2, use_helper=True)
-# print(game.move_helper.size())
-# t1 = time.time()
-# game1.play_game()
-# t2 = time.time()
 Gui.play_game(game2)
-# t3 = time.time()
+t3 = time.time()
+print("game is done:", t3-t2)
+# game2.MOVE_HELPER.save_move_helper()
+game2.LEGAL_MOVES_HEALPER.save_legal_moves_helper()
+# print(t3-t2)
 
-print("time without: ", t2-t1)
-print("time with: ", t3-t2)
-# print(game.move_helper.size())
+
+

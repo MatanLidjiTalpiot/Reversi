@@ -297,6 +297,7 @@ def play_game(game, to_print=False):
                 screen.create_oval(54 + 50 * x, 52 + 50 * y, 96 + 50 * x, 94 + 50 * y,
                                    tags="tile", fill="#111", outline="#111")
                 screen.update()
+
     if game.get_winner_disk() == players[0].get_disk():
         screen.create_text(250, 550, anchor="c", font=("Consolas", 15),
                            text="The game is done!")
