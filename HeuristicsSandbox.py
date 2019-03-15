@@ -95,23 +95,26 @@ Move_Helper.Move_Helper.create_new("shit happened we need a new one")
 random = Player.Player.load_player('pklFiles/random_player.pkl')
 palti_4 = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
 palti_4_two = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
+aron = Player.Player.load_player('pklFiles/human_player.pkl')
+savta = Player.Player.load_player('pklFiles/human_player.pkl')
 # game1 = Game.Game(palti_4, palti_4_two, use_move_helper=False)
-game2 = Game.Game(palti_4, palti_4_two, use_move_helper=True)
+aron.name= "matan "
+savta.name = "savta "
+game2 = Game.Game(savta, palti_4, use_move_helper=True)
+
 # with open('game_state', 'rb') as input:
 #     game = dill.load(input)
-t2 = time.time()
-Gui.play_game(game2)
-t3 = time.time()
-print("game is done:", t3-t2)
-game2.reset_game(palti_4_two,palti_4)
-t4 = time.time()
-Gui.play_game(game2)
-t5 = time.time()
-print("the second game is done: ", t5-t4)
-t6 = time.time()
-game2.reset_game(palti_4_two,palti_4)
-t7 = time.time()
-print("the third game is done: ", t7 - t6)
+
+winner = Gui.play_game(game2)
+
+print(winner.name)
+
+
+
+
+
+
+
 
 # game2.MOVE_HELPER.save_move_helper()
 # game2.LEGAL_MOVES_HELPER.save_legal_moves_helper()

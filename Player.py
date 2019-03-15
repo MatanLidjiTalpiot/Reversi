@@ -139,7 +139,7 @@ class Player:
             return [None, None]
 
     def choose_move(self, game):
-         # try:
+         try:
             if self.type == Player.PlayerTypes.MINIMAX:
                 return Minimax.alpha_beta(game, Player.DEPTH, self, True,
                                           self.get_disk())
@@ -153,10 +153,10 @@ class Player:
                 return self.four_by_four_move(game)
             elif self.type == Player.PlayerTypes.TABLE:
                 raise ValueError("not supposed to do a move")
-         # except Exception as e:
-         #     print("do again")
-         #     print(str(e))
-         #     return self.choose_move(game)
+         except Exception as e:
+             print("do again")
+             print(str(e))
+             return self.choose_move(game)
 
     @staticmethod
     def players_list_to_winning_dict(players_list):

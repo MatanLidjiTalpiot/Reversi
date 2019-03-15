@@ -57,6 +57,7 @@ def play_game(game, to_print=False):
             screen.create_rectangle(0, 5, 50, 55, fill="#000033", outline="#000033")
             screen.create_rectangle(0, 0, 50, 50, fill="#000088", outline="#000088")
 
+
             # Arrow
             screen.create_arc(5, 5, 45, 45, fill="#000088", width="2", style="arc", outline="white",
                               extent=300)
@@ -67,10 +68,9 @@ def play_game(game, to_print=False):
             screen.create_rectangle(450, 5, 500, 55, fill="#330000", outline="#330000")
             screen.create_rectangle(450, 0, 500, 50, fill="#880000", outline="#880000")
             # "X"
-            screen.create_line(455, 5, 495, 45, fill="white", width="3")
-            screen.create_line(495, 5, 455, 45, fill="white", width="3")
-            if outline:
-                screen.create_rectangle(50, 50, 450, 450, outline="#111")
+            # screen.create_line(455, 5, 495, 45, fill="white", width="3")
+            # screen.create_line(495, 5, 455, 45, fill="white", width="3")
+            screen.create_rectangle(50, 50, 450, 450, outline="#111")
 
             # Drawing the intermediate lines
             for i in range(7):
@@ -179,9 +179,12 @@ def play_game(game, to_print=False):
         for x in range(8):
             for y in range(8):
                 if (y, x) in game.get_legal_moves(players[turn % 2].get_disk()):
+                    # screen.create_oval(68 + 50 * x, 68 + 50 * y, 32 + 50 * (x + 1),
+                    #                    32 + 50 * (y + 1), tags="highlight", fill="#008000",
+                    #                    outline="#008000")
                     screen.create_oval(68 + 50 * x, 68 + 50 * y, 32 + 50 * (x + 1),
-                                       32 + 50 * (y + 1), tags="highlight", fill="#008000",
-                                       outline="#008000")
+                                       32 + 50 * (y + 1), tags="highlight", fill='purple',
+                                       outline='purple')
                     screen.create_text((68 + 50 * x + 32 + 50 * (x + 1)) / 2, (68 + 50 * y + 32 +
                                         50 * (y + 1)) / 2, text=str(y) + "," + str(x))
 
@@ -360,7 +363,7 @@ moves = 0
 
 # Tkinter setup
 root = Tk()
-screen = Canvas(root, width=500, height=600, background="#222", highlightthickness=0)
+screen = Canvas(root, width=500, height=600, background='green', highlightthickness=0)
 screen.pack()
 
 
@@ -521,6 +524,7 @@ def runGame():
         # Background
         screen.create_rectangle(25 + 155 * i, 310, 155 + 155 * i, 355, fill="#000", outline="#000")
         screen.create_rectangle(25 + 155 * i, 300, 155 + 155 * i, 350, fill="#111", outline="#111")
+
 
         spacing = 130 / (i + 2)
         for x in range(i + 1):
