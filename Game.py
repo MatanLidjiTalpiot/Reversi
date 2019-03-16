@@ -356,10 +356,6 @@ class Game:
                       " played ", op[1])
             self.number_of_turns_attempted += 1
 
-        """
-        maybe add here somehow to get a value of winning and not just a winner - when the module is 
-        more advanced! 
-        """
         return self.board
 
     def play_game(self, to_print=False):

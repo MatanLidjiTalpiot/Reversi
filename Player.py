@@ -6,7 +6,6 @@ import random
 import dill
 import numpy as np
 import os
-import Gui
 POS_INT = 1
 NEG_INT = -1
 
@@ -91,21 +90,21 @@ class Player:
         A method that gets a coordinate for the user
         :return: the coordinate the user inputed
         """
+
         not_invalid_coordinates = list(range(8))
         text = str(self.name) + "enter a coordinate or None"
         coordinate = input(text)
         if coordinate == "None":
             if len(game.get_legal_moves(self.disk)) != 0:
-                print("Eisner, do a move")
-                return self.human_move(game)
+                print(self.name + ", do a move")
+                return self.human_move(game,)
             else:
                 return (None, None)
         coordinate = coordinate.split(" ")
         coordinate[0] = int(coordinate[0])
         coordinate[1] = int(coordinate[1])
         coordinate = tuple(coordinate)
-        if len(coordinate) != 2 or coordinate[0] not in not_invalid_coordinates or \
-                        coordinate[1] not in not_invalid_coordinates:
+        if len(coordinate) != 2 or coordinate[0] not in not_invalid_coordinates or coordinate[1] not in not_invalid_coordinates:
             raise ValueError("not a valid coordinate")
         temp_game = copy.deepcopy(game)
         try:
@@ -113,7 +112,6 @@ class Player:
         except:
             print("not a legal move")
             return self.human_move(game)
-
         return (None, (coordinate[0], coordinate[1]))
 
     def random_move(self, game):
@@ -139,7 +137,7 @@ class Player:
             return [None, None]
 
     def choose_move(self, game):
-         try:
+         # try:
             if self.type == Player.PlayerTypes.MINIMAX:
                 return Minimax.alpha_beta(game, Player.DEPTH, self, True,
                                           self.get_disk())
@@ -153,10 +151,10 @@ class Player:
                 return self.four_by_four_move(game)
             elif self.type == Player.PlayerTypes.TABLE:
                 raise ValueError("not supposed to do a move")
-         except Exception as e:
-             print("do again")
-             print(str(e))
-             return self.choose_move(game)
+         # except Exception as e:
+         #     print("do again")
+         #     print(str(e))
+         #     return self.choose_move(game)
 
     @staticmethod
     def players_list_to_winning_dict(players_list):
@@ -258,6 +256,7 @@ class Player:
         number_of_saved_players = len(os.listdir('pklFiles'))
         return number_of_saved_players
 
+
     def __eq__(self, player2):
         player1_h = self.get_heuristic()
         player2_h = player2.get_heuristic()
@@ -278,6 +277,7 @@ class Player:
         if(self.number_of_wins < other_player.number_of_wins):
             return NEG_INT
         return 0 #equal
+
 
 
 Player.compare_two_players = staticmethod(Player.compare_two_players)
