@@ -105,7 +105,7 @@ game2 = Game.Game(aron, palti_4, use_move_helper=True)
 
 gui = Gui.Gui(game2)
 winner = gui.play_game()
-print(winner.name)
+
 
 
 
