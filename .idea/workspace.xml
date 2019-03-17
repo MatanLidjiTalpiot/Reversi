@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="gui is good!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HeuristicsSandbox.py" afterPath="$PROJECT_DIR$/HeuristicsSandbox.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="Genetic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Genetic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+            <state relative-caret-position="425">
+              <caret line="17" column="62" lean-forward="true" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <element signature="e#993#1993#0" expanded="false" />
@@ -34,9 +33,45 @@
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
-              <caret line="378" column="12" lean-forward="true" selection-start-line="378" selection-start-column="12" selection-end-line="378" selection-end-column="12" />
+              <caret line="382" column="12" lean-forward="true" selection-start-line="382" selection-start-column="12" selection-end-line="382" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <marker date="1552819255501" expanded="true" signature="11606:12833" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="12875:13575" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="12884:13122" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1552819255501" expanded="true" signature="13253:13336" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="13403:13486" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="13621:15209" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="13630:13698" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="14191:14617" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="14648:14914" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="15093:15209" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="15252:15911" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="15261:15497" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1552819255501" expanded="true" signature="15963:16573" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="15972:16158" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1552819255501" expanded="true" signature="16614:17487" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="16623:16928" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1552819255501" expanded="true" signature="17021:17084" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="17116:17182" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="17229:17292" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="17324:17402" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="17537:18311" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="17546:17752" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1552819255501" expanded="true" signature="17846:17909" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="17941:18007" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="18054:18117" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="18149:18227" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="18364:18710" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="18373:18611" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1552819255501" expanded="true" signature="18750:19386" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="18759:19087" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1552819255501" expanded="true" signature="19134:19349" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="19433:19587" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="19498:19587" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="19641:19808" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="19720:19808" ph="..." />
+                <marker date="1552819255501" expanded="true" signature="19879:19933" ph="..." />
               </folding>
             </state>
           </provider>
@@ -45,8 +80,8 @@
       <file leaf-file-name="Player.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Player.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4650">
-              <caret line="30" column="58" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="58" />
+            <state relative-caret-position="775">
+              <caret line="31" column="58" lean-forward="true" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -54,29 +89,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeuristicsSandbox.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HeuristicsSandbox.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state relative-caret-position="422">
+              <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <marker date="1552819255517" expanded="true" signature="6194:6300" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gui.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2025">
-              <caret line="141" column="24" lean-forward="false" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+            <state relative-caret-position="425">
+              <caret line="89" column="24" lean-forward="false" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#1107#1961#0" expanded="false" />
-                <element signature="e#2003#3048#0" expanded="false" />
-                <element signature="e#3642#4764#0" expanded="false" />
-                <element signature="e#7649#8155#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -141,7 +173,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Genetic2" />
+        <entry key="$PROJECT_DIR$" value="buttons" />
       </map>
     </option>
   </component>
@@ -155,7 +187,6 @@
         <option value="$PROJECT_DIR$/MemoTry.py" />
         <option value="$APPLICATION_CONFIG_DIR$/pycharm64.exe.vmoptions" />
         <option value="$PROJECT_DIR$/Minimax.py" />
-        <option value="$PROJECT_DIR$/Genetic.py" />
         <option value="$PROJECT_DIR$/Legal_Moves_Helper.py" />
         <option value="$PROJECT_DIR$/Move_Helper.py" />
         <option value="$PROJECT_DIR$/Gui_lapanim.py" />
@@ -163,14 +194,15 @@
         <option value="$PROJECT_DIR$/Player.py" />
         <option value="$PROJECT_DIR$/Gui.py" />
         <option value="$PROJECT_DIR$/HeuristicsSandbox.py" />
+        <option value="$PROJECT_DIR$/Genetic.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1942" />
-    <option name="height" value="1102" />
+    <option name="y" value="-1091" />
+    <option name="width" value="861" />
+    <option name="height" value="457" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -507,7 +539,21 @@
       <option name="project" value="LOCAL" />
       <updated>1552818416230</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="gui is good!">
+      <created>1552818685443</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1552818685443</updated>
+    </task>
+    <task id="LOCAL-00025" summary="gui is good!">
+      <created>1552818704031</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1552818704031</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -520,8 +566,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
+    <frame x="-11" y="-1091" width="1942" height="1062" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.061346363" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -529,7 +574,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39678615" sideWeight="0.49570355" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.46561137" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35102534" sideWeight="0.49555555" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25339925" sideWeight="0.48262757" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1013269" sideWeight="0.48262757" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810616" sideWeight="0.49555555" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -601,7 +646,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Gui.py</url>
-          <line>260</line>
+          <line>167</line>
           <option name="timeStamp" value="219" />
         </line-breakpoint>
       </breakpoints>
@@ -866,9 +911,45 @@
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="378" column="12" lean-forward="true" selection-start-line="378" selection-start-column="12" selection-end-line="378" selection-end-column="12" />
+          <caret line="382" column="12" lean-forward="true" selection-start-line="382" selection-start-column="12" selection-end-line="382" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <marker date="1552819255501" expanded="true" signature="11606:12833" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="12875:13575" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="12884:13122" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1552819255501" expanded="true" signature="13253:13336" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="13403:13486" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="13621:15209" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="13630:13698" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="14191:14617" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="14648:14914" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="15093:15209" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="15252:15911" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="15261:15497" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1552819255501" expanded="true" signature="15963:16573" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="15972:16158" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1552819255501" expanded="true" signature="16614:17487" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="16623:16928" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1552819255501" expanded="true" signature="17021:17084" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="17116:17182" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="17229:17292" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="17324:17402" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="17537:18311" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="17546:17752" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1552819255501" expanded="true" signature="17846:17909" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="17941:18007" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="18054:18117" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="18149:18227" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="18364:18710" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="18373:18611" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1552819255501" expanded="true" signature="18750:19386" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="18759:19087" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1552819255501" expanded="true" signature="19134:19349" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="19433:19587" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="19498:19587" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="19641:19808" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="19720:19808" ph="..." />
+            <marker date="1552819255501" expanded="true" signature="19879:19933" ph="..." />
           </folding>
         </state>
       </provider>
@@ -883,24 +964,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gui.py">
+    <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
-          <caret line="141" column="24" lean-forward="false" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+        <state relative-caret-position="422">
+          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1552819255517" expanded="true" signature="6194:6300" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="31" column="58" lean-forward="true" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#1107#1961#0" expanded="false" />
-            <element signature="e#2003#3048#0" expanded="false" />
-            <element signature="e#3642#4764#0" expanded="false" />
-            <element signature="e#7649#8155#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Genetic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+        <state relative-caret-position="425">
+          <caret line="17" column="62" lean-forward="true" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <element signature="e#993#1993#0" expanded="false" />
@@ -911,22 +999,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Player.py">
+    <entry file="file://$PROJECT_DIR$/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4650">
-          <caret line="30" column="58" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="58" />
+        <state relative-caret-position="425">
+          <caret line="89" column="24" lean-forward="false" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
