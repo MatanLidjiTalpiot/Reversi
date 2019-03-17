@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="">
+    <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="very well!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Game.py" afterPath="$PROJECT_DIR$/Game.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gui.py" afterPath="$PROJECT_DIR$/Gui.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HeuristicsSandbox.py" afterPath="$PROJECT_DIR$/HeuristicsSandbox.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Player.py" afterPath="$PROJECT_DIR$/Player.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,12 +15,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Genetic.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Genetic.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Genetic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2948">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="472">
+              <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
               <folding>
+                <element signature="e#0#20#0" expanded="true" />
                 <element signature="e#993#1993#0" expanded="false" />
                 <element signature="e#2023#2534#0" expanded="false" />
                 <element signature="e#2576#2991#0" expanded="false" />
@@ -35,8 +34,8 @@
       <file leaf-file-name="Game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="378" column="12" lean-forward="true" selection-start-line="378" selection-start-column="12" selection-end-line="378" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -57,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeuristicsSandbox.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HeuristicsSandbox.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="106" column="17" lean-forward="false" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
+            <state relative-caret-position="821">
+              <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -72,16 +71,14 @@
       <file leaf-file-name="Gui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="298" column="33" lean-forward="true" selection-start-line="298" selection-start-column="33" selection-end-line="298" selection-end-column="33" />
+            <state relative-caret-position="2025">
+              <caret line="141" column="24" lean-forward="false" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <element signature="e#1107#1961#0" expanded="false" />
                 <element signature="e#2003#3048#0" expanded="false" />
-                <element signature="e#3091#3309#0" expanded="false" />
-                <element signature="e#3346#3608#0" expanded="false" />
                 <element signature="e#3642#4764#0" expanded="false" />
-                <element signature="e#7187#7693#0" expanded="false" />
+                <element signature="e#7649#8155#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -110,17 +107,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>playG</find>
-      <find>human</find>
-      <find>create</find>
-      <find>create_button</find>
-      <find>my_</find>
-      <find>reset</find>
       <find>Othe</find>
       <find>choose</find>
       <find>highlight</find>
       <find>next_playe</find>
-      <find>helper</find>
       <find>do_move</find>
       <find>&quot;w</find>
       <find>&quot;w&quot;</find>
@@ -132,14 +122,21 @@
       <find>(x,y)</find>
       <find>next_player</find>
       <find>self.curr_player</find>
-      <find>update</find>
       <find>click</find>
-      <find>click_handle</find>
       <find>play</find>
       <find>play_game</find>
       <find>update_board</find>
-      <find>gui</find>
       <find>do_ne</find>
+      <find>reset</find>
+      <find>helper</find>
+      <find>gui</find>
+      <find>update</find>
+      <find>updat</find>
+      <find>upda</find>
+      <find>up</find>
+      <find>u</find>
+      <find>upd</find>
+      <find>click_handle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,9 +169,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="861" />
-    <option name="width" value="1069" />
-    <option name="height" value="1030" />
+    <option name="x" value="-11" />
+    <option name="y" value="-11" />
+    <option name="width" value="1942" />
+    <option name="height" value="1102" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -497,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552679514741</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="gui works very good!">
+      <created>1552778984841</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1552778984841</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -519,7 +524,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39678615" sideWeight="0.49570355" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.46561137" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35102534" sideWeight="0.49555555" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23238567" sideWeight="0.48262757" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25339925" sideWeight="0.48262757" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32810616" sideWeight="0.49555555" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -582,14 +587,15 @@
     <MESSAGE value="memo on board works - now working on memo for legal moves" />
     <MESSAGE value="memo works great - now working on improving the genetic algorithm" />
     <MESSAGE value="changed colors in the gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed colors in the gui" />
+    <MESSAGE value="gui works very good!" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui works very good!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Gui.py</url>
-          <line>253</line>
+          <line>260</line>
           <option name="timeStamp" value="219" />
         </line-breakpoint>
       </breakpoints>
@@ -815,19 +821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Genetic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2948">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#993#1993#0" expanded="false" />
-            <element signature="e#2023#2534#0" expanded="false" />
-            <element signature="e#2576#2991#0" expanded="false" />
-            <element signature="e#3034#3519#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Move_Helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1525">
@@ -864,16 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Player.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -881,6 +864,26 @@
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <element signature="e#700#1414#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="378" column="12" lean-forward="true" selection-start-line="378" selection-start-column="12" selection-end-line="378" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="821">
+          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -897,26 +900,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="298" column="33" lean-forward="true" selection-start-line="298" selection-start-column="33" selection-end-line="298" selection-end-column="33" />
+        <state relative-caret-position="2025">
+          <caret line="141" column="24" lean-forward="false" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <element signature="e#1107#1961#0" expanded="false" />
             <element signature="e#2003#3048#0" expanded="false" />
-            <element signature="e#3091#3309#0" expanded="false" />
-            <element signature="e#3346#3608#0" expanded="false" />
             <element signature="e#3642#4764#0" expanded="false" />
-            <element signature="e#7187#7693#0" expanded="false" />
+            <element signature="e#7649#8155#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HeuristicsSandbox.py">
+    <entry file="file://$PROJECT_DIR$/Genetic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="106" column="17" lean-forward="false" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
+        <state relative-caret-position="472">
+          <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#993#1993#0" expanded="false" />
+            <element signature="e#2023#2534#0" expanded="false" />
+            <element signature="e#2576#2991#0" expanded="false" />
+            <element signature="e#3034#3519#0" expanded="false" />
           </folding>
         </state>
       </provider>

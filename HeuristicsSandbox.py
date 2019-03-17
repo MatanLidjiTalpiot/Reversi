@@ -99,13 +99,11 @@ aron = Player.Player.load_player('pklFiles/human_player.pkl')
 savta = Player.Player.load_player('pklFiles/human_player.pkl')
 # game1 = Game.Game(palti_4, palti_4_two, use_move_helper=False)
 aron.name= "matan "
-savta.name = "savta "
+savta.name = "ripp "
 # game2 = Game.Game(savta, aron, use_move_helper=True)
-game2 = Game.Game(palti_4_two, palti_4, use_move_helper=True)
+game2 = Game.Game(aron, palti_4, use_move_helper=True)
 
 gui = Gui.Gui(game2)
-print(game2.board)
-
 winner = gui.play_game()
 print(winner.name)
 

@@ -125,7 +125,6 @@ class Gui:
                 self.root.destroy()
             elif xMouse <= 50 and yMouse <= 50:
                 self.game.reset_game(self.player1, self.player2)
-                self.reset(self.game)
             else:
                 # Is it the player's turn?
                 if self.curr_player.type == Player.Player.PlayerTypes.HUMAN:
@@ -134,8 +133,16 @@ class Gui:
                     y = int((event.y - 50) / 50)
                     # Determine the grid index for where the mouse was clicked
                     # If the click is inside the bounds and the move is valid, move to that location
+                    legal_moves = self.game.get_legal_moves(self.curr_player.disk)
+                    if legal_moves == []:
+                        self.game.number_of_turns_attempted += 1
+                        self.curr_player = self.game.players[self.game.number_of_turns_attempted % 2]
+                        self.next_player = self.game.players[(self.game.number_of_turns_attempted + 1) % 2]
+                        self.old_board = self.board
+                        self.update_board()
+                        self.play_game()
                     if 0 <= x <= 7 and 0 <= y <= 7:
-                        if (y,x) in self.game.get_legal_moves(self.curr_player.disk) and self.curr_player.type == Player.Player.PlayerTypes.HUMAN:
+                        if (y,x) in legal_moves and self.curr_player.type == Player.Player.PlayerTypes.HUMAN:
                             self.old_board = np.copy(self.game.board)
                             self.old_board[y][x] = self.curr_player.disk
                             self.game.do_move(self.curr_player.disk, (y,x))
