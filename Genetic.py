@@ -4,7 +4,7 @@ import numpy as np
 import sys
 import copy
 import Game
-
+import time
 
 palti_n = np.log(10) / np.log(1.5)  # a somewhat arbitrary constant
 palti_A = 1 / (40 ** palti_n)  # a somewhat arbitrary constant
@@ -21,7 +21,8 @@ ALL_FUNCTIONS = [
     lambda game, player: game.is_winner_score(player)]  # pos
 
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
-
+PALTI_PLAYER_4 = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
+RANDOM_PLAYER = Player.Player.load_player('pklFiles/random_player.pkl')
 
 def evolve_q_time(players_list, n, q):
     """
@@ -90,11 +91,10 @@ def create_player_with_heuristic():
     """
     heuristic = []
     for i in range(NUM_OF_PARAMS):
-        weight = randrange(0, sys.maxsize, 1) / 128
+        weight = random() * 100
         tup = [weight, ALL_FUNCTIONS[i]]
         heuristic.append(tup)
-    player = Player.Player(heuristic=heuristic, name=str(Player.Player.number_of_saved_players() + 1),
-                           p_type=Player.Player.PlayerTypes.MINIMAX)
+    player = Player.Player(heuristic=heuristic, p_type=Player.Player.PlayerTypes.MINIMAX)
     return player
 
 
@@ -122,11 +122,11 @@ def selection(players_list, scores_list):
             if score_sum < parent2_score <= score_sum + scores_list[i]:
                 parent2 = j
             score_sum += scores_list[i]
-        new_gen[i] = crossover(players_list[parent1], players_list[parent2], scores_list[parent1], scores_list[parent2])
+        new_gen.append(crossover(players_list[parent1], players_list[parent2], scores_list[parent1], scores_list[parent2]))
     return new_gen
 
 
-def crossover(player1, player2, score1, score2, gen_number, folder_name):
+def crossover(player1, player2, score1, score2):
     """
     Crossover is the most significant phase in a genetic algorithm.
     For each pair of parents to be mated, a crossover point is chosen at random from within the genes.
@@ -142,62 +142,116 @@ def crossover(player1, player2, score1, score2, gen_number, folder_name):
     heuristic = player1.heuristic
     h_other = player2.heuristic
     for i in range(len(heuristic)):
-        if random > 0.5:
+        if random() > 0.5:
             heuristic[i][0] = h_other[i][0]
     p = Player.Player(heuristic=heuristic)
-    Player.Player.save_to_folder(p,folder_name= folder_name+'/gen' + gen_number)
     return p
 
-def mutation(player, prob, gen_number, folder_name):
+def mutation(player, n=1):
     """
     In certain new offspring formed, some of their genes can be subjected to a mutation with a low random probability.
     This implies that some of the bits in the bit string can be flipped.
     in short - creating a mutation from a player
     :param player: a player to mutate from
-    :param prob: the probability to mutate
     :param gen_number: the number of the generation that we are running
     :param folder_name: the name of the folder to save the player
     :return: a mutated player
     """
-    if random() > prob:
-        return player
     heuristic = player.heuristic
-    feature = randint(0, len(heuristic))  # the feature to mutate
-    heuristic[feature][0] *= 2 * random()  # mutation ratio
+    feature = randint(0, len(heuristic) - 1)  # the feature to mutate
+    heuristic[feature][0] *= (2 * random())  # mutation ratio
     p = Player.Player(heuristic=heuristic)
-    Player.Player.save_to_folder(p, folder_name=folder_name+'/gen' + gen_number)
     return p
 
 
-def fitness_level(p, n):
+def fitness_level(p_list):
     """
     a basic function which determies the fitness level of the player
-    :param p: the player we need to determine what it's fitness level
+    :param p: the index of the player we want to evaluate the fitness of
+    :param p_list: a shuffled list of players
     :return: a basic fitness level (a number)
     """
-    # pass
-    # grade = 0
-    # random = Player.Player.load_player('pklFiles/random_player.pkl')
-    # game = Game.Game(p, random)
-    # for i in range(n):
-    #     game.final_board_in_game()
-    #     if (np.count_nonzero()game.final_board_in_game()):
-    #         grade +=
-    #     game.reset_game(random, p)
-    #     if (game.final_board_in_game() == p):
-    #         num_wins += 1
-    #     game.reset_game(p, random)
-    #
-    # return num_wins
+    # print("########################################")
+    # for i in range(len(p.heuristic)):
+    #     print(p.heuristic[i][0])
+    # print("########################################")
+    for i in range(len(p_list)):
+        curr_player = p_list[i]
+        last_player = p_list[(i-1)]
+        game = Game.Game(curr_player, last_player)
+        game.final_board_in_game()
+        curr_player.grade += game.get_color_disk_num(curr_player)/4
+        last_player.grade += game.get_color_disk_num(last_player)/4
+        print("finished half evaluation number ", i, " of ", len(p_list))
+        game.reset_game(last_player, curr_player)
+        game.final_board_in_game()
+        curr_player.grade += game.get_color_disk_num(curr_player)/4
+        last_player.grade += game.get_color_disk_num(last_player)/4
+        print("finished evaluation number ", i, " of ", len(p_list))
 
 
-def termination(p, precentage, n):
+def termination(p_list, threshold = 15):
     """
         The algorithm terminates if the population has converged
         (does not produce offspring which are significantly different from the previous generation).
         Then it is said that the genetic algorithm has provided a set of solutions to our problem.
         in short  - determines whether to "kill" the player or not
-        :param p: the player to decide if to "kill" or not
-        :return: True we kill him, False otherwise .
+        :param p_list: the list of players to kill or help survive
+        :return: the list of players that didn't die
         """
-    return ((fitness_level(p, n) / n) <= precentage)
+    ret_list = []
+    for player in p_list:
+        if player.grade > threshold:
+            ret_list.append(player)
+    print("finished terminating, terminated: ", len(p_list) - len(ret_list), " players")
+    return ret_list
+
+
+def genetic_main(num_p, folder_name, gen_number, depth_number, prob = 0.1, players_list = None, term_threshold = 0):
+
+    #creating a list with p new player
+    if depth_number == 0:
+        print("finished")
+    else:
+        p_list = players_list
+        if p_list == None:
+            #create p_list
+            p_list = []
+            for i in range(num_p):
+                p = create_player_with_heuristic()
+                p_list.append(p)
+            fitness_level(p_list)
+            termination(p_list, term_threshold)
+            p_list.sort(key = lambda p: p.grade, reverse=True)
+            for i in range (len(p_list)):
+                print(p_list[i],end = ", " )
+            Player.Player.save_sorted_list_to_folder(p_list, folder_name + "/gen" + str(gen_number))
+            gen_number += 1
+
+        counter = 0
+        mutations = []
+        for player in p_list:
+            #choose whether a player goes through a mutation
+            if random() < prob:
+                counter += 1
+                mute = mutation(player)
+                mutations.append(mute)
+        print("created ", counter, "mutations")
+        scores_list = []
+        for  i in range (len(p_list)):
+            scores_list.append(p_list[i].grade)
+        new_gen = selection(p_list, scores_list)
+        print("created ", len(new_gen)," new generation players")
+        mutations.extend(new_gen)
+        shuffle(mutations)
+        fitness_level(mutations)
+        termination(p_list)
+        mutations.sort(key = lambda p: p.grade, reverse=True)
+        for i in range (len(mutations)):
+            print(mutations[i], end = ", ")
+        Player.Player.save_sorted_list_to_folder(mutations, folder_name+"/gen"+str(gen_number))
+        print("finished gen", gen_number)
+        if (mutations[int(len(mutations)/(-10))].grade >= term_threshold):
+            term_threshold = min(term_threshold + 1, mutations[int(len(mutations) / (-10))].grade)
+        genetic_main(0, folder_name, gen_number+1, depth_number - 1, prob, mutations, term_threshold)
+

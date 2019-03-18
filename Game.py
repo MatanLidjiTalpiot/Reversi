@@ -5,7 +5,7 @@ BLACK = 1
 WHITE = -1
 FIRST_COLOR = WHITE
 SECOND_COLOR = BLACK
-
+prevPlayer = None# TODO: ohad
 
 # WHITE = -BLACK
 
@@ -27,6 +27,8 @@ class Game:
         self.number_of_turns_attempted = 0
         player1.set_disk(FIRST_COLOR) #todo if works good! else remove
         player2.set_disk(SECOND_COLOR) #todo if works good! else remove
+        if player1 is prevPlayer: # TODO: ohad
+            print("fuck")
 
         self.use_move_helper = use_move_helper
         self.use_legal_moves_helper = use_legal_moves_helper
@@ -355,7 +357,7 @@ class Game:
                 print("player, ", self.players[self.number_of_turns_attempted % 2].name,
                       " played ", op[1])
             self.number_of_turns_attempted += 1
-
+        prevPlayer = self.players[0]# TODO: ohad
         return self.board
 
     def play_game(self, to_print=False):

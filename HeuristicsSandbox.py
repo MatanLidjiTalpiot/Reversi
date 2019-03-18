@@ -11,6 +11,7 @@ import Minimax
 import copy
 import dill
 import Legal_Moves_Helper
+import os
 
 h1_black = [[1, lambda game: game.get_black_number()],
             [-1, lambda game: game.get_white_number()],
@@ -89,34 +90,6 @@ diff_h = [[10, (lambda game, player: (game.get_color_disk_num(player) * palti_A 
            [-500, lambda game, player: game.get_num_of_options_for_other(player) -  game.get_num_of_options_for_other_with_disk(-1)],
            [sys.maxsize / 128, lambda game, player: game.is_winner_score(player) - game.is_winner_score_with_disk(-1)]] #remove heuristic after debugging
 
-# Legal_Moves_Helper.Legal_Moves_Helper.create_new("shit happened we need a new one")
-# Move_Helper.Move_Helper.create_new("shit happened we need a new one")
 
-random = Player.Player.load_player('pklFiles/random_player.pkl')
-palti_4 = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
-palti_4_two = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
-aron = Player.Player.load_player('pklFiles/human_player.pkl')
-savta = Player.Player.load_player('pklFiles/human_player.pkl')
-# game1 = Game.Game(palti_4, palti_4_two, use_move_helper=False)
-aron.name= "matan "
-savta.name = "ripp "
-# game2 = Game.Game(savta, aron, use_move_helper=True)
-game2 = Game.Game(aron, palti_4, use_move_helper=True)
-
-gui = Gui.Gui(game2)
-winner = gui.play_game()
-print(winner.name)
-
-
-
-
-
-
-
-
-# game2.MOVE_HELPER.save_move_helper()
-# game2.LEGAL_MOVES_HELPER.save_legal_moves_helper()
-# print(t3-t2)
-
-
-
+Genetic.genetic_main(num_p = 12, folder_name = "18_3_2019_last_for_today", gen_number = 0, depth_number = 100, prob = 0.1, players_list = None, term_threshold = 20)
+# Genetic.genetic_main(num_p=12, folder_name="18_3_2019_last_for_today", gen_number = 0, depth_number = 100, prob = 0.1, players_list = None, term_threshold = 20)

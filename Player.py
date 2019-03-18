@@ -51,7 +51,7 @@ class Player:
         self.heuristic = heuristic
         self.disk = disk
         self.name = str(name)
-        self.number_of_wins = 0
+        self.grade = 0
 
         if self.type == Player.PlayerTypes.MINIMAX and self not in Player.ALL_PLAYERS:
             Player.NUM_OF_PLAYERS += 1
@@ -232,10 +232,6 @@ class Player:
         with open(folder_name + '/' + filename + '.pkl', 'wb') as output:
             dill.dump(player, output, dill.HIGHEST_PROTOCOL)
 
-        with open(folder_name + '/' + filename + '_copy.pkl', 'wb') as output_copy:
-            output_copy = copy.deepcopy(output)
-            output.close()
-            output_copy.close()
         # except:
         #     os.mkdir(folder_name)
         #     with open(folder_name + '/' + filename + '.pkl', 'wb') as output:

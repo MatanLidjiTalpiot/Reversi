@@ -1,6 +1,6 @@
 import copy
 import Game
-SCORE_MEMO = {}
+# SCORE_MEMO = {}
 def get_score(game, player):
     """
     A method that gives a score to a certin state of the board
@@ -9,16 +9,16 @@ def get_score(game, player):
     :param game: the game
     :return: the score of the state of the board according to the heuristic
     """
-    global SCORE_MEMO
-    key =  (tuple(map(tuple, game.board)))
-    if key not in SCORE_MEMO:
-        sum = 0
-        for feature in player.get_heuristic():
-            sum += feature[0] * feature[1](game, player)
-        SCORE_MEMO[key] = sum
-        return sum
-    else:
-        return SCORE_MEMO[key]
+    # global SCORE_MEMO
+    # key =  (tuple(map(tuple, game.board)))
+    # if key not in SCORE_MEMO:
+    sum = 0
+    for feature in player.get_heuristic():
+        sum += feature[0] * feature[1](game, player)
+    # SCORE_MEMO[key] = sum
+    return sum
+    # else:
+        # return SCORE_MEMO[key]
 
 
 def minimax(game, depth, player, maximizing_player, disk):
