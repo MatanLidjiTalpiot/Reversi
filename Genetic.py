@@ -245,13 +245,13 @@ def genetic_main(num_p, folder_name, gen_number, depth_number, prob = 0.1, playe
         mutations.extend(new_gen)
         shuffle(mutations)
         fitness_level(mutations)
-        termination(p_list)
-        mutations.sort(key = lambda p: p.grade, reverse=True)
-        for i in range (len(mutations)):
-            print(mutations[i].grade, end = ", ")
-        Player.Player.save_sorted_list_to_folder(mutations, folder_name+"/gen"+str(gen_number))
+        after_termination = termination(p_list)
+        after_termination.sort(key = lambda p: p.grade, reverse=True)
+        for i in range (len(after_termination)):
+            print(after_termination[i].grade, end = ", ")
+        Player.Player.save_sorted_list_to_folder(after_termination, folder_name+"/gen"+str(gen_number))
         print("finished gen", gen_number)
-        if (mutations[int(len(mutations)/(-10))].grade >= term_threshold):
-            term_threshold = min(term_threshold + 1, mutations[int(len(mutations) / (-10))].grade)
-        genetic_main(0, folder_name, gen_number+1, depth_number - 1, prob, mutations, term_threshold)
+        if (mutations[int(len(after_termination)/(-10))].grade >= term_threshold):
+            term_threshold = min(term_threshold + 1, after_termination[int(len(mutations) / (-10))].grade)
+        genetic_main(0, folder_name, gen_number+1, depth_number - 1, prob, after_termination, term_threshold)
 

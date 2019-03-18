@@ -90,6 +90,9 @@ diff_h = [[10, (lambda game, player: (game.get_color_disk_num(player) * palti_A 
            [-500, lambda game, player: game.get_num_of_options_for_other(player) -  game.get_num_of_options_for_other_with_disk(-1)],
            [sys.maxsize / 128, lambda game, player: game.is_winner_score(player) - game.is_winner_score_with_disk(-1)]] #remove heuristic after debugging
 
+p_list = []
+for i in range(10):
+    p_list.append(Player.Player.load_player("18_3_2019_last_for_today/gen0/" + str(i) + ".pkl"))
 
-Genetic.genetic_main(num_p = 12, folder_name = "18_3_2019_last_for_today", gen_number = 0, depth_number = 100, prob = 0.1, players_list = None, term_threshold = 20)
+Genetic.genetic_main(num_p = 0, folder_name = "18_3_2019_last_for_today", gen_number = 1, depth_number = 100, prob = 0.1, players_list = p_list, term_threshold = 21)
 # Genetic.genetic_main(num_p=12, folder_name="18_3_2019_last_for_today", gen_number = 0, depth_number = 100, prob = 0.1, players_list = None, term_threshold = 20)
