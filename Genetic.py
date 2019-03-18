@@ -224,7 +224,7 @@ def genetic_main(num_p, folder_name, gen_number, depth_number, prob = 0.1, playe
             termination(p_list, term_threshold)
             p_list.sort(key = lambda p: p.grade, reverse=True)
             for i in range (len(p_list)):
-                print(p_list[i],end = ", " )
+                print(p_list[i].grade ,end = ", " )
             Player.Player.save_sorted_list_to_folder(p_list, folder_name + "/gen" + str(gen_number))
             gen_number += 1
 
@@ -248,7 +248,7 @@ def genetic_main(num_p, folder_name, gen_number, depth_number, prob = 0.1, playe
         termination(p_list)
         mutations.sort(key = lambda p: p.grade, reverse=True)
         for i in range (len(mutations)):
-            print(mutations[i], end = ", ")
+            print(mutations[i].grade, end = ", ")
         Player.Player.save_sorted_list_to_folder(mutations, folder_name+"/gen"+str(gen_number))
         print("finished gen", gen_number)
         if (mutations[int(len(mutations)/(-10))].grade >= term_threshold):
