@@ -2,11 +2,13 @@ import cv2
 import numpy as np
 import math
 
+# color order: BGR todo: check if thats true
+
 # variables
 # circles
 r = 8  # min radius
 R = 11  # max radius
-circles_param = 1.9  # circles thrashhold
+circles_threshold = 1.9  # circles thrashhold
 up_th = 50
 down_th = 0
 red_color_majority = 50
@@ -22,7 +24,7 @@ angle_param = np.pi / 720
 max_rho = 280
 min_rho = 0
 y_angle = np.pi / 2
-y_thrash_hold = 0.4
+y_thresh_hold = 0.4
 x_angle = 0.0
 x_thrash_hold = 0.5
 min_d_rho = 20
@@ -33,28 +35,18 @@ thrash_hold = 30
 
 
 # functio for help
-def cimg_def(img):
+def color_to_grayscale(img):  # todo: check what this does
     return cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 
 
-def cutPicture(img):
+def cutPicture(img):  # todo: magic numbers
     return img[30:370, 70:440]
-
-
-def myKey(line):
-    return abs(line[0][0])
-
-
-def img2_def(img):
-    # img = cv2.medianBlur(img, 5)
-    # img = cv2.medianBlur(img, 5)
-    return img
 
 
 def get_color(x, y, img):
     x = int(x)
     y = int(y)
-    sum0 = 0
+    sum0 = 0  # todo: instead of 0,1,2 name R,G,B (in the right order)
     sum1 = 0
     sum2 = 0
     window = 25
@@ -72,7 +64,7 @@ def get_color(x, y, img):
         return -1
 
 
-def initialCamera():
+def initializeCamera():
     return cv2.VideoCapture(0)
 
 
@@ -99,7 +91,7 @@ def get_x_line_formula(dot1, dot2):
 
 
 def get_new_point(x, y):
-    return ((x - 10) * 0.8, (y - 10) * 0.8)
+    return (x - 10) * 0.8, (y - 10) * 0.8
 
 
 def first_editing(image):
@@ -132,7 +124,8 @@ def bolding(image):
 
 
 def find_circles(img2):
-    return cv2.HoughCircles(img2, cv2.HOUGH_GRADIENT, circles_param, 20, param1=50, param2=30, minRadius=r, maxRadius=R)
+    return cv2.HoughCircles(img2, cv2.HOUGH_GRADIENT, circles_threshold, 20, param1=50, param2=30, minRadius=r,
+                            maxRadius=R)
 
 
 def filter_circles(circles, img):
@@ -179,7 +172,7 @@ def find_lines(img):
     # cv2.imshow('cacc', gray)
     # cv2.waitKey(0)
     lines = cv2.HoughLines(gray, 1, angle_param, lines_param)
-    return sorted(lines, key=myKey)
+    return sorted(lines, key=lambda line: abs(line[0][0]))
 
 
 def filter_lines(lines):
@@ -187,14 +180,15 @@ def filter_lines(lines):
     for i in range(len(lines)):
         selected = False
         rho1, theta1 = lines[i][0]
-        if abs(rho1) > max_rho or abs(rho1) < min_rho:
+        if abs(rho1) > max_rho or abs(rho1) < min_rho:  # radius
             continue
-        if np.tan(theta1) != 0 and abs((np.tan(theta1) ** -1) - (np.tan(y_angle) ** (-1))) < y_thrash_hold:
+        if np.tan(theta1) != 0 and abs((np.tan(theta1) ** -1) - (np.tan(y_angle) ** (-1))) < y_thresh_hold:
             selected = True
         if abs((np.tan(theta1)) - (np.tan(x_angle))) < x_thrash_hold:
             selected = True
         if len(lines_filtered) == 0 and selected:
             lines_filtered.append(lines[i])
+            continue
         for j in range(len(lines_filtered)):
             rho2, theta2 = lines_filtered[j][0]
             if abs((np.sin(theta1)) - (np.sin(theta2))) < max_d_theta and abs(abs(rho1) - abs(rho2)) < min_d_rho:
@@ -204,8 +198,8 @@ def filter_lines(lines):
     return lines_filtered
 
 
-def draw_lines(lines_filtered, s_img):
-    for line in lines_filtered:
+def draw_lines(filtered_lines, s_img):
+    for line in filtered_lines:
         for rho, theta in line:
             sin = math.cos(theta)
             cos = math.sin(theta)
@@ -226,15 +220,15 @@ def classified_lines(filtered_lines):
     green_form = []
     for line in filtered_lines:
         for rho, theta in line:
-            sin = math.cos(theta)
-            cos = math.sin(theta)
-            x0 = sin * rho
-            y0 = cos * rho
-            x1 = (x0 + 1000 * (-cos))
-            y1 = (y0 + 1000 * (sin))
-            x2 = (x0 - 1000 * (-cos))
-            y2 = (y0 - 1000 * (sin))
-            if np.tan(theta) != 0 and abs(abs(np.tan(theta) ** (-1)) - abs(np.tan(y_angle) ** (-1))) < y_thrash_hold:
+            cos = math.cos(theta)
+            sin = math.sin(theta)
+            x0 = cos * rho
+            y0 = sin * rho
+            x1 = (x0 + 1000 * (-sin))
+            y1 = (y0 + 1000 * (cos))
+            x2 = (x0 - 1000 * (-sin))
+            y2 = (y0 - 1000 * (cos))
+            if np.tan(theta) != 0 and abs(abs(np.tan(theta) ** (-1)) - abs(np.tan(y_angle) ** (-1))) < y_thresh_hold:
                 red_form.append(get_y_line_formula((x1, y1), (x2, y2)))
             else:
                 green_form.append(get_x_line_formula((x1, y1), (x2, y2)))
@@ -273,19 +267,18 @@ def find_board(circles, red_form, green_form, img):
     return table
 
 
-def get_board(img2, colored_img):
-    img = img2_def(img2)
-    circles = find_circles(img)
-    circles = filter_circles(circles, colored_img)
-    c = cimg_def(img)
-    lines = find_lines(c)
-    filtered = filter_lines(lines)
-    red_forms, green_forms = classified_lines(filtered)
-    board = find_board(circles, red_forms, green_forms, colored_img)
+def main_function(grayscale_img, colored_img):
+    circles = find_circles(grayscale_img)
+    filtered_circles = filter_circles(circles, colored_img)
+    grayscaled = color_to_grayscale(grayscale_img)  # todo: check what this does
+    lines = find_lines(grayscaled)
+    filtered_lines = filter_lines(lines)
+    red_forms, green_forms = classified_lines(filtered_lines)
+    board = find_board(filtered_circles, red_forms, green_forms, colored_img)
     return board
 
 
-def take_pic():
+def take_grayscale_pic():
     rval, frame = cam.read()
     cv2.imwrite('board.jpg', frame)
     board_img = cv2.imread('board.jpg', 0)
@@ -298,7 +291,7 @@ def take_color_pic():
 
 
 if __name__ == '__main__':
-    cam = initialCamera()
+    cam = initializeCamera()
     print('hi')
     key = "enter"
     while True:
@@ -319,8 +312,8 @@ if __name__ == '__main__':
             r = int(p)
         if key == 'p':
             p = input('set circles_parameter')
-            circles_param = float(p)
-        img = take_pic()
+            circles_threshold = float(p)
+        img = take_grayscale_pic()
         colored_pic = take_color_pic()
 
         print("working...")
@@ -331,11 +324,11 @@ if __name__ == '__main__':
             show_image(img)
         if key == 'b' or key == 'a':
             s_board = np.zeros((8, 8))
-            img = take_pic()
+            img = take_grayscale_pic()
             colored_pic = take_color_pic()
             img = cutPicture(img)
             colored_pic = cutPicture(colored_pic)
-            board = get_board(img, colored_pic)
+            board = main_function(img, colored_pic)
             board1 = np.array(board)
             s_board += board1
             s_board = s_board
@@ -348,7 +341,7 @@ if __name__ == '__main__':
         if key == 'c' or key == 'a':
             circles = find_circles(img)
             circles = filter_circles(circles, colored_pic)
-        c = cimg_def(img)
+        c = color_to_grayscale(img)
         if key == 'c' or key == 'a':
             draw_circles(circles, c)
         lines = find_lines(c)
