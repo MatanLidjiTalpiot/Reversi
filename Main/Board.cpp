@@ -12,12 +12,12 @@ void Board::init()
 
 void Board::flip_square(int row, int col)
 {
-  //todo: check if that actually works
+  //todo: check if that actually works, may need to swap x,y (row,col)
   digitalWrite(switchx[row], LOW);
   digitalWrite(switchy[col]], LOW);
   delay(1000);
   digitalWrite(switchx[row], HIGH);
-  digitalWrite(switchx[col], HIGH);
+  digitalWrite(switchy[col], HIGH);
   delay(1000);
 }
 
@@ -45,5 +45,16 @@ void Board::flip_board()
     {
       flip_square(i, j);
     }
+  }
+}
+
+void Board::flip_sequnce(String sequence)
+{
+  int len = sequene.length(); // should be even
+  for (int i = 0; i < len - 1; i += 2)
+  {
+    int y = sequence[i] - '0'; //yCor
+    int x = sequence[i + 1] - '0'; //xCor
+    flip_square(x, y);
   }
 }

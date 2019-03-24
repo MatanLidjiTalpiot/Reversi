@@ -8,8 +8,6 @@ import motor
 import HeuristicsSandbox
 import BoardInformation
 import Gui
-import func_name
-import numpy as np
 
 
 def image_processing(last_board):  # last_board is only to make sure

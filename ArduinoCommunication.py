@@ -6,8 +6,8 @@ arduinoSerial = serial.Serial(arduinoName,port)
 time.sleep(2)
 
 # code that it's goal is to light a led
-while 1:
+while True:
     var = input()  # get input from user
+    # board function
     arduinoSerial.write(var.encode())  # send 1
-    print("LED turned ON")
-    time.sleep(1)
+    time.sleep(0.5)
