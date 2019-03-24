@@ -43,12 +43,12 @@ def continue_when_it_is_our_turn(last_num_of_circles):
     refrence = cut_picture_2(colored_refrence)
 
     ##take picture
-    rval, colored_pic = cam.read()
+    rval, colord_pic = cam.read()
     #cut it
-    pic = cut_picture_2(pic)
+    colord_pic = cut_picture_2(colord_pic)
 
     #initial values
-    is_hand = is_hand_in_the_field(refrence,pic)
+    is_hand = is_hand_in_the_field(refrence,colord_pic)
     our_turn = False
 
     while our_turn is False:
@@ -56,14 +56,14 @@ def continue_when_it_is_our_turn(last_num_of_circles):
         #wait until there is a hand in the board
         while is_hand is False:
             rval, colored_pic = cam.read()
-            pic = cut_picture_2(pic)
+            colord_pic = cut_picture_2(colord_pic)
             is_hand = is_hand_in_the_field(colored_refrence, colored_pic)
             time.sleep(0.1)
 
         # wait until there is no hand in the board
         while is_hand is True:
             rval, colored_pic = cam.read()
-            pic = cut_picture_2(pic)
+            colord_pic = cut_picture_2(colord_pic)
             is_hand = is_hand_in_the_field(colored_refrence, colored_pic)
             time.sleep(0.1)
 
@@ -75,11 +75,11 @@ def continue_when_it_is_our_turn(last_num_of_circles):
             return True
         elif circles_N == last_num_of_circles:
             rval, colored_pic = cam.read()
-            pic = cut_picture_2(pic)
+            colord_pic = cut_picture_2(colord_pic)
             is_hand = is_hand_in_the_field(colored_refrence, colored_pic)
             while is_hand is True:
                 rval, colored_pic = cam.read()
-                pic = cut_picture_2(pic)
+                colord_pic = cut_picture_2(colord_pic)
                 is_hand = is_hand_in_the_field(colored_refrence, colored_pic)
                 time.sleep(0.1)
 
@@ -93,11 +93,11 @@ def continue_when_it_is_our_turn(last_num_of_circles):
         #if illegal we check again
         else :
             rval, colored_pic = cam.read()
-            pic = cut_picture_2(pic)
+            colord_pic = cut_picture_2(colord_pic)
             is_hand = is_hand_in_the_field(colored_refrence, colored_pic)
             while is_hand is True:
                 rval, colored_pic = cam.read()
-                pic = cut_picture_2(pic)
+                colord_pic = cut_picture_2(colord_pic)
                 is_hand = is_hand_in_the_field(colored_refrence, colored_pic)
                 time.sleep(0.1)
 

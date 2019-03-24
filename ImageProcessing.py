@@ -1,10 +1,12 @@
 import cv2
 import numpy as np
 import math
+import rotate
 
 # color order: BGR todo: check if thats true
 
 # variables
+avarages_constant = 10
 # circles
 r = 8  # min radius
 R = 11  # max radius
@@ -39,8 +41,8 @@ def color_to_grayscale(img):  # todo: check what this does
     return cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 
 
-def cutPicture(img):  # todo: magic numbers
-    return img[30:370, 70:440]
+def cutPicture(color,gray):  # todo: magic numbers
+    return rotate.cut_picture1(gray,color)
 
 
 def get_color(x, y, img):
@@ -237,10 +239,11 @@ def classified_lines(filtered_lines):
 
 
 def create_board(red, green):
+    #TODO the red and greem might be oposite
     table = []
-    for i in range(8):
+    for i in range(len(red)):
         sub = []
-        for i in range(8):
+        for i in range(len(green)):
             sub.append(0)
         table.append(sub)
     return table
@@ -290,6 +293,42 @@ def take_color_pic():
     return frame
 
 
+def return_board():
+    # crate the coard matrix
+    s_bord = np.array([[0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0],
+                       [0, 0, 0, 0, 0, 0, 0, 0]])
+
+    # run avarages_constant times picture analasys
+    for i in range(avarages_constant):
+        img = take_grayscale_pic()
+        colored_pic = take_color_pic()
+        img = cutPicture(img,img)
+        colored_pic = cutPicture(colored_pic,cv2.cvtColor(colored_pic, cv2.COLOR_RGB2GRAY))
+        board = main_function(img, colored_pic)
+        board1 = np.array(board)
+        s_bord += board1
+
+    # avarges on the avarages_constant boards
+    s_bord = (1 / avarages_constant) * s_bord
+
+    # make every object in the board an int
+    for i in range(8):
+        for j in range(8):
+            if s_bord[i][j] >= 0.5:
+                s_bord[i][j] = int(1)
+            elif s_bord[i][j] < - 0.5:
+                s_bord[i][j] = int(-1)
+            else:
+                s_bord[i][j] = int(0)
+    return s_bord
+
+
 if __name__ == '__main__':
     cam = initializeCamera()
     print('hi')
@@ -313,12 +352,13 @@ if __name__ == '__main__':
         if key == 'p':
             p = input('set circles_parameter')
             circles_threshold = float(p)
-        img = take_grayscale_pic()
-        colored_pic = take_color_pic()
-
+        # img = take_grayscale_pic()
+        # colored_pic = take_color_pic()
+        colored_pic = cv2.imread('board.jpg')
+        img = cv2.imread('board.jpg', 0)
         print("working...")
-        img = cutPicture(img)
-        colored_pic = cutPicture(colored_pic)
+        img = cutPicture(img,img)
+        colored_pic = cutPicture(colored_pic,cv2.cvtColor(colored_pic, cv2.COLOR_RGB2GRAY))
 
         if key == 'a' or key == 'd':
             show_image(img)
@@ -326,8 +366,8 @@ if __name__ == '__main__':
             s_board = np.zeros((8, 8))
             img = take_grayscale_pic()
             colored_pic = take_color_pic()
-            img = cutPicture(img)
-            colored_pic = cutPicture(colored_pic)
+            img = cutPicture(img,img)
+            colored_pic = cutPicture(colored_pic,cv2.cvtColor(colored_pic, cv2.COLOR_RGB2GRAY))
             board = main_function(img, colored_pic)
             board1 = np.array(board)
             s_board += board1
