@@ -11,7 +11,7 @@ import Gui
 
 
 def image_processing(last_board):  # last_board is only to make sure
-    return camera.return_board()
+    return camera.return_board()# confirm output variation
     # return curr_board
 
 
@@ -48,7 +48,7 @@ def put_down(our_move):
     # return None (advance to flipping)
 
 
-def flip(to_flip):
+def flip(to_flip):#confirm outputs
     for i in range(len(to_flip)):
         flip = "flip" + str(to_flip[i])  # build command that arduino read
         arduinoSerial.write(flip.encode())
@@ -56,17 +56,7 @@ def flip(to_flip):
         # return None
 
 
-def check_four_by_four(curr_board):
-    print(curr_board)
-    for i in range(len(curr_board)):
-        for j in range(len(curr_board[i])):
-            if curr_board[i][j] != 0 and (
-                            i not in range(2, 6) or j not in range(2, 6)):
-                return False
-    return True
-
-
-def go_to_gui(curr_board, first_player, second_player):
+def go_to_gui(curr_board, first_player, second_player):#confirm with lidji
     """
     A function that gets a board and continues a game from it
     :param curr_board: the board to start from

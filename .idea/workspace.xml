@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Algorithm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Algorithm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArduinoCommunication.py" beforeDir="false" afterPath="$PROJECT_DIR$/ArduinoCommunication.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Board.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Board.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Board.h" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Board.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Main.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Main.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Plotter.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Stack.ino" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,8 +37,8 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-581">
-              <caret line="58" selection-start-line="58" selection-end-line="65" selection-end-column="15" />
+            <state relative-caret-position="357">
+              <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -458,7 +449,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
+    <frame x="-6" y="-6" width="1293" height="693" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.124105014" />
@@ -740,8 +731,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-581">
-          <caret line="58" selection-start-line="58" selection-end-line="65" selection-end-column="15" />
+        <state relative-caret-position="357">
+          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
