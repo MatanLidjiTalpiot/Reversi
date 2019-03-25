@@ -8,10 +8,10 @@ import rotate
 # variables
 avarages_constant = 10
 # circles
-r = 8  # min radius
-R = 11  # max radius
-circles_threshold = 1.9  # circles thrashhold
-up_th = 50
+r = 10  # min radius
+R = 12  # max radius
+circles_threshold = 1.8  # circles thrashhold
+up_th = 80
 down_th = 0
 red_color_majority = 50
 # images
@@ -41,8 +41,8 @@ def color_to_grayscale(img):  # todo: check what this does
     return cv2.cvtColor(img, cv2.COLOR_GRAY2BGR)
 
 
-def cutPicture(color,gray):  # todo: magic numbers
-    return rotate.cut_picture1(gray,color)
+def cutPicture(color,gray, voodoo=0.05):  # todo: magic numbers
+    return rotate.cut_picture1(gray,color,voodoo)
 
 
 def get_color(x, y, img):
@@ -352,13 +352,34 @@ if __name__ == '__main__':
         if key == 'p':
             p = input('set circles_parameter')
             circles_threshold = float(p)
-        # img = take_grayscale_pic()
-        # colored_pic = take_color_pic()
-        colored_pic = cv2.imread('board.jpg')
-        img = cv2.imread('board.jpg', 0)
+        img = take_grayscale_pic()
+        colored_pic = take_color_pic()
         print("working...")
         img = cutPicture(img,img)
         colored_pic = cutPicture(colored_pic,cv2.cvtColor(colored_pic, cv2.COLOR_RGB2GRAY))
+
+        print(colored_pic.shape)
+        print(colored_pic.shape[0])
+        print(colored_pic.shape[1])
+        show_image(colored_pic)
+        # if key == 'x':
+        #     colored_pic = cv2.imread('board.jpg')
+        #     img = cv2.imread('board.jpg', 0)
+        #     print("working...")
+        #     show_image(colored_pic)
+        #     img = cutPicture(img, img)
+        #     colored_pic = cutPicture(colored_pic, cv2.cvtColor(colored_pic, cv2.COLOR_RGB2GRAY))
+        #     show_image(colored_pic)
+        #
+        # if key == 'v':
+        #     v = input('set voodoo parameter')
+        #     colored_pic = cv2.imread('board.jpg')
+        #     img = cv2.imread('board.jpg', 0)
+        #     print("working...")
+        #     show_image(colored_pic)
+        #     img = cutPicture(img, img,float(v))
+        #     colored_pic = cutPicture(colored_pic, cv2.cvtColor(colored_pic, cv2.COLOR_RGB2GRAY),float(v))
+        #     show_image(colored_pic)
 
         if key == 'a' or key == 'd':
             show_image(img)
@@ -378,17 +399,18 @@ if __name__ == '__main__':
             print(s_board)
             if key == 'b':
                 continue
+
         if key == 'c' or key == 'a':
             circles = find_circles(img)
             circles = filter_circles(circles, colored_pic)
         c = color_to_grayscale(img)
         if key == 'c' or key == 'a':
             draw_circles(circles, c)
-        lines = find_lines(c)
-        filtered = filter_lines(lines)
-        classified_lines(filtered)
-        s = resize(c)
-        draw_lines(filtered, s)
+            lines = find_lines(c)
+            filtered = filter_lines(lines)
+            classified_lines(filtered)
+            s = resize(c)
+            draw_lines(filtered, s)
         if key == 'c' or key == 'a':
             cv2.imshow("sad3", s)
             cv2.waitKey(0)

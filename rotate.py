@@ -15,7 +15,8 @@ def order_points(pts):
     # the second entry is the top-right, the third is the
     # bottom-right, and the fourth is the bottom-left
     rect = np.zeros((4, 2), dtype="float32")
-
+    if type(pts) != np.ndarray:
+        pts = np.array(pts)
 
     pts = pts.reshape(4,2)
 
@@ -80,7 +81,7 @@ def four_point_transform(image, pts):
     return warped
 
 
-def find_points(gray):
+def find_points(gray,voodoo):
     gray = cv2.GaussianBlur(gray, (5, 5), 0)
     thresh = cv2.adaptiveThreshold(gray, 255, 1, 1, 11, 2)
     _, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -93,7 +94,7 @@ def find_points(gray):
         area = cv2.contourArea(i)
         if area > down_th:
             peri = cv2.arcLength(i, True)
-            approx = cv2.approxPolyDP(i, 0.06* peri, True)
+            approx = cv2.approxPolyDP(i, 0.06 * peri, True)
             if area > max_area and len(approx) == 4:
                 biggest = approx
                 max_area = area
@@ -102,69 +103,39 @@ def find_points(gray):
 
 
 
-
-
-
-# def rotate(img):
-#     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-#     gray = cv2.GaussianBlur(gray, (5, 5), 0)
-#     thresh = cv2.adaptiveThreshold(gray, 255, 1, 1, 11, 2)
-#     _, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-#     # print(len(useless))
-#     # print(contours)
-#     # print(len(hierarchy))
-#     biggest = None
-#     max_area = 0
-#     for i in contours:
-#         area = cv2.contourArea(i)
-#         if area > down_th:
-#             peri = cv2.arcLength(i, True)
-#             approx = cv2.approxPolyDP(i, 0.02 * peri, True)
-#             if area > max_area and len(approx) == 4:
-#                 biggest = approx
-#                 max_area = area
-#     biggest = rectify(biggest)
-#     print(biggest)
-#     ImageProcessing.show_image(img)
-#     point = tuple(biggest[1])
-#     color = (0, 0, 255)
-#     cv2.circle(img, point, 2, color, 3)
-#     points1 = [biggest[0],biggest[1]]
-#     points2 = [biggest[2],biggest[3]]
-#     ImageProcessing.show_image(img)
-#
-#     h, status = cv2.findHomography(np.array(points1), np.array(points2))
-#
-#     # retval = cv2.getPerspectiveTransform(biggest, size_of_board)
-#     print(gray.shape)
-#     print(gray.dtype)
-#     warp = cv2.warpPerspective(gray, h, (450, 450))
-#     return warp
-
-
-# c  = cv2.imread('board.jpg')
-# gray = cv2.imread('board.jpg',0)
-# show_image(c)
-#
-# points = find_points(gray)
-# print(points)
-#
-# points = points.reshape(4,2)
-# for i in points:
-#     point = tuple(i)
-#     cv2.circle(c,point,2,(0,0,255),3)
-# show_image(c)
-#
-# points = order_points(points)
-# c = four_point_transform(c,points)
-#
-# show_image(c)
-
-def cut_picture1(gray_pic , colord_pic):
-    points = find_points(gray_pic)
+def cut_picture1(gray_pic , colord_pic, voodoo= 0.05):
+    points = find_points(gray_pic,voodoo)
+    points = points.reshape(4, 2)
+    for i in points:
+        point = tuple(i)
+        cv2.circle(colord_pic, point, 2, (0, 0, 255), 3)
+    # show_image(colord_pic)
     points = order_points(points)
     return four_point_transform(colord_pic, points)
 
-# k = cut_picture1(gray,c)
 
-# ImageProcessing.show_image(k)
+# points = points.reshape(4, 2)
+# for i in points:
+#     point = tuple(i)
+#     cv2.circle(c, point, 2, (0, 0, 255), 3)
+# show_image(c)
+#
+# points = order_points(points)
+# c = four_point_transform(c, points)
+#
+# show_image(c)
+
+    # end = False
+# voodoo = 0.06
+# while not end:
+#     colored_pic = cv2.imread('board(1).jpg')
+#     img = cv2.imread('board(1).jpg', 0)
+#     show_image(colored_pic)
+#     img = cut_picture1(img, img,voodoo)
+#     colored_pic = cut_picture1(cv2.cvtColor(colored_pic, cv2.COLOR_RGB2GRAY),colored_pic,voodoo)
+#     show_image(colored_pic)
+#     ans = input("end or voodoo?")
+#     if ans =="1":
+#         end = True
+#     else:
+#         voodoo = float(input("set voodoo"))
