@@ -109,7 +109,7 @@ def cut_picture1(gray_pic , colord_pic, voodoo= 0.05):
     for i in points:
         point = tuple(i)
         cv2.circle(colord_pic, point, 2, (0, 0, 255), 3)
-    # show_image(colord_pic)
+    show_image(colord_pic)
     points = order_points(points)
     return four_point_transform(colord_pic, points)
 
