@@ -6,14 +6,7 @@ import bluetooth
 from image_control_xy_movement import get_move_and_dist
 
 from nxt.motor import *
-def left(steps):
-    pass
-def right(steps):
-    pass
-def up(steps):
-    pass
-def down(steps):
-    pass
+
 # nearby_devices = bluetooth.discover_devices(lookup_names=True)
 # print("found %d devices" % len(nearby_devices))
 #

@@ -8,7 +8,8 @@ import motor
 import HeuristicsSandbox
 import BoardInformation
 import Gui
-
+from image_control_xy_movement import move_monitored
+end_point_in_board = (7, 6)
 
 def image_processing(last_board):  # last_board is only to make sure
     return camera.return_board()# confirm output variation
@@ -85,21 +86,22 @@ if __name__ == '__main__':
         if our_turn:
             if input("Play your turn and then write 'Done' (or just 'D')") in {
                 "Done", "done", 'D', 'd'}:
-                motor.move_to_xy_with_monitoring((7, 0))
+
+                #send "start_point_move" to arduino
                 curr_board = image_processing(last_board)
                 print("curr_board", curr_board)
-                if not check_four_by_four(curr_board):
-                    break
-
                 our_move, to_flip, next_board = algorithm(ai, curr_board)
                 print("our_move, to_flip", our_move, to_flip)
-                motor.move_to_xy_with_monitoring(our_move)
+                our_move_arduino = move_monitored(our_move)
                 put_down(our_move)  # drops
+                our_move_arduino = move_monitored(end_point_in_board)
+                # send "end_point_move" to arduino
                 flip(to_flip)
                 take_disk()  # take disk for the next move
                 #
                 last_board = curr_board  # board for next move
         else:
+            pass
 
     human_player = Player.Player(p_type=Player.Player.PlayerTypes.HUMAN,
                                  name="human", disk=Game.SECOND_COLOR)
