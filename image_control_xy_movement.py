@@ -3,6 +3,8 @@ import numpy as np
 import time
 import math
 from MyCamera import MyCamera
+import image_cutting
+
 
 row0 = [(128, 80), (166, 80), (204, 80), (242, 80), (280, 80), (317, 80),
         (356, 80), (391, 80)]
@@ -28,28 +30,34 @@ def takePicture(pic_name):
     rval, frame = MyCamera.get_camera().read()
     # cv2.imshow('yam_picture', frame)
     cv2.imwrite(pic_name, frame)
+    print("saved picture as '"+pic_name+"'")
+    return frame
 
 
-def save_green_mask(img, new_img_name):
-    range_green = 30
-    ## convert to hsv
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+def save_blue_mask(frame, new_img_name):
+    POINTS = [[182, 82], [177, 362], [459, 372], [467, 89]]
+    POINTS = np.array(POINTS)
+    POINTS = image_cutting.order_points(POINTS)
+    # for i in POINTS:
+    #     point = tuple(i)
+    #     cv2.circle(frame, point, 2, (0, 0, 255), 3)
+    # image_cutting.show_image(frame)
+    frame = image_cutting.four_point_transform(frame, POINTS)
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    lower_blue = np.array([100, 50, 50])
+    upper_blue = np.array([150, 250, 250])
 
-    ## mask of green (36,25,25) ~ (86, 255,255)
-    # mask = cv2.inRange(hsv, (36, 25, 25), (86, 255,255))
-    mask = cv2.inRange(hsv, (
-        105 - range_green, 206 - range_green, 53 - range_green),
-                       (70 + range_green, 255 + range_green,
-                        255 + range_green))
-
-    ## slice the green
-    imask = mask > 0
-    green = np.zeros_like(img, np.uint8)
-    green[imask] = img[imask]
-
-    ## save
-    cv2.imwrite(new_img_name, green)
-
+    mask = cv2.inRange(hsv, lower_blue, upper_blue)
+    kernel = np.ones((5, 5), np.uint8)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+    res = cv2.bitwise_and(frame, frame, mask=mask)
+    # cv2.imshow('frame', frame)
+    cv2.imshow('mask', mask)
+    cv2.imshow('res', res)
+    cv2.waitKey(0)
+    cv2.imwrite(new_img_name, mask)
+    return mask
 
 def get_center_of_masked_gray_pic(img, threshold_val=grey_threshold):
     row_sum = 0
@@ -67,25 +75,20 @@ def get_center_of_masked_gray_pic(img, threshold_val=grey_threshold):
     x_center = column_sum / column_count
     y_center = round(y_center)  # center of grey
     x_center = round(x_center)  # center of grey
-    y_center += 69  # center of drop point
-    x_center += 3  # center of drop point
 
     return x_center, y_center
 
-
 def convert_pixel_to_centimeter(pixels_num):
     square_centimeter = 7.0
-    square_pixels = 37.0
+    square_pixels = 36.0
     ratio_centimeter_to_pixel = square_centimeter / square_pixels
     return pixels_num * ratio_centimeter_to_pixel
 
 
 def get_obj_location_pixels():
-    takePicture('find_center0.png')
-    img = cv2.imread('find_center0.png')
-    save_green_mask(img, 'find_center1.png')
-    img = cv2.imread('find_center1.png', 0)  # already grey
-    return get_center_of_masked_gray_pic(img, 50)
+    img = takePicture('find_center0.png')
+    img = save_blue_mask(img, 'find_center1.png')
+    return get_center_of_masked_gray_pic(img, grey_threshold)
 
 
 def get_move_and_dist(square_num):
@@ -103,6 +106,19 @@ def get_move_and_dist(square_num):
     dist = math.sqrt(x_diff ** 2 + y_diff ** 2)
     return x_diff, y_diff, dist
 
-
+def move_monitored(square_num):
+    move = get_move_and_dist(square_num)
+    x_diff = move[0]
+    y_diff = move[1]
+    dist = move[2]
+    while(dist>2.0):
+        #send_to_arduino_motors x_diff, y_diff and wait for response when they're done
+        move = get_move_and_dist(square_num)
+        x_diff = move[0]
+        y_diff = move[1]
+        dist = move[2]
 if __name__ == '__main__':
-    takePicture('yoav')
+    # img = takePicture('find_blue2.png')
+    img = cv2.imread('find_blue2.png')
+    img = save_blue_mask(img, 'findblue1_after.png')
+    print(get_center_of_masked_gray_pic(img, grey_threshold))
