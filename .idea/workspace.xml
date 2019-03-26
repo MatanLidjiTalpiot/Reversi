@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Board.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Board.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Board.ino" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Main.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Main.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Plotter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Plotter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Stack.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/Stack.h" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,7 +25,7 @@
       <file leaf-file-name="Genetic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Genetic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
+            <state relative-caret-position="1343">
               <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
             </state>
           </provider>
@@ -25,7 +34,7 @@
       <file leaf-file-name="ArduinoCommunication.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ArduinoCommunication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="153">
               <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
@@ -37,8 +46,8 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+            <state relative-caret-position="225">
+              <caret line="90" column="41" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="41" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -90,8 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>7</find>
-      <find>8</find>
       <find>9</find>
       <find>line p</find>
       <find>p_type</find>
@@ -120,6 +127,8 @@
       <find>+=</find>
       <find>compare</find>
       <find>print</find>
+      <find>serial</find>
+      <find>arduinoSerial</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,23 +168,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="Algorithm" type="cbb8eebc:String" user="Algorithm" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Reversi" type="b2602c69:ProjectViewProjectNode" />
               <item name="Reversi" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="Algorithm" type="cbb8eebc:String" user="Algorithm" />
             </path>
           </expand>
           <select />
@@ -449,7 +458,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="693" extended-state="7" />
+    <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.124105014" />
@@ -476,22 +485,22 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12486428" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49344978" visible="true" weight="0.2907117" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Data View" order="3" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293124" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.46561137" weight="0.3293124" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49570355" weight="0.11633109" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49555555" weight="0.45476478" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3220748" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49555555" weight="0.32810616" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5065502" side_tool="true" weight="0.61335015" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49570355" weight="0.11633109" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.46561137" weight="0.3293124" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="9" />
-      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49555555" weight="0.45476478" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -714,14 +723,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Genetic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
+        <state relative-caret-position="1343">
           <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ArduinoCommunication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="153">
           <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
@@ -731,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+        <state relative-caret-position="225">
+          <caret line="90" column="41" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="41" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

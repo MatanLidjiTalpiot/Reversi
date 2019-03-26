@@ -80,23 +80,27 @@ if __name__ == '__main__':
     ai = Player.Player(heuristic=HeuristicsSandbox.palti_white_h, name="ai",
                        disk=Game.FIRST_COLOR)
     last_board = image_processing(None)
+    our_turn = False
     while True:
-        if input("Play your turn and then write 'Done' (or just 'D')") in {
-            "Done", "done", 'D', 'd'}:
-            motor.move_to_xy_with_monitoring((7, 0))
-            curr_board = image_processing(last_board)
-            print("curr_board", curr_board)
-            if not check_four_by_four(curr_board):
-                break
+        if our_turn:
+            if input("Play your turn and then write 'Done' (or just 'D')") in {
+                "Done", "done", 'D', 'd'}:
+                motor.move_to_xy_with_monitoring((7, 0))
+                curr_board = image_processing(last_board)
+                print("curr_board", curr_board)
+                if not check_four_by_four(curr_board):
+                    break
 
-            our_move, to_flip, next_board = algorithm(ai, curr_board)
-            print("our_move, to_flip", our_move, to_flip)
-            motor.move_to_xy_with_monitoring(our_move)
-            put_down(our_move)  # drops
-            flip(to_flip)
-            take_disk()  # take disk for the next move
-            #
-            last_board = curr_board  # board for next move
+                our_move, to_flip, next_board = algorithm(ai, curr_board)
+                print("our_move, to_flip", our_move, to_flip)
+                motor.move_to_xy_with_monitoring(our_move)
+                put_down(our_move)  # drops
+                flip(to_flip)
+                take_disk()  # take disk for the next move
+                #
+                last_board = curr_board  # board for next move
+        else:
+
     human_player = Player.Player(p_type=Player.Player.PlayerTypes.HUMAN,
                                  name="human", disk=Game.SECOND_COLOR)
     winner = go_to_gui(curr_board, first_player=ai,
