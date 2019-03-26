@@ -1,8 +1,6 @@
-
-///
 #include <String.h>
 #include <Servo.h>
-///
+
 //general variables
 int length = 100;
 char buffer[100];
@@ -35,7 +33,7 @@ int step_pin_motor2 = 11;
 int dir_pin_motor2 = 10;
 int enable_pin_plotter = 25;
 
-int plotter_interval = 400;
+int plotter_interval = 500;
 int LEFT = 3;
 int RIGHT = 4;
 int UP = 5;
@@ -60,7 +58,7 @@ int switchy[8] = {in[8], in[9], in[10], in[11], in[12], in[13], in[14], in[15]};
 int step_pin_stack = 13;
 int dir_pin_stack = 12;
 int enable_pin_stack = 24;
-int stack_interval = 2500;
+int stack_interval = 3000;
 
 /////////////
 // Plotter //
@@ -70,23 +68,28 @@ void plotter_move_motors(int steps_to_move, int dir)
 {
   digitalWrite(enable_pin_plotter, LOW); //enable todo: maybe move after dir
 
-  if (dir == UP) {
+  if (dir == UP)
+  {
     digitalWrite(dir_pin_motor1, HIGH);
     digitalWrite(dir_pin_motor2, LOW);
   }
-  else if (dir == DOWN) {
+  else if (dir == DOWN)
+  {
     digitalWrite(dir_pin_motor1, LOW);
     digitalWrite(dir_pin_motor2, HIGH);
   }
-  else if (dir == LEFT) {
+  else if (dir == LEFT)
+  {
     digitalWrite(dir_pin_motor1, HIGH);
     digitalWrite(dir_pin_motor2, HIGH);
   }
-  else { //(dir == RIGHT)
+  else //(dir == RIGHT)
+  {
     digitalWrite(dir_pin_motor1, LOW);
     digitalWrite(dir_pin_motor2, LOW);
   }
-  for (int x = 0; x < steps_to_move; x++) {
+  for (int x = 0; x < steps_to_move; x++)
+  {
     digitalWrite(step_pin_motor1, HIGH);
     delayMicroseconds(plotter_interval);
     digitalWrite(step_pin_motor1, LOW);
@@ -98,7 +101,6 @@ void plotter_move_motors(int steps_to_move, int dir)
     delayMicroseconds(plotter_interval);
   }
   digitalWrite(enable_pin_plotter, HIGH); //disable
-  Serial.println("ended move motors");
 }
 
 void plotter_init()
@@ -128,30 +130,36 @@ void plotter_drop(int x, int y)
 }
 
 
-void plotter_move_to_square(int x, int y) {
+void plotter_move_to_square(int x, int y)
+{
   //the 910 if to leave origin
   //up down
   plotter_move_motors(910 + one_square * (7 - x), UP);
   plotter_move_motors(PLOTTER_OFFSET, LEFT);
   //right left
-  if (y == 7) {
+  if (y == 7)
+  {
     plotter_move_motors(one_square, RIGHT);
   }
-  else {
+  else
+  {
     plotter_move_motors(one_square * (6 - y), LEFT);
   }
-  Serial.print("done moving to square ");
+  Serial.print("done moving to square");
   Serial.print(x);
   Serial.println(y);
 }
-void plotter_move_to_stack(int x, int y) {
+void plotter_move_to_stack(int x, int y)
+{
   //right left
   plotter_move_motors(PLOTTER_OFFSET, RIGHT);
 
-  if (y == 7) {
+  if (y == 7)
+  {
     plotter_move_motors(one_square, LEFT);
   }
-  else {
+  else
+  {
     plotter_move_motors(one_square * (6 - y), RIGHT);
   }
   //up down
@@ -167,7 +175,8 @@ void plotter_move_to_stack(int x, int y) {
 
 void board_init()
 {
-  for (int i = 0; i < 8; i++) {
+  for (int i = 0; i < 8; i++)
+  {
     pinMode(switchx[i], OUTPUT);
     digitalWrite(switchx[i], HIGH);
     pinMode(switchy[i], OUTPUT);
@@ -233,11 +242,13 @@ void board_flip_sequence(String sequence)
 // Stack //
 ///////////
 
-void stack_move_steps(int steps_to_move) {
+void stack_move_steps(int steps_to_move)
+{
   digitalWrite(enable_pin_stack, LOW); //enable
   digitalWrite(dir_pin_stack, LOW);
   delay(10);
-  for (int x = 0; x < steps_to_move; x++) {
+  for (int x = 0; x < steps_to_move; x++)
+  {
     digitalWrite(step_pin_stack, HIGH);
     delayMicroseconds(stack_interval);
     digitalWrite(step_pin_stack, LOW);
@@ -247,24 +258,27 @@ void stack_move_steps(int steps_to_move) {
   delay(10);
 }
 
-void stack_init() {
+void stack_init()
+{
   pinMode(step_pin_stack, OUTPUT);
   pinMode(dir_pin_stack, OUTPUT);
   pinMode(enable_pin_stack, OUTPUT);
   digitalWrite(enable_pin_stack, HIGH); //disable
 }
 
-void stack_spin() {
+void stack_spin()
+{
+  digitalWrite(enable_pin_stack, LOW); //enable
   stack_move_steps(50);
   delay(100);
   Serial.println("stack ready");
+  digitalWrite(enable_pin_stack, HIGH); //disable
+
 }
 
-////////////////
-////////////////
-////////////////
-////////////////
-
+//////////
+// Main //
+//////////
 
 void setup()
 {
@@ -282,8 +296,10 @@ void setup()
   stack_init(); //todo
 }
 
-void loop() {
-  if (Serial.available() <= 0) { //if we didnt get something dont enter
+void loop()
+{
+  if (Serial.available() <= 0)
+  { //if we didnt get something dont enter
     return;
   }
   //now we get something and execute the actual program
@@ -294,15 +310,16 @@ void loop() {
   {
     int* square = new int[2];
     square = string_to_xy(myBuffer, 3);
-    int x = square[0];
-    int y = square[1];
+    int x = square[0] - '0';
+    int y = square[1] - '0';
+    Serial.println("before move to square");
     plotter_move_to_square(x, y);
+    Serial.println("after move to square");
     plotter_drop(x, y);
     stack_spin();
-
   }
 
-  else if (myBuffer.indexOf("flip") != -1) //assume that if we want to flip the string is flip12
+  else if (myBuffer.indexOf("flip") != -1) //assume that if we want to flip the string is flip121314
   {
     board_flip_sequence(myBuffer.substring(4));
   }
@@ -311,20 +328,37 @@ void loop() {
   {
     int* square = new int[2];
     square = string_to_xy(myBuffer, 4);
-    plotter_move_to_stack(square[0], square[1]); // this function needs to get the current location?
-    myservo.write(servoStartPoint);
+    plotter_move_to_stack(square[0], square[1]);
     delay(200);
     Serial.println("picked up disk");
     //todo: tell arduino we are done
   }
 
-  else if (myBuffer.indexOf("drop") != -1)
+  else if (myBuffer.indexOf("u+") != -1)
   {
-
+    plotter_move_motors(myBuffer.substring(2).toInt(), UP);
   }
-
+  else if (myBuffer.indexOf("d+") != -1)
+  {
+    plotter_move_motors(myBuffer.substring(2).toInt(), DOWN);
+  }
+  else if (myBuffer.indexOf("l+") != -1)
+  {
+    plotter_move_motors(myBuffer.substring(2).toInt(), LEFT);
+  }
+  else if (myBuffer.indexOf("r+") != -1)
+  {
+    plotter_move_motors(myBuffer.substring(2).toInt(), RIGHT);
+  }
+  else if (myBuffer.indexOf("s+") != -1)
+  {
+    Serial.println("s+");
+    stack_spin();
+  }
   else if (myBuffer.length() != 0)
   {
-    //        Serial.println("Error - Bad input format");
+    Serial.println("Error - Bad input format");
   }
+
+  // todo: write a function that gets a place to put and a sequence of squares to flip and does everything automatically
 }

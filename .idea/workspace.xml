@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Board.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Board.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Board.ino" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/Main.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Main.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Plotter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Plotter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Stack.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/Stack.h" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,8 +25,8 @@
       <file leaf-file-name="ArduinoCommunication.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ArduinoCommunication.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+            <state relative-caret-position="170">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -46,11 +37,8 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="90" column="41" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="174">
+              <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -79,8 +67,8 @@
       <file leaf-file-name="Gui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3179">
-              <caret line="193" column="24" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
+            <state relative-caret-position="3281">
+              <caret line="199" selection-start-line="199" selection-end-line="199" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -100,7 +88,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>9</find>
-      <find>line p</find>
+      <find />
       <find>p_type</find>
       <find>get_</find>
       <find>get_opponent_num_of_sides</find>
@@ -114,8 +102,8 @@
       <find>problem</find>
       <find>color</find>
       <find>initializing</find>
-      <find>is black</find>
-      <find>2, 4</find>
+      <find />
+      <find />
       <find>rese</find>
       <find>Gui</find>
       <find>load</find>
@@ -156,7 +144,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-12" />
     <option name="y" value="-12" />
     <option name="width" value="2586" />
@@ -472,35 +460,45 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3220748" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.46561137" weight="0.3293124" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.124105014" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3293124" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4913138" weight="0.06755127" />
       <window_info anchor="right" id="Data View" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3220748" />
       <window_info anchor="bottom" id="Messages" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5086862" side_tool="true" visible="true" weight="0.066308245" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49570355" weight="0.11633109" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49555555" weight="0.32810616" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49555555" weight="0.45476478" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12486428" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49344978" visible="true" weight="0.2907117" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Data View" order="3" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293124" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49570355" weight="0.11633109" />
-      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49555555" weight="0.45476478" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.46561137" weight="0.3293124" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49344978" visible="true" weight="0.2907117" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3220748" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49555555" weight="0.32810616" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5065502" side_tool="true" weight="0.61335015" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.46561137" weight="0.3293124" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="9" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49570355" weight="0.11633109" />
+      <window_info anchor="bottom" id="Messages" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49555555" weight="0.45476478" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -682,8 +680,8 @@
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/random.py" />
     <entry file="file://$PROJECT_DIR$/Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3179">
-          <caret line="193" column="24" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
+        <state relative-caret-position="3281">
+          <caret line="199" selection-start-line="199" selection-end-line="199" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -730,8 +728,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ArduinoCommunication.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        <state relative-caret-position="170">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
           </folding>
@@ -740,11 +738,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="90" column="41" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="174">
+          <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
         </state>
       </provider>
     </entry>
