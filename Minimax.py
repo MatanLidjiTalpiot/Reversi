@@ -14,28 +14,20 @@ def get_score(game, player):
     # key =  (tuple(map(tuple, game.board)))
     # if key not in SCORE_MEMO:
 
-    p_list = Genetic.evolve(player,2)
-    heuristic_2 = p_list[0].heuristic
-    heuristic_3 = p_list[1].heuristic
     sum1 = 0
     sum2 = 0
-    sum3 = 0
+
     for feature in player.get_heuristic():
         val1 = feature[1](game, player)
         if val1 != 0:
             for i in range (len(feature[0])):
                 sum1 += feature[0][i] * abs((val1**(i+1)))*(val1)/abs(val1)
-    for feature in heuristic_2:
+    for feature in player.heuristic_2:
         val2 = feature[1](game, player)
         if val2 != 0:
             for i in range (len(feature[0])):
                 sum2 += feature[0][i] * abs((val2**(i+1)))*(val2)/abs(val2)
-    for feature in heuristic_3:
-        val3 = feature[1](game, player)
-        if val3 != 0:
-            for i in range(len(feature[0])):
-                sum3 += feature[0][i]*abs((val3**(i+1)))*(val3)/abs(val3)
-    sum_avg = (sum1 + sum2 + sum3)/3
+    sum_avg = (sum1 + sum2)/2
     return sum_avg
     # else:
     #     return SCORE_MEMO[key]
@@ -62,6 +54,7 @@ def alpha_beta(game, depth, player, maximizing_player, disk):
     :param disk: player's disk
     :return: a 2-tuple (best score, best move)
     """
+    player.heuristic_2 = Genetic.evolve(player,1)[0].heuristic
     return alpha_beta_in(game, depth, depth, player, float("-inf"), float("inf"), maximizing_player, disk, None)
 
 

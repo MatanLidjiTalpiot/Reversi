@@ -259,6 +259,8 @@ p_new_m = Genetic.mutation(Genetic.mutation(Genetic.mutation(Genetic.mutation(p_
 # Player.Player.save_to_folder(mutant_2, 'pklFiles')
 p_new_m.name = "check1"
 Player.Player.save_to_folder(p_new_m, "pklFiles")
-game = Game.Game(p_new, human1)
+our_player = Player.Player.load_player("pklFiles/mutant_1.pkl")
+game = Game.Game(our_player, human1)
 gui = Gui.Gui(game)
 gui.play_game()
+

@@ -140,6 +140,7 @@ class Player:
     def choose_move(self, game):
          # try:
             if self.type == Player.PlayerTypes.MINIMAX:
+                self.heuristic_2 = []
                 return Minimax.alpha_beta(game, 4, self, True, self.get_disk())
                 # num_of_options = game.get_num_of_options(self)
                 # if num_of_options <= 3:
