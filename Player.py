@@ -24,18 +24,19 @@ class Player:
     #ALL_FUNCTIONS = [lambda game, player: game.get_color_disk_num(player.get_disk()), lambda game, player: game.get_opponent_disk_num(player.get_disk())] todo - this is before blind to color
     palti_n = np.log(10) / np.log(1.5)  # a somewhat arbitrary constant
     palti_A = 1 / (40 ** palti_n)  # a somewhat arbitrary constant
-    ALL_FUNCTIONS =[lambda game, player: game.get_color_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n),
-                    lambda game, player: (game.get_opponent_disk_num(player) * palti_A * np.power(game.get_number_of_turns(), palti_n)),
+    #TODO: READ THIS: I changed the opponents' features to be negative since in gen all are positive also removed the normalizationb with plati_n/g
+    ALL_FUNCTIONS =[lambda game, player: game.get_color_disk_num(player),
+                    lambda game, player: -game.get_opponent_disk_num(player),
                     lambda game, player: game.get_num_of_corners(player),
-                    lambda game, player: game.get_opponent_num_of_corners(player),
+                    lambda game, player: -game.get_opponent_num_of_corners(player),
                     lambda game, player: game.get_num_of_sides(player),
-                    lambda game, player: game.get_opponent_num_of_sides(player),
-                    lambda game, player: game.get_num_of_options_for_other(player),
+                    lambda game, player: -game.get_opponent_num_of_sides(player),
+                    lambda game, player: -game.get_num_of_options_for_other(player),
                     lambda game, player: game.is_winner_score(player)]
-    DEPTH = 4  # 4 is arbitrary
+
     HEURISTIC_LENGTH = len(ALL_FUNCTIONS)
 
-    def __init__(self, heuristic=None, name=None, disk=None, p_type=PlayerTypes.MINIMAX):
+    def __init__(self, heuristic=None, name=None, disk=None, p_type=PlayerTypes.MINIMAX, depth = 4):
         if name is None:
             name = Player.NUM_OF_PLAYERS  # credit for benny
         if p_type not in [Player.PlayerTypes.HUMAN, Player.PlayerTypes.NBOARD, Player.PlayerTypes.MINIMAX, Player.PlayerTypes.RANDOM, Player.PlayerTypes.TABLE]:
@@ -46,13 +47,13 @@ class Player:
 
             if heuristic is None:
                 raise ValueError("no heuristic was inputted")
-
+        self.depth = depth #4 is arbitrary
         self.type = p_type
         self.heuristic = heuristic
+        self.normalize_heuristic()
         self.disk = disk
         self.name = str(name)
         self.grade = 0
-
         if self.type == Player.PlayerTypes.MINIMAX and self not in Player.ALL_PLAYERS:
             Player.NUM_OF_PLAYERS += 1
             Player.ALL_PLAYERS.append(self)
@@ -139,8 +140,16 @@ class Player:
     def choose_move(self, game):
          # try:
             if self.type == Player.PlayerTypes.MINIMAX:
-                return Minimax.alpha_beta(game, Player.DEPTH, self, True,
-                                          self.get_disk())
+                # return Minimax.alpha_beta(game, 2, self, True, self.get_disk())
+                num_of_options = game.get_num_of_options(self)
+                if num_of_options <= 3:
+                    return Minimax.alpha_beta(game, 6, self, True, self.get_disk())
+                elif num_of_options <= 5:
+                    return Minimax.alpha_beta(game, 5, self, True, self.get_disk())
+                else:
+                    return Minimax.alpha_beta(game, 4, self, True, self.get_disk())
+
+
             elif self.type == Player.PlayerTypes.HUMAN:
                 return self.human_move(game)
             elif self.type == Player.PlayerTypes.NBOARD:
@@ -267,13 +276,16 @@ class Player:
     def __str__(self):
         return self.name
 
-    def __cmp__(self, other_player):
-        if(self.number_of_wins > other_player.number_of_wins):
-            return POS_INT
-        if(self.number_of_wins < other_player.number_of_wins):
-            return NEG_INT
-        return 0 #equal
 
+    def normalize_heuristic(self):
+        if self.type == Player.PlayerTypes.MINIMAX:
+            for i in range(len(self.heuristic[0])):
+                s = 0
+                for j in range (len(self.heuristic[i][0])):
+                    s += self.heuristic[j][0][i]
+                if s != 0:
+                    for j in range(len(self.heuristic)):
+                        self.heuristic[j][0][i] /= s
 
 
 Player.compare_two_players = staticmethod(Player.compare_two_players)

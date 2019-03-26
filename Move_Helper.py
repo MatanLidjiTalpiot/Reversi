@@ -12,13 +12,13 @@ class Move_Helper:
         self.init_board = np.zeros((8, 8)).astype(int)
         self.init_board[(3, 4)] = Game.BLACK  # maybe need to make player class and then player.number
         self.init_board[(4, 3)] = Game.BLACK
-        self.init_board[(3, 3)] = Game.WHITE
-        self.init_board[(4, 4)] = Game.WHITE
+        self.init_board[(3, 3)] = Game.RED
+        self.init_board[(4, 4)] = Game.RED
 
     def get_state(self, before_move_game, move, disk):
         before_move_board = before_move_game.board
         tup = (tuple(map(tuple, before_move_board)), move)
-        if disk == Game.WHITE:
+        if disk == Game.RED:
             if tup not in self.bmdw:
                 return [] #will add it in the do move part with the get move function
             else:
@@ -44,7 +44,7 @@ class Move_Helper:
 
         if game_before_move.get_number_of_turns() + 1 != np.count_nonzero(board_after_move):
             raise  ValueError("not supposed to happen")
-        if disk == Game.WHITE:
+        if disk == Game.RED:
             self.bmdw[tup] = board_after_move
         else:
             self.bmdb[tup] = board_after_move

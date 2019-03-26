@@ -11,13 +11,13 @@ class Legal_Moves_Helper:
         self.init_board = np.zeros((8, 8)).astype(int)
         self.init_board[(3, 4)] = Game.BLACK  # maybe need to make player class and then player.number
         self.init_board[(4, 3)] = Game.BLACK
-        self.init_board[(3, 3)] = Game.WHITE
-        self.init_board[(4, 4)] = Game.WHITE
+        self.init_board[(3, 3)] = Game.RED
+        self.init_board[(4, 4)] = Game.RED
 
     def get_state(self, before_move_game, disk):
         before_move_board = before_move_game.board
         tup = tuple(map(tuple, before_move_board))
-        if disk == Game.WHITE:
+        if disk == Game.RED:
             if tup not in self.lmdw:
                 return [] #will add it in the do move part with the get move function
             else:
@@ -32,7 +32,7 @@ class Legal_Moves_Helper:
     def get_new_legal_moves(self, game_before_move, disk, legal_moves):
         tup = tuple(map(tuple, game_before_move.board))
 
-        if disk == Game.WHITE:
+        if disk == Game.RED:
             self.lmdw[tup] = legal_moves
         else:
             self.lmdb[tup] = legal_moves

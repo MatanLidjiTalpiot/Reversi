@@ -14,11 +14,16 @@ def get_score(game, player):
     # if key not in SCORE_MEMO:
     sum = 0
     for feature in player.get_heuristic():
-        sum += feature[0] * feature[1](game, player)
-    # SCORE_MEMO[key] = sum
+        val = feature[1](game, player)
+        # print(val)
+        for i in range (len(feature[0])):
+            if val == 0:
+                break
+            sum += feature[0][i] * abs((val**(i+1)))*(val)/abs(val)
+        # SCORE_MEMO[key] = sum
     return sum
     # else:
-        # return SCORE_MEMO[key]
+    #     return SCORE_MEMO[key]
 
 
 def minimax(game, depth, player, maximizing_player, disk):
@@ -100,7 +105,7 @@ def alpha_beta_in(game, depth, initial_depth, player, a, b, maximizing_player, d
     """
     global WHITE_OPTIONS, BLACK_OPTIONS
     key = tuple(map(tuple, game.board))
-    if disk == Game.WHITE:
+    if disk == Game.RED:
         if key not in WHITE_OPTIONS:
             options = game.get_legal_moves(disk)
             WHITE_OPTIONS[key] = options

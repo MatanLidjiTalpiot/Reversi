@@ -18,11 +18,18 @@ ALL_FUNCTIONS = [
     lambda game, player: game.get_num_of_sides(player),  # pos
     lambda game, player: -game.get_opponent_num_of_sides(player),  # neg
     lambda game, player: -game.get_num_of_options_for_other(player),  # neg
-    lambda game, player: game.is_winner_score(player)]  # pos
+    lambda game, player: game.is_winner_score(player), #pos
+    lambda game, player: game.get_number_of_safe_disks(player), #pos
+    lambda game, player: -game.get_number_of_opponent_safe_disks(player), #neg
+    lambda game, player: -game.next_to_untaked_corner(player), #neg
+    lambda game,player: game.next_to_untaken_corner_opponent(player),#pos
+    lambda game, player: game.num_of_seq(player), #pos
+    lambda game, player: -game.num_of_opponent_seq(player)] #neg
 
 NUM_OF_PARAMS = len(ALL_FUNCTIONS)
 PALTI_PLAYER_4 = Player.Player.load_player('pklFiles/palti_player_d4.pkl')
 RANDOM_PLAYER = Player.Player.load_player('pklFiles/random_player.pkl')
+
 
 def evolve_q_time(players_list, n, q):
     """
@@ -91,7 +98,7 @@ def create_player_with_heuristic():
     """
     heuristic = []
     for i in range(NUM_OF_PARAMS):
-        weight = random() * 100
+        weight = [random() * 1000, random()*1000, random()*1000]
         tup = [weight, ALL_FUNCTIONS[i]]
         heuristic.append(tup)
     player = Player.Player(heuristic=heuristic, p_type=Player.Player.PlayerTypes.MINIMAX)
@@ -122,11 +129,11 @@ def selection(players_list, scores_list):
             if score_sum < parent2_score <= score_sum + scores_list[i]:
                 parent2 = j
             score_sum += scores_list[i]
-        new_gen.append(crossover(players_list[parent1], players_list[parent2], scores_list[parent1], scores_list[parent2]))
+        new_gen.append(crossover(players_list[parent1], players_list[parent2]))
     return new_gen
 
 
-def crossover(player1, player2, score1, score2):
+def crossover(player1, player2):
     """
     Crossover is the most significant phase in a genetic algorithm.
     For each pair of parents to be mated, a crossover point is chosen at random from within the genes.
@@ -147,7 +154,8 @@ def crossover(player1, player2, score1, score2):
     p = Player.Player(heuristic=heuristic)
     return p
 
-def mutation(player, n=1):
+
+def mutation(player):
     """
     In certain new offspring formed, some of their genes can be subjected to a mutation with a low random probability.
     This implies that some of the bits in the bit string can be flipped.
@@ -159,12 +167,15 @@ def mutation(player, n=1):
     """
     heuristic = player.heuristic
     feature = randint(0, len(heuristic) - 1)  # the feature to mutate
-    heuristic[feature][0] *= (2 * random())  # mutation ratio
+    for i in range(len(heuristic[0])):
+        if heuristic[feature][0][i] == 0:
+            heuristic[feature][0][i] = random() * 1000
+        heuristic[feature][0][i] *= (2 * random())# mutation ratio
     p = Player.Player(heuristic=heuristic)
     return p
 
 
-def fitness_level(p_list):
+def update_fitness_level(p_list):
     """
     a basic function which determies the fitness level of the player
     :param p: the index of the player we want to evaluate the fitness of
@@ -177,81 +188,90 @@ def fitness_level(p_list):
     # print("########################################")
     for i in range(len(p_list)):
         curr_player = p_list[i]
-        last_player = p_list[(i-1)]
+        last_player = p_list[i - 1]
         game = Game.Game(curr_player, last_player)
         game.final_board_in_game()
-        curr_player.grade += game.get_color_disk_num(curr_player)/4
-        last_player.grade += game.get_color_disk_num(last_player)/4
-        print("finished half evaluation number ", i, " of ", len(p_list))
+        print(curr_player.grade)
+        curr_player.grade += game.get_color_disk_num(curr_player) / 6
+        last_player.grade += game.get_color_disk_num(last_player) / 6
+        print("finished half evaluation number ", i+1, " of ", len(p_list))
         game.reset_game(last_player, curr_player)
         game.final_board_in_game()
-        curr_player.grade += game.get_color_disk_num(curr_player)/4
-        last_player.grade += game.get_color_disk_num(last_player)/4
-        print("finished evaluation number ", i, " of ", len(p_list))
+        curr_player.grade += game.get_color_disk_num(curr_player) / 6
+        last_player.grade += game.get_color_disk_num(last_player) / 6
+        game.reset_game(curr_player, Player.Player(p_type = Player.Player.PlayerTypes.RANDOM))
+        game.final_board_in_game()
+        curr_player.grade += game.get_color_disk_num(curr_player)/6
+        game.reset_game(Player.Player(p_type=Player.Player.PlayerTypes.RANDOM),curr_player)
+        game.final_board_in_game()
+        curr_player.grade += game.get_color_disk_num(curr_player) / 6
+        print("finished evaluation number ", i + 1, " of ", len(p_list))
 
 
-def termination(p_list, threshold = 15):
+def termination(p_list, threshold=15):
     """
-        The algorithm terminates if the population has converged
-        (does not produce offspring which are significantly different from the previous generation).
-        Then it is said that the genetic algorithm has provided a set of solutions to our problem.
-        in short  - determines whether to "kill" the player or not
-        :param p_list: the list of players to kill or help survive
-        :return: the list of players that didn't die
-        """
+    The algorithm terminates if the population has converged
+    (does not produce offspring which are significantly different from the previous generation).
+    Then it is said that the genetic algorithm has provided a set of solutions to our problem.
+    in short  - determines whether to "kill" the player or not
+    :param p_list: the list of players to kill or help survive
+    :return: the list of players that didn't die
+    """
     ret_list = []
+    ret_heuristics = []
+    terminated = 0
     for player in p_list:
-        if player.grade > threshold:
+        if player.grade > threshold and player.heuristic not in ret_heuristics:
             ret_list.append(player)
-    print("finished terminating, terminated: ", len(p_list) - len(ret_list), " players")
+            ret_heuristics.append(player.heuristic)
+        else:
+            terminated += 1
+    print("finished terminating, terminated: ", terminated, " players")
     return ret_list
 
 
-def genetic_main(num_p, folder_name, gen_number, depth_number, prob = 0.1, players_list = None, term_threshold = 0):
-
-    #creating a list with p new player
+def genetic_main(num_p, folder_name, gen_number, depth_number, mutation_prob=0.1, players_list=None, term_threshold=32):
+    # creating a list with p new player
     if depth_number == 0:
         print("finished")
-    else:
-        p_list = players_list
-        if p_list == None:
-            #create p_list
-            p_list = []
-            for i in range(num_p):
-                p = create_player_with_heuristic()
-                p_list.append(p)
-            fitness_level(p_list)
-            termination(p_list, term_threshold)
-            p_list.sort(key = lambda p: p.grade, reverse=True)
-            for i in range (len(p_list)):
-                print(p_list[i].grade ,end = ", " )
-            Player.Player.save_sorted_list_to_folder(p_list, folder_name + "/gen" + str(gen_number))
-            gen_number += 1
+        return players_list
 
-        counter = 0
-        mutations = []
-        for player in p_list:
-            #choose whether a player goes through a mutation
-            if random() < prob:
-                counter += 1
-                mute = mutation(player)
-                mutations.append(mute)
-        print("created ", counter, "mutations")
-        scores_list = []
-        for  i in range (len(p_list)):
-            scores_list.append(p_list[i].grade)
-        new_gen = selection(p_list, scores_list)
-        print("created ", len(new_gen)," new generation players")
-        mutations.extend(new_gen)
-        shuffle(mutations)
-        fitness_level(mutations)
-        after_termination = termination(mutations)
-        after_termination.sort(key = lambda p: p.grade, reverse=True)
-        for i in range (len(after_termination)):
-            print(after_termination[i].grade, end = ", ")
-        Player.Player.save_sorted_list_to_folder(after_termination, folder_name+"/gen"+str(gen_number))
-        print("finished gen", gen_number)
-        if (after_termination[int(len(after_termination)/(-10))].grade >= term_threshold):
-            term_threshold = min(term_threshold + 1, after_termination[int(len(after_termination) / (-10))].grade)
-        genetic_main(0, folder_name, gen_number+1, depth_number - 1, prob, after_termination, term_threshold)
+    curr_gen = players_list
+    if curr_gen == None or curr_gen == []:
+        print("creating a random generation")
+        curr_gen = []
+        for i in range(num_p):
+            curr_gen.append(create_player_with_heuristic())
 
+    #update fitness level:
+    shuffle(curr_gen)
+    update_fitness_level(curr_gen)
+
+    #termination:
+    curr_gen = termination(curr_gen, term_threshold)
+
+    #crossover:
+    curr_gen.sort(key=lambda p: p.grade, reverse=True)
+    scores_list = []
+    for i in range(len(curr_gen)):
+        scores_list.append(curr_gen[i].grade)
+        print(curr_gen[i].grade, end=", ")
+    new_gen = selection(curr_gen, scores_list)
+    print("\ncreated", len(new_gen), "new generation players")
+
+    # create mutations
+    mutations_counter = 0
+    for player in curr_gen:
+        if random() < mutation_prob:
+            mutations_counter += 1
+            mutation(player)
+    print("created", mutations_counter, "mutations")
+
+    #save the new gen
+    Player.Player.save_sorted_list_to_folder(new_gen, folder_name + "/gen" + str(gen_number))
+    new_gen.sort(key=lambda p: p.grade, reverse=True)
+    print("\nsaved generation number", gen_number, ", advancing to a new one")
+    genetic_main(0, folder_name, gen_number + 1, depth_number - 1, mutation_prob, new_gen, term_threshold)
+
+    # todo ripp - function of the sequences out of the board
+    # todo ripp -

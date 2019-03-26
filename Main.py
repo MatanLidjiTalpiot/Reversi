@@ -1,43 +1,54 @@
 import Game
 # import ArduinoCommunication
-import serial  # Serial imported for Serial communication
+# import serial  # Serial imported for Serial communication
 import time  # Required to use delay functions
-import camera
+# import camera
 import Player
-import motor
+# import motor
 import HeuristicsSandbox
 import BoardInformation
 import Gui
-import func_name
+# import func_name
 import numpy as np
-
+import copy
+HUMAN = Player.Player(p_type=Player.Player.PlayerTypes.TABLE)
+OUR_PLAYER = Player.Player.load_player("pklFiles/palti_and_lidji_player.pkl")
+GAME = Game.Game(OUR_PLAYER, HUMAN)
 
 def image_processing(last_board):  # last_board is only to make sure
-    return camera.return_board()
+    # return camera.return_board()
     # return curr_board
+    pass
+def check_if_move_is_legal(board_to_check):
+    for i in range(GAME.size):
+        for j in range(GAME.size):
+            if GAME.board[i][j] != board_to_check[i][j] and GAME.board[i][j] == 0:
+                if (i,j) not in GAME.get_legal_moves(HUMAN.disk):
+                    return False
+    return True
 
 
-def algorithm(ai, curr_board):  # fix!!!!!!!!!!!!!
+def algorithm(curr_board):
+    return algorithm_in(OUR_PLAYER, curr_board)
+
+
+def algorithm_in(ai, curr_board):  # fix!!!!!!!!!!!!!
     """
     A function that gets the current board and finds our systems move
     :param ai: our ai
     :param curr_board: the board on which the ai finds the move
     :return: to_put_down, to_flip, next board
     """
-    table_player = Player.Player(p_type=Player.Player.PlayerTypes.TABLE,
-                                 name="table", disk=-1 * ai.get_disk())
-    our_move = BoardInformation.where_to_put(board=curr_board, our_player=ai,
-                                             other_player=table_player)
-    to_flip = BoardInformation.where_to_flip(board=curr_board, our_player=ai,
-                                             other_player=table_player)
-    next_board = BoardInformation.how_board_supposed_to_be_after_putting(
-        board=curr_board, our_player=ai,
-        other_player=table_player)
-    return our_move, to_flip, next_board  # return to_put_down, to_flip, next board
+    GAME.board = curr_board
+    to_put_down = OUR_PLAYER.choose_move(GAME)[1]
+    to_flip = GAME.to_flip(OUR_PLAYER.disk, to_put_down)
+    GAME.do_move(OUR_PLAYER.disk, to_put_down)
+    next_board = GAME.board
+    return to_put_down, to_flip, next_board  # return to_put_down, to_flip, next board
 
 
 def take_disk():
-    arduinoSerial.write("getDisk".encode())
+    # arduinoSerial.write("getDisk".encode())
     time.sleep(2)  # not the real waiting time
     # return None (advance to putting down), does nothing in the MVP
 
@@ -76,21 +87,21 @@ def go_to_gui(curr_board, first_player, second_player):
     :param second_player: the player that plays second
     :return The winner of the game
     """
-    game = Game.Game(first_player, second_player)
-    game.set_board(curr_board)
-    return Gui.play_game(game, to_print=True)
+    gui = Gui.Gui(GAME)
+    gui.intro = False
+    gui.play_game()
 
 
 if __name__ == '__main__':
     arduinoName = 'COM10'
     port = 9600
     # global ArduinoSerial
-    arduinoSerial = serial.Serial(arduinoName, port)
+    # arduinoSerial = serial.Serial(arduinoName, port)
 
     time.sleep(1)
     take_disk()
-    ai = Player.Player(heuristic=HeuristicsSandbox.palti_white_h, name="ai",
-                       disk=Game.FIRST_COLOR)
+    # ai = Player.Player(heuristic=HeuristicsSandbox.palti_white_h, name="ai",
+    #                    disk=Game.FIRST_COLOR)
     last_board = image_processing(None)
     while True:
         if input("Play your turn and then write 'Done' (or just 'D')") in {
@@ -101,7 +112,7 @@ if __name__ == '__main__':
             if not check_four_by_four(curr_board):
                 break
 
-            our_move, to_flip, next_board = algorithm(ai, curr_board)
+            our_move, to_flip, next_board = algorithm(curr_board)
             print("our_move, to_flip", our_move, to_flip)
             motor.move_to_xy_with_monitoring(our_move)
             put_down(our_move)  # drops
@@ -109,8 +120,3 @@ if __name__ == '__main__':
             take_disk()  # take disk for the next move
             #
             last_board = curr_board  # board for next move
-    human_player = Player.Player(p_type=Player.Player.PlayerTypes.HUMAN,
-                                 name="human", disk=Game.SECOND_COLOR)
-    winner = go_to_gui(curr_board, first_player=ai,
-                       second_player=human_player)  # first player is the ai because the human player did the last move
-    print("the winner is: " + winner.name)
