@@ -376,13 +376,27 @@ class Game:
         disk = player.get_disk()
         num_of_corners = 0
         if self.board[0][0] == disk:
-            num_of_corners += 1
+            if self.board[7][7]:
+                num_of_corners += 2
+            else:
+                num_of_corners +=1
         if self.board[0][self.size - 1] == disk:
-            num_of_corners += 1
+            if self.board[7][0] == disk:
+                num_of_corners += 2
+            else:
+                num_of_corners += 1
         if self.board[self.size - 1][self.size - 1] == disk:
-            num_of_corners += 1
+            if self.board[0][0] == disk:
+                num_of_corners += 2
+            else:
+                num_of_corners += 1
+
         if self.board[self.size - 1][0] == disk:
-            num_of_corners += 1
+            if self.board[0][7] == disk:
+                num_of_corners += 2
+            else:
+                num_of_corners += 1
+
         return num_of_corners
 
     def get_opponent_num_of_corners(self, player):

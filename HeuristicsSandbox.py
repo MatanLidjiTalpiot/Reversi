@@ -190,32 +190,34 @@ palti_and_lidji = [
             lambda game, player: game.get_num_of_sides(player)/28],
            [[20,20,0],
             lambda game, player: -game.get_opponent_num_of_sides(player)/28],
-           [[50,50,0],
+           [[90,90,0],
             lambda game, player: -game.get_num_of_options_for_other(player)/16], #16 is arbitrary
            [[sys.maxsize/10,0,0],
             lambda game, player: game.is_winner_score(player)],
-         [[70,70,0],
+         [[60,60,0],
           lambda game, player: game.get_number_of_safe_disks(player)/game.get_number_of_turns()],
-         [[70,70,0],
+         [[80,80,0],
           lambda game,  player: -game.get_number_of_opponent_safe_disks(player)/game.get_number_of_turns()],
          [[80,80,0],
          lambda game, player: -game.next_to_untaked_corner(player)],
-         [[80,80,0],
+         [[100,100,0],
           lambda game,player: game.next_to_untaken_corner_opponent(player)],
         [[50,50,0],
          lambda game, player: game.get_num_of_options(player)/16],
-        # [[30,30,0],
-        #  lambda game,player : game.get_digonal_score(player)],
-        # [[30,30,0],
-        #  lambda game,player: -game.get_opponent_diagonal_score(player)],
-        # [[10,10,0],
-        #  lambda game, player: -game.num_of_seq(player)/16],
-        # [[10,10,0],
-        #  lambda game,player: game.num_of_seq(player)/16],
-        [[300,300,],
+        [[0,20,20],
+         lambda game,player : game.get_digonal_score(player)],
+        [[0,20,20],
+         lambda game,player: -game.get_opponent_diagonal_score(player)],
+        [[0,10,0],
+         lambda game, player: -game.num_of_seq(player)/16],
+        [[0,10,0],
+         lambda game,player: game.num_of_seq(player)/16],
+        [[20,20,0],
          lambda game,player: -game.bad_places_without_corner(player)],
-        [[300,300,0],
+        [[20,20,0],
          lambda game,player: game.opponent_bad_places_without_corner(player)]]
+
+
 #e()
 # yam_and_lidji = [
 #             [[70],
@@ -251,9 +253,12 @@ palti_and_lidji = [
 # cross = Player.Player.load_player("pklFiles/cross.pkl")
 # mutant_2 = Player.Player.load_player("pklFiles/mutent_2.pkl")
 p_new = Player.Player(heuristic=palti_and_lidji)
+p_new_m = Genetic.mutation(Genetic.mutation(Genetic.mutation(Genetic.mutation(p_new))))
 # cross_2 = Genetic.crossover(cross, mutant_2)
 # cross_2.name = "cross_2"
 # Player.Player.save_to_folder(mutant_2, 'pklFiles')
+p_new_m.name = "check1"
+Player.Player.save_to_folder(p_new_m, "pklFiles")
 game = Game.Game(p_new, human1)
 gui = Gui.Gui(game)
 gui.play_game()

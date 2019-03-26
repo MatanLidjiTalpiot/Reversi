@@ -72,7 +72,7 @@ def evolve(player, n):
     for i in range(n):
         h = copy.deepcopy(heuristic)
         for feature in h:
-            add_noise(feature, 0.3)  # todo 0.3 is arbitrary
+            add_noise(feature, 0.2)  # todo 0.2 is arbitrary
         p = Player.Player(h)
         players_list.append(p)
     players_list.append(player)
@@ -85,10 +85,11 @@ def add_noise(feature, max_noise):
     in order to get the parameter
     :param max_noise: precentage (between 0 and 1)
     """
-    lim = feature[0]
-    rand = 2 * (random() - 0.5)  # a random number between -1 and 1
-    noise = max_noise * lim * rand
-    feature[0] += noise  # todo make sure that feature is a list and not a tuple, worst case return
+    for i in range(len(feature[0])):
+        lim = feature[0][i]
+        rand = 2 * (random() - 0.5)  # a random number between -1 and 1
+        noise = max_noise * lim * rand
+        feature[0][i] += noise  # todo make sure that feature is a list and not a tuple, worst case return
 
 
 def create_player_with_heuristic():
@@ -98,7 +99,7 @@ def create_player_with_heuristic():
     """
     heuristic = []
     for i in range(NUM_OF_PARAMS):
-        weight = [random() * 1000, random()*1000, random()*1000]
+        weight = [random() * 100, random()*100, random()*100]
         tup = [weight, ALL_FUNCTIONS[i]]
         heuristic.append(tup)
     player = Player.Player(heuristic=heuristic, p_type=Player.Player.PlayerTypes.MINIMAX)
@@ -169,7 +170,7 @@ def mutation(player):
     feature = randint(0, len(heuristic) - 1)  # the feature to mutate
     for i in range(len(heuristic[0])):
         if heuristic[feature][0][i] == 0:
-            heuristic[feature][0][i] = random() * 1000
+            heuristic[feature][0][i] = random() * 100
         heuristic[feature][0][i] *= (2 * random())# mutation ratio
     p = Player.Player(heuristic=heuristic)
     return p

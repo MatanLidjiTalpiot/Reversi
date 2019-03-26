@@ -1,5 +1,6 @@
 import copy
 import Game
+import Genetic
 # SCORE_MEMO = {}
 def get_score(game, player):
     """
@@ -12,16 +13,30 @@ def get_score(game, player):
     # global SCORE_MEMO
     # key =  (tuple(map(tuple, game.board)))
     # if key not in SCORE_MEMO:
-    sum = 0
+
+    p_list = Genetic.evolve(player,2)
+    heuristic_2 = p_list[0].heuristic
+    heuristic_3 = p_list[1].heuristic
+    sum1 = 0
+    sum2 = 0
+    sum3 = 0
     for feature in player.get_heuristic():
-        val = feature[1](game, player)
-        # print(val)
-        for i in range (len(feature[0])):
-            if val == 0:
-                break
-            sum += feature[0][i] * abs((val**(i+1)))*(val)/abs(val)
-        # SCORE_MEMO[key] = sum
-    return sum
+        val1 = feature[1](game, player)
+        if val1 != 0:
+            for i in range (len(feature[0])):
+                sum1 += feature[0][i] * abs((val1**(i+1)))*(val1)/abs(val1)
+    for feature in heuristic_2:
+        val2 = feature[1](game, player)
+        if val2 != 0:
+            for i in range (len(feature[0])):
+                sum2 += feature[0][i] * abs((val2**(i+1)))*(val2)/abs(val2)
+    for feature in heuristic_3:
+        val3 = feature[1](game, player)
+        if val3 != 0:
+            for i in range(len(feature[0])):
+                sum3 += feature[0][i]*abs((val3**(i+1)))*(val3)/abs(val3)
+    sum_avg = (sum1 + sum2 + sum3)/3
+    return sum_avg
     # else:
     #     return SCORE_MEMO[key]
 

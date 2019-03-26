@@ -303,9 +303,6 @@ class Gui:
             self.old_board = self.game.board
 
     def do_next_turn(self):
-        self.game.update_safe_number()
-        print(self.game.fixed_disks)
-        print("*********************")
         self.curr_player = self.game.players[self.game.number_of_turns_attempted % 2]
         self.next_player = self.game.players[(self.game.number_of_turns_attempted + 1) % 2]
         if self.curr_player.type != Player.Player.PlayerTypes.HUMAN:
