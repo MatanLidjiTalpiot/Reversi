@@ -86,12 +86,12 @@ diff_h = [[10, (lambda game, player: (game.get_color_disk_num(player) * palti_A 
 # evolution = Genetic.evolve(palti, 3)
 # evolved_by_order = Player.Player.compare_players_list(evolution)
 # Player.Player.save_sorted_list_to_folder(evolved_by_order, "evolve1")
-all_players = []
-random_players = []
-for i in range(10):
-    random_players.append(Genetic.create_player_with_heuristic())
-for player in random_players:
-    all_players.extend(Genetic.evolve(player,1))
-s_list = Player.Player.compare_players_list(all_players)
-Player.Player.save_sorted_list_to_folder(s_list, '12_3_2019')
+# all_players = []
+# random_players = []
+# for i in range(10):
+#     random_players.append(Genetic.create_player_with_heuristic())
+# for player in random_players:
+#     all_players.extend(Genetic.evolve(player,1))
+# s_list = Player.Player.compare_players_list(all_players)
+# Player.Player.save_sorted_list_to_folder(s_list, '12_3_2019')
 

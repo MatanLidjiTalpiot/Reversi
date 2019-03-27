@@ -1,11 +1,5 @@
-import nxt.locator as locator
-import nxt.bluesock as blue
-import nxt
-import os
-import bluetooth
 from image_control_xy_movement import get_move_and_dist
 
-from nxt.motor import *
 def left(steps):
     pass
 def right(steps):

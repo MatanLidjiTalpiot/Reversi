@@ -39,7 +39,7 @@ int RIGHT = 4;
 int UP = 5;
 int DOWN = 6;
 int one_square = 338;
-int PLOTTER_OFFSET = 220;
+int PLOTTER_OFFSET = 0; //220
 
 
 ///////////
@@ -101,6 +101,7 @@ void plotter_move_motors(int steps_to_move, int dir)
     delayMicroseconds(plotter_interval);
   }
   digitalWrite(enable_pin_plotter, HIGH); //disable
+  Serial.println("done plotter_move_motors");
 }
 
 void plotter_init()
@@ -128,14 +129,38 @@ void plotter_drop(int x, int y)
   delay(100);
   Serial.println("ended drop");
 }
-
+void move_xy(char* s)
+{
+  char* x = strtok(s, ",");
+  char* y = strtok(NULL, ",");
+  move_xy_in(atoi(x), atoi(y));
+}
+void move_xy_in(int x_diff, int y_diff) //x,y of python
+{
+  if (x_diff < 0)
+  {
+    plotter_move_motors(x_diff, DOWN);
+  }
+  else
+  {
+    plotter_move_motors(x_diff, UP);
+  }
+  if (y_diff < 0)
+  {
+    plotter_move_motors(x_diff, LEFT);
+  }
+  else
+  {
+    plotter_move_motors(x_diff, RIGHT);
+  }
+}
 
 void plotter_move_to_square(int x, int y)
 {
   //the 910 if to leave origin
   //up down
   plotter_move_motors(910 + one_square * (7 - x), UP);
-  plotter_move_motors(PLOTTER_OFFSET, LEFT);
+  //  plotter_move_motors(PLOTTER_OFFSET, LEFT);
   //right left
   if (y == 7)
   {
@@ -164,7 +189,37 @@ void plotter_move_to_stack(int x, int y)
   }
   //up down
   plotter_move_motors(910 + one_square * (7 - x), DOWN);
+  myservo.write(servoStartPoint);
   Serial.println("done moving back to stack");
+}
+
+void plotter_move_sequence(String s_move)
+{
+  int* square = new int[2];
+  square = string_to_xy(s_move, 4); //s_move=movexy
+  int x = square[0];
+  int y = square[1];
+  Serial.println("before move to square");
+  plotter_move_to_square(x, y);
+  Serial.println("after move to square");
+  plotter_drop(x, y);
+  stack_spin();
+}
+
+void plotter_back_sequence(String s_back)
+{
+  int* square = new int[2];
+  square = string_to_xy(s_back, 4);
+  plotter_move_to_stack(square[0], square[1]);
+  delay(200);
+  Serial.println("picked up disk");
+}
+
+void do_turn(String s_move, String s_flip, String s_back)
+{
+  plotter_move_sequence(s_move);
+  board_flip_sequence(s_flip.substring(4));
+  plotter_back_sequence(s_back);
 }
 
 
@@ -185,7 +240,7 @@ void board_init()
   Serial.println("Board set up finish");
 }
 
-void board_flip_square(int row, int col)
+void board_flip_square(int col, int row)
 {
   //todo: check if that actually works, may need to swap x,y (row,col)
   digitalWrite(switchx[row], LOW);
@@ -306,12 +361,17 @@ void loop()
   String myBuffer = "";
   myBuffer = Serial.readString();
 
+//  if (myBuffer.indexOf("turn") != -1)
+//  {
+//    s_move = "move"
+//    do_turn(s_move, s_flip, s_back)
+//  }
   if (myBuffer.indexOf("move") != -1)
   {
     int* square = new int[2];
-    square = string_to_xy(myBuffer, 3);
-    int x = square[0] - '0';
-    int y = square[1] - '0';
+    square = string_to_xy(myBuffer, 4);
+    int x = square[0];
+    int y = square[1];
     Serial.println("before move to square");
     plotter_move_to_square(x, y);
     Serial.println("after move to square");
@@ -330,7 +390,7 @@ void loop()
     square = string_to_xy(myBuffer, 4);
     plotter_move_to_stack(square[0], square[1]);
     delay(200);
-    Serial.println("picked up disk");
+    Serial.println("done going back");
     //todo: tell arduino we are done
   }
 
@@ -352,7 +412,6 @@ void loop()
   }
   else if (myBuffer.indexOf("s+") != -1)
   {
-    Serial.println("s+");
     stack_spin();
   }
   else if (myBuffer.length() != 0)
@@ -360,5 +419,11 @@ void loop()
     Serial.println("Error - Bad input format");
   }
 
+  else if (myBuffer.indexOf("_movexy") != -1)
+  {
+    char* input = new char[9];
+    myBuffer.substring(7).toCharArray(input, 8);
+    move_xy(input);
+  }
   // todo: write a function that gets a place to put and a sequence of squares to flip and does everything automatically
 }
