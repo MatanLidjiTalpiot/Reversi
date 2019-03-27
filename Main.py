@@ -175,24 +175,26 @@ if __name__ == '__main__':
             print("movexy string:", string)
             print("trying to move", string)
             arduinoSerial.write(string.encode())
-            time.sleep(5)
-            # while "done moving to square" not in str(arduinoSerial.readline().decode("utf-8")):
-            #     continue
+            while "done moving to square" not in str(arduinoSerial.readline().decode("utf-8")):
+                continue
             print("succeeded to move", string)
             arduinoSerial.write(junk_string.encode())
             print("after movement")
             string = "back" + str(our_move[0]) + str(our_move[1])
-            # move_monitored(arduinoSerial, our_move)
-            # put_down(our_move)  # drops
-            # move_monitored(arduinoSerial, end_point_in_board)
             print("trying to go back", string)
+            time.sleep(5)  # I have no idea why this works
             arduinoSerial.write(string.encode())
+            time.sleep(5)  # I have no idea why this works
             while "done going back" not in str(arduinoSerial.readline().decode("utf-8")):
                 continue
             print("succeeded to go back", string)
             arduinoSerial.write(junk_string.encode())
             print("after movement")
             flip(to_flip)
+
+            # move_monitored(arduinoSerial, our_move)
+            # put_down(our_move)  # drops
+            # move_monitored(arduinoSerial, end_point_in_board)
             # # take_disk()  # take disk for the next move
             # last_board = next_board  # board for next move
         else:
