@@ -4,7 +4,7 @@ import Camera
 import cv2
 import numpy as np
 import rotate
-sdThresh = 0.11
+sdThresh = 0.095
 x_min = 143
 x_max = 514
 y_min = 43

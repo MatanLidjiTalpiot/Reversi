@@ -133,6 +133,7 @@ if __name__ == '__main__':
         # TODO
         # frame = shit.cut_edges(frame, CUT_R)
         points = rotate.find_points(cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY), 0.05)
+        # print(points)
         if type(points) != np.ndarray:
             continue
         rotate.draw_points(points, frame)
@@ -196,7 +197,7 @@ if __name__ == '__main__':
             # put_down(our_move)  # drops
             # move_monitored(arduinoSerial, end_point_in_board)
             # # take_disk()  # take disk for the next move
-            # last_board = next_board  # board for next move
+            last_board = next_board  # board for next move
         else:
             pass
         # if game done - break

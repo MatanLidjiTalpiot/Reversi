@@ -67,7 +67,6 @@ int stack_interval = 3000;
 void plotter_move_motors(int steps_to_move, int dir)
 {
   digitalWrite(enable_pin_plotter, LOW); //enable todo: maybe move after dir
-
   if (dir == UP)
   {
     digitalWrite(dir_pin_motor1, HIGH);
@@ -133,13 +132,16 @@ void move_xy(char* s)
 {
   char* x = strtok(s, ",");
   char* y = strtok(NULL, ",");
+  Serial.print("movexy");
+  Serial.print(String(x));
+  Serial.println(y);
   move_xy_in(atoi(x), atoi(y));
 }
 void move_xy_in(int x_diff, int y_diff) //x,y of python
 {
   if (x_diff < 0)
   {
-    plotter_move_motors(x_diff, DOWN);
+    plotter_move_motors(-x_diff, DOWN);
   }
   else
   {
@@ -147,12 +149,13 @@ void move_xy_in(int x_diff, int y_diff) //x,y of python
   }
   if (y_diff < 0)
   {
-    plotter_move_motors(x_diff, LEFT);
+    plotter_move_motors(-y_diff, LEFT);
   }
   else
   {
-    plotter_move_motors(x_diff, RIGHT);
+    plotter_move_motors(y_diff, RIGHT);
   }
+  delay(4000);
 }
 
 void plotter_move_to_square(int x, int y)
@@ -361,12 +364,20 @@ void loop()
   String myBuffer = "";
   myBuffer = Serial.readString();
 
-//  if (myBuffer.indexOf("turn") != -1)
-//  {
-//    s_move = "move"
-//    do_turn(s_move, s_flip, s_back)
-//  }
-  if (myBuffer.indexOf("move") != -1)
+  //  if (myBuffer.indexOf("turn") != -1)
+  //  {
+  //    s_move = "move"
+  //    do_turn(s_move, s_flip, s_back)
+  //  }
+
+  if (myBuffer.indexOf("_movexy") != -1)
+  {
+    char* input = new char[13];
+    myBuffer.substring(7).toCharArray(input, 12);
+    move_xy(input);
+  }
+
+  else if (myBuffer.indexOf("move") != -1)
   {
     int* square = new int[2];
     square = string_to_xy(myBuffer, 4);
@@ -417,13 +428,6 @@ void loop()
   else if (myBuffer.length() != 0)
   {
     Serial.println("Error - Bad input format");
-  }
-
-  else if (myBuffer.indexOf("_movexy") != -1)
-  {
-    char* input = new char[9];
-    myBuffer.substring(7).toCharArray(input, 8);
-    move_xy(input);
   }
   // todo: write a function that gets a place to put and a sequence of squares to flip and does everything automatically
 }

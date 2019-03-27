@@ -1,6 +1,6 @@
 
 import numpy as np
-arr = np.load('measurment_ratios.npy')
+arr = np.load('measurement_final.npy')
 print(arr)
 # arr_new = np.zeros((8, 8, 2))
 # for i in range(8):
