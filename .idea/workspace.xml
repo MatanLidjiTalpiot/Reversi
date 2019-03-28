@@ -3,45 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="54b7e98a-a32b-4856-b0dc-26aa19440c36" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/Main.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Main/Main.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/find_center0.png" beforeDir="false" afterPath="$PROJECT_DIR$/find_center0.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/find_center1.png" beforeDir="false" afterPath="$PROJECT_DIR$/find_center1.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image_control_xy_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/image_control_xy_movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yam_test.png" beforeDir="false" afterPath="$PROJECT_DIR$/yam_test.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/.idea/עיבוד תמונה.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_25_58_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_25_59_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_26_00_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_29_14_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_31_11_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_08_Pro (2).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_08_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_10_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_16_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_17_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_18_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_19_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_21_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_27_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_35_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_32_56_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_18_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_19_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_27_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_28_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_29_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_31_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_33_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_47_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_33_49_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_34_52_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_35_08_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_35_23_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/WIN_20181129_13_35_25_Pro.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/עיבוד תמונה/data/board.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_move_detaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/new_move_detaction.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,13 +43,18 @@
       <file leaf-file-name="new_move_detaction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/new_move_detaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="36" column="37" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="37" />
+            <state relative-caret-position="147">
+              <caret line="60" column="10" lean-forward="true" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="find_center0.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/find_center0.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="try.py" pinned="false" current-in-tab="false">
@@ -98,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/shit.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="94">
-              <caret line="256" column="27" selection-start-line="256" selection-start-column="24" selection-end-line="256" selection-end-column="27" />
+              <caret line="206" lean-forward="true" selection-start-line="206" selection-end-line="206" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -106,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="183" selection-start-line="183" selection-end-line="190" selection-end-column="49" />
+            <state relative-caret-position="606">
+              <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -118,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="image_control_xy_movement.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="image_control_xy_movement.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/image_control_xy_movement.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="296" column="43" selection-start-line="296" selection-start-column="43" selection-end-line="296" selection-end-column="43" />
+            <state relative-caret-position="2295">
+              <caret line="171" column="45" lean-forward="true" selection-start-line="171" selection-start-column="45" selection-end-line="171" selection-end-column="45" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -155,10 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>flip(</find>
-      <find>num</find>
-      <find>&quot;back</find>
-      <find>not our</find>
       <find>last_num_of_c</find>
       <find>not</find>
       <find>image_processing</find>
@@ -181,10 +149,14 @@
       <find>sleep</find>
       <find>move_square</find>
       <find>move&quot;</find>
-      <find>move</find>
-      <find>back</find>
       <find>back_</find>
       <find>plotter_76_move_to_stack</find>
+      <find>drop</find>
+      <find>back</find>
+      <find>mask</find>
+      <find>dist</find>
+      <find>move</find>
+      <find>move_monito</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -214,10 +186,10 @@
         <option value="$PROJECT_DIR$/data_coleection.py" />
         <option value="$PROJECT_DIR$/rotate.py" />
         <option value="$PROJECT_DIR$/shit.py" />
-        <option value="$PROJECT_DIR$/new_move_detaction.py" />
-        <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/try.py" />
+        <option value="$PROJECT_DIR$/new_move_detaction.py" />
         <option value="$PROJECT_DIR$/image_control_xy_movement.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
       </list>
     </option>
   </component>
@@ -273,7 +245,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.image_control_xy_movement">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="HeuristicsSandbox" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Algorithm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -373,9 +345,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Main" />
         <item itemvalue="Python.image_control_xy_movement" />
         <item itemvalue="Python.try" />
-        <item itemvalue="Python.Main" />
         <item itemvalue="Python.data_coleection" />
         <item itemvalue="Python.HeuristicsSandbox" />
       </list>
@@ -518,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553725781899</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="One turn happens in main">
+      <created>1553734971537</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1553734971537</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView">
@@ -534,13 +513,13 @@
     <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18854415" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18854415" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293124" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.17263326" side_tool="true" weight="0.49462366" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49570355" weight="0.49462366" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.46561137" weight="0.3293124" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49555555" weight="0.45476478" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4884646" visible="true" weight="0.35842294" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4884646" visible="true" weight="0.35842294" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49555555" weight="0.32810616" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -609,7 +588,8 @@
     <MESSAGE value="saving files after evolution" />
     <MESSAGE value="can do evolution and save players sorted.&#10;takes a lot of time&#10;fixed the bug when it is tied" />
     <MESSAGE value="Basic CV of plotter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic CV of plotter" />
+    <MESSAGE value="One turn happens in main" />
+    <option name="LAST_COMMIT_MESSAGE" value="One turn happens in main" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -625,13 +605,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3638">
-          <caret line="214" column="13" selection-start-line="214" selection-start-column="13" selection-end-line="214" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Minimax.py" />
     <entry file="file://$PROJECT_DIR$/Game.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -850,16 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="256" column="27" selection-start-line="256" selection-start-column="24" selection-end-line="256" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rotate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -870,26 +833,6 @@
     <entry file="file://$PROJECT_DIR$/yam.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/new_move_detaction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="183" selection-start-line="183" selection-end-line="190" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/try.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -897,12 +840,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/image_control_xy_movement.py">
+    <entry file="file://$PROJECT_DIR$/find_center0.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shit.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="296" column="43" selection-start-line="296" selection-start-column="43" selection-end-line="296" selection-end-column="43" />
+        <state relative-caret-position="94">
+          <caret line="206" lean-forward="true" selection-start-line="206" selection-end-line="206" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new_move_detaction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="60" column="10" lean-forward="true" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_control_xy_movement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="171" column="45" lean-forward="true" selection-start-line="171" selection-start-column="45" selection-end-line="171" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

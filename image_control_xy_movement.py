@@ -173,7 +173,7 @@ def move_monitored(arduinoSerial, square_num):
     x_diff = move[0]
     y_diff = move[1]
     dist = move[2]
-    while dist > 2.0:
+    while dist > 1.2:
         print("dist>2")
         x_diff = cm_to_steps(x_diff)
         y_diff = cm_to_steps(y_diff)

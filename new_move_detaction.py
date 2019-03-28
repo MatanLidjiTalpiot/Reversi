@@ -17,12 +17,18 @@ def cut_picture_2(img):
     #TODO check if it is [x_min:x_max , y_min:y_max] or [y_min:y_max , x_min:x_max]
     return img[y_min : y_max , x_min : x_max]
 
+###############old recognition!!!##################
+# def is_hand_in_the_field(refrence, pic):
+#     # print(distMap(pic,refrence))
+#     distMapMask(pic)
+#     if distMap(pic, refrence) >= sdThresh:
+#         return True
+#     return False
 
+############# new recognition ##############
 def is_hand_in_the_field(refrence, pic):
     # print(distMap(pic,refrence))
-    if distMap(pic, refrence) >= sdThresh:
-        return True
-    return False
+    return is_hand_in_the_field_mask_check(pic)
 
 # def calculateDistance_colordPictures(image1, image2):
 #     distance = 0
@@ -46,6 +52,22 @@ def distMap(frame1, frame2):
     # print('dist = ' + str(dist))
     return dist
 
+def is_hand_in_the_field_mask_check(frame):
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    lower_white = np.array([0, 0, 100])
+    upper_white = np.array([255, 40, 255])
+
+    mask_white = cv2.inRange(hsv, lower_white, upper_white)
+    white_pixels = cv2.countNonZero(mask_white)
+    # print(white_pixels) # full with no interferance = 12185 pixels with hand = 10099
+
+    if white_pixels < 11500:
+        return True
+    return False
+
+    # cv2.imshow("mask",mask_white)
+    # cv2.imshow("pic",frame)
+    # cv2.waitKey(0)
 
 def num_of_circles(board_pic):
     return np.count_nonzero(shit.extract_board(board_pic))

@@ -155,6 +155,7 @@ if __name__ == '__main__':
     print("arduino connection successful")
     ai = Player.Player(heuristic=HeuristicsSandbox.palti_white_h, name="ai",
                        disk=Game.FIRST_COLOR)
+
     # _, frame = cam.read()
     # frame = shit.cut_edges(frame,CUT_R)
     # last_board = shit.extract_board(frame)

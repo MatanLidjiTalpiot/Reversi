@@ -161,15 +161,15 @@ void move_xy_in(int x_diff, int y_diff) //x,y of python
 
 void plotter_76_move_to_stack()
 {
-  plotter_move_motors(230, RIGHT);
-  plotter_move_motors(935, DOWN);
+  plotter_move_motors(260, RIGHT);
+  plotter_move_motors(995, DOWN);
   Serial.println("76 to stack");
 }
 
 void plotter_stack_move_to_76()
 {
-  plotter_move_motors(930, UP);
-  plotter_move_motors(225, LEFT);
+  plotter_move_motors(1000, UP);
+  plotter_move_motors(255, LEFT);
 }
 
 void plotter_move_to_square(int x, int y)
