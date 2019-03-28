@@ -10,7 +10,7 @@ import HeuristicsSandbox
 import Gui
 import numpy as np
 import rotate
-from image_control_xy_movement import move_monitored, junk_string
+from image_control_xy_movement import move_monitored, junk_string, put_and_back_square
 import Game
 
 HUMAN = Player.Player(p_type=Player.Player.PlayerTypes.TABLE)
@@ -167,36 +167,9 @@ if __name__ == '__main__':
             curr_board = image_processing(last_board)
             print("curr_board", curr_board)
             our_move, to_flip, next_board = algorithm(curr_board)
-            # our_move = [2, 4]
-            # to_flip = [[3, 4]]
             print("our_move, to_flip", our_move, to_flip)
-            # stack_to_end_point()
-            # print('moved to start')
-            string = "move" + str(our_move[0]) + str(our_move[1])
-            print("movexy string:", string)
-            print("trying to move", string)
-            arduinoSerial.write(string.encode())
-            while "done moving to square" not in str(arduinoSerial.readline().decode("utf-8")):
-                continue
-            print("succeeded to move", string)
-            arduinoSerial.write(junk_string.encode())
-            print("after movement")
-            string = "back" + str(our_move[0]) + str(our_move[1])
-            print("trying to go back", string)
-            time.sleep(5)  # I have no idea why this works
-            arduinoSerial.write(string.encode())
-            time.sleep(5)  # I have no idea why this works
-            while "done going back" not in str(arduinoSerial.readline().decode("utf-8")):
-                continue
-            print("succeeded to go back", string)
-            arduinoSerial.write(junk_string.encode())
-            print("after movement")
+            put_and_back_square(arduinoSerial, our_move[0], our_move[1])
             flip(to_flip)
-
-            # move_monitored(arduinoSerial, our_move)
-            # put_down(our_move)  # drops
-            # move_monitored(arduinoSerial, end_point_in_board)
-            # # take_disk()  # take disk for the next move
             last_board = next_board  # board for next move
         else:
             pass
