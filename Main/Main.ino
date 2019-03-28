@@ -39,7 +39,7 @@ int RIGHT = 4;
 int UP = 5;
 int DOWN = 6;
 int one_square = 338;
-int PLOTTER_OFFSET = 0; //220
+int PLOTTER_OFFSET = 220; //220
 
 
 ///////////
@@ -128,6 +128,7 @@ void plotter_drop(int x, int y)
   delay(100);
   Serial.println("ended drop");
 }
+
 void move_xy(char* s)
 {
   char* x = strtok(s, ",");
@@ -155,15 +156,27 @@ void move_xy_in(int x_diff, int y_diff) //x,y of python
   {
     plotter_move_motors(y_diff, RIGHT);
   }
-  delay(4000);
+  delay(1000);
+}
+
+void plotter_76_move_to_stack()
+{
+  plotter_move_motors(230, RIGHT);
+  plotter_move_motors(935, DOWN);
+  Serial.println("76 to stack");
+}
+
+void plotter_stack_move_to_76()
+{
+  plotter_move_motors(930, UP);
+  plotter_move_motors(225, LEFT);
 }
 
 void plotter_move_to_square(int x, int y)
 {
-  //the 910 if to leave origin
   //up down
-  plotter_move_motors(910 + one_square * (7 - x), UP);
-  //  plotter_move_motors(PLOTTER_OFFSET, LEFT);
+  plotter_stack_move_to_76();
+  plotter_move_motors(one_square * (7 - x), UP);
   //right left
   if (y == 7)
   {
@@ -179,9 +192,6 @@ void plotter_move_to_square(int x, int y)
 }
 void plotter_move_to_stack(int x, int y)
 {
-  //right left
-  plotter_move_motors(PLOTTER_OFFSET, RIGHT);
-
   if (y == 7)
   {
     plotter_move_motors(one_square, LEFT);
@@ -191,7 +201,8 @@ void plotter_move_to_stack(int x, int y)
     plotter_move_motors(one_square * (6 - y), RIGHT);
   }
   //up down
-  plotter_move_motors(910 + one_square * (7 - x), DOWN);
+  delay(1000);
+  plotter_move_motors(one_square * (7 - x), DOWN);
   myservo.write(servoStartPoint);
   Serial.println("done moving back to stack");
 }
@@ -386,10 +397,17 @@ void loop()
     Serial.println("before move to square");
     plotter_move_to_square(x, y);
     Serial.println("after move to square");
-    plotter_drop(x, y);
     stack_spin();
   }
 
+  else if (myBuffer.indexOf("drop") != -1)
+  {
+    int* square = new int[2];
+    square = string_to_xy(myBuffer, 4);
+    int x = square[0];
+    int y = square[1];
+    plotter_drop(x, y);
+  }
   else if (myBuffer.indexOf("flip") != -1) //assume that if we want to flip the string is flip121314
   {
     board_flip_sequence(myBuffer.substring(4));
@@ -403,6 +421,11 @@ void loop()
     delay(200);
     Serial.println("done going back");
     //todo: tell arduino we are done
+  }
+
+  else if (myBuffer.indexOf("76ToStack") != -1)
+  {
+    plotter_76_move_to_stack();
   }
 
   else if (myBuffer.indexOf("u+") != -1)

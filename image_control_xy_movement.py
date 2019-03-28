@@ -74,14 +74,14 @@ def save_blue_mask(frame, new_img_name):
     # frame = rotate.four_point_transform(frame, POINTS)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     lower_blue = np.array([100, 40, 40])
-    upper_blue = np.array([130, 250, 250])
+    upper_blue = np.array([140, 250, 250])
 
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
     kernel = np.ones((5, 5), np.uint8)
     mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
     res = cv2.bitwise_and(frame, frame, mask=mask)
-    if SHOW == True:
+    if SHOW:
         cv2.imshow('frame', frame)
         cv2.imwrite('yam.jpg', frame)
         cv2.imshow('mask', mask)
@@ -98,7 +98,7 @@ def get_center_of_masked_gray_pic(img, threshold_val=grey_threshold):
     column_count = 0
     for i in range(img.shape[0]):  # traverses through height of the image
         for j in range(img.shape[1]):  # traverses through width of the image
-            if img[i][j] > threshold_val and i > 35 and i < 400 and j>140 and j<500:
+            if img[i][j] > threshold_val and i > 20 and i < 420 and j > 140 and j < 500:
                 row_sum += i
                 column_sum += j
                 row_count += 1
@@ -186,16 +186,54 @@ def move_monitored(arduinoSerial, square_num):
         dist = move[2]
 
 
+def move_square(arduinoSerial, x, y):
+    string = "move" + str(x) + str(y)
+    print("move square string:", string)
+    time.sleep(1)
+    arduinoSerial.write(string.encode())
+    time.sleep(1)
+    while "done plotter_move_motors" not in str(arduinoSerial.readline().decode("utf-8")):
+        continue
+    arduinoSerial.write(junk_string.encode())
+    time.sleep(1)
+    print("after movement")
+
+
+def back_square(arduinoSerial, x, y):
+    string = "back" + str(x) + str(y)
+    print("back square string:", string)
+    time.sleep(1)
+    arduinoSerial.write(string.encode())
+    time.sleep(1)
+    while "done moving back to stack" not in str(arduinoSerial.readline().decode("utf-8")):
+        continue
+    arduinoSerial.write(junk_string.encode())
+    time.sleep(1)
+    print("after moving back")
+
+
 def move_xy(arduinoSerial, x_diff, y_diff):
     string = "_movexy" + str(x_diff) + "," + str(-y_diff)
     print("movexy string:", string)
-    # time.sleep(1)
+    time.sleep(1)
     arduinoSerial.write(string.encode())
-    # time.sleep(1)
+    time.sleep(1)
     while "done plotter_move_motors" not in str(arduinoSerial.readline().decode("utf-8")):
         continue
     # arduinoSerial.write(junk_string.encode())
     print("after movement")
+
+
+def drop_square(arduinoSerial, x, y):
+    string = "drop" + str(x) + str(y)
+    print("drop string:", string)
+    time.sleep(1)
+    arduinoSerial.write(string.encode())
+    time.sleep(1)
+    while "ended drop" not in str(arduinoSerial.readline().decode("utf-8")):
+        continue
+    arduinoSerial.write(junk_string.encode())
+    print("drop movement")
 
 
 def save_indexes(file_name):
@@ -221,19 +259,41 @@ def save_indexes(file_name):
             np.save(file_name, array)
 
 
+def plotter_76_move_to_stack(arduinoSerial):
+    string = "76ToStack"
+    arduinoSerial.write(string.encode())
+    time.sleep(1)
+    while "76 to stack" not in str(arduinoSerial.readline().decode("utf-8")):
+        continue
+    arduinoSerial.write(junk_string.encode())
+    print("back to stack")
+
+
+def put_and_back_square(arduinoSerial, x, y):
+    move_square(arduinoSerial, x, y)
+    get_move_and_dist((x, y))
+    move_monitored(arduinoSerial, (x, y))
+    drop_square(arduinoSerial, x, y)
+    time.sleep(1)
+    back_square(arduinoSerial, x, y)
+    move_monitored(arduinoSerial, (7, 6))
+    print("GOING BACK")
+    plotter_76_move_to_stack(arduinoSerial)
+
+
 if __name__ == '__main__':
     # TODO
     MyCamera.initialize_camera()
     print("camera is ready")
-    time.sleep(2)
+    time.sleep(3)
     arduinoName = 'COM6'
     port = 9600
     # global ArduinoSerial
     arduinoSerial = serial.Serial(arduinoName, port)
 
     # print(get_obj_location_pixels())
-    get_move_and_dist((1, 2))
-    move_monitored(arduinoSerial, (3, 6))
-    move_monitored(arduinoSerial, (5, 5))
+
+    # move_monitored(arduinoSerial, (3, 6))
+    put_and_back_square(arduinoSerial, 4, 2)
     # save_indexes('measurement_final.npy')
-    # takePicture('yam_test.png')
+    # takePicture('test4.png')
